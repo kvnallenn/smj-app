@@ -60,7 +60,11 @@ Route::resource('/admin/adminproduk/tambahproduk', AdminAddProdukController::cla
 
 Route::resource('/admin/adminproduk/detailproduk', DetailProdukController::class)->except('show')->middleware('is_admin');
 
-Route::resource('/admin/adminproduk/kategoriproduk', KategoriController::class)->except('show')->middleware('is_admin');
+Route::resource('/admin/kategoriproduk', KategoriController::class)->except('show')->middleware('is_admin');
+
+
+
+
 
 
 

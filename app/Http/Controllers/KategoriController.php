@@ -15,7 +15,7 @@ class KategoriController extends Controller
     public function index()
     {
         $datas = Category::all();
-        return view ('admin.adminproduk.kategoriproduk.index', compact(
+        return view ('admin.kategoriproduk.index', compact(
             'datas'
         ));
     }
@@ -45,7 +45,7 @@ class KategoriController extends Controller
         $model->jenis_kategori = $request->get('jenis_kategori');
         $model->save();
 
-        return redirect('admin/adminproduk/kategoriproduk');
+        return redirect('admin/kategoriproduk')->with('notifikasi','Kategori Berhasil Dibuat!');
     }
 
     /**
@@ -67,7 +67,7 @@ class KategoriController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -79,7 +79,12 @@ class KategoriController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $model = Category::find($id);
+        $model->kode_kategori = $request->get('edit_kodekategori');
+        $model->jenis_kategori = $request->get('edit_jeniskategori');
+        $model->save();
+
+        return redirect('admin/kategoriproduk')->with('notifikasi','Kategori berhasil diupdate');
     }
 
     /**
@@ -90,6 +95,8 @@ class KategoriController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $model = Category::find($id);
+        $model->delete();
+        return redirect('admin/kategoriproduk')->with('notifikasi','Kategori berhasil dihapus!');
     }
 }
