@@ -1,0 +1,270 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;400&display=swap');
+
+body {
+  font-family: 'Nunito Sans', sans-serif;
+  background-color: whitesmoke;
+}
+
+@media screen and (min-width: 994px){
+    .form-control{
+        width: 400px;
+    }
+    label.keterangan{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 994px){
+    .navbar-nav{
+        text-align: center;
+    }
+    .nav-item.pembatas{
+        display: none;
+    }
+    .nav-link.active.masuk.authen{
+        display: none;
+    }
+}
+
+@media screen and (min-width: 375px){
+    .btn-custom{
+        margin-bottom: 12px;
+    }
+}
+
+@media screen and (max-width: 515px){
+  .btn-custom-quest{
+    margin-bottom: 10px;
+  } 
+}
+
+
+
+
+.bi.bi-bag-check, .bi.bi-bell, .bi.bi-envelope{
+    position: relative;
+  }
+
+.badge.badge-light.rounded-circle{
+    position: absolute; top: 0px; right: -10px;
+    background-color: white;
+    color: black;
+    font-size: 9px; 
+  }
+
+  
+.nav-link.active.masuk{
+    position: relative;
+    top: 1.5px;
+}
+
+.nama-user{
+    font-size: 12px;
+    font-style: normal;
+}
+
+#navbarbawah {
+    background-color: #2D3748;
+  }
+
+.row-produk{
+    background-color: #fff;
+    margin: 0;
+    padding: 5px;
+    padding-top: 16px;
+}
+
+.garis-nama{
+    border-bottom: 2px solid #2d2d2d;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+.btn-custom{
+    padding: 15px;
+    font-size: 14px;
+}
+
+.btn-custom-quest{
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+#footer {
+    background: #fff;
+    color: #212529;
+    font-size: 14px;
+    background: #fef8f5;
+    margin-top: 95px;
+  }
+  
+  #footer .footer-top {
+    padding: 60px 0 50px 0;
+    background: #fff;
+  }
+  
+  #footer .footer-top .footer-contact {
+    margin-bottom: 30px;
+  }
+  
+  #footer .footer-top .footer-contact h4 {
+    font-size: 22px;
+    margin: 0 0 30px 0;
+    padding: 2px 0 2px 0;
+    line-height: 1;
+    font-weight: 700;
+  }
+  
+  #footer .footer-top .footer-contact p {
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 0;
+    color: #5c5c5c;
+  }
+  
+  #footer .footer-top h4 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #212529;
+    position: relative;
+    padding-bottom: 12px;
+  }
+  
+  #footer .footer-top .footer-links {
+    margin-bottom: 30px;
+  }
+  
+  #footer .footer-top .footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  
+  }
+  
+  #footer .footer-top .footer-links ul i {
+    padding-right: 2px;
+    color: #f39e7a;
+    font-size: 18px;
+    line-height: 1;
+  
+  }
+  
+  #footer .footer-top .footer-links ul li {
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+  }
+  
+  #footer .footer-top .footer-links ul li:first-child {
+    padding-top: 0;
+  }
+  
+  #footer .footer-top .footer-links ul a {
+    color: #5c5c5c;
+    transition: 0.3s;
+    display: inline-block;
+    line-height: 1;
+    text-shadow: none;
+  }
+  
+  #footer .footer-top .footer-links ul a:hover {
+  
+    color: #eb5d1e;
+  }
+  
+  #footer .footer-top .social-links a {
+    font-size: 18px;
+    display: inline-block;
+    background: #2D3748;
+    color: #fff;
+    line-height: 1;
+    padding: 8px 0;
+    margin-right: 4px;
+    border-radius: 50%;
+    text-align: center;
+    width: 36px;
+    height: 36px;
+    transition: 0.3s;
+  }
+  
+  #footer .footer-top .social-links a:hover {
+    background: #ef7f4d;
+    color: #fff;
+  
+  }
+  
+  #footer .copyright {
+    text-align: center;
+    float: left;
+  }
+  
+  #footer .credits {
+    float: right;
+    text-align: center;
+    font-size: 13px;
+    color: #212529;
+  }
+  
+  #footer .credits a {
+    color: #eb5d1e;
+  }
+
+  /*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+
+.review-img{
+  width: 60px;
+}
+
+.comment-img{
+  width: 60px;
+  margin-right: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.review-name{
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.review-desc{
+  font-size: 14px;
+  margin-top: 7px;
+}
+
+.deskripsi{
+  height: 250px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.deskripsi::-webkit-scrollbar{
+  display: none;
+}
+
+.review{
+  height: 400px;
+  overflow: scroll;
+  overflow-x: hidden;
+
+}
+
+.row.questb-row{
+  background-color: white;
+  width: auto;
+  padding: 10px;
+}
+
+.questp{
+  margin-top: 12px;
+}
+
+.wrap-quest{
+  background-color: white;
+}
+
