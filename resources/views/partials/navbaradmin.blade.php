@@ -32,6 +32,13 @@
             </a>
             <span class="tooltip">Beranda</span>
         </li>
+        <li>
+            <a href="/admin/kategoriproduk">
+                <i class='bx bxs-box'></i>
+                <span class="links_name">Kategori</span>
+            </a>
+            <span class="tooltip">Beranda</span>
+        </li>
     </ul>
     <div class="profile_content fixed">
         <div class="profile">

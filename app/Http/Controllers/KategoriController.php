@@ -40,12 +40,18 @@ class KategoriController extends Controller
     public function store(Request $request)
     {
         
+        $Validasidata = $request->validate([
+            'kode_kategori' => 'required|unique:categories', 
+            'jenis_kategori' => 'required|unique:categories', 
+        ]);
+
+
         $model = new Category;
         $model->kode_kategori = $request->get('kode_kategori');
         $model->jenis_kategori = $request->get('jenis_kategori');
         $model->save();
-
-        return redirect('admin/kategoriproduk')->with('notifikasi','Kategori Berhasil Dibuat!');
+        return redirect('admin/kategoriproduk')->with('notifikasi','Kategori berhasil ditambahkan');
+       
     }
 
     /**
@@ -78,11 +84,15 @@ class KategoriController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    {   
+
+
         $model = Category::find($id);
         $model->kode_kategori = $request->get('edit_kodekategori');
         $model->jenis_kategori = $request->get('edit_jeniskategori');
         $model->save();
+
+        
 
         return redirect('admin/kategoriproduk')->with('notifikasi','Kategori berhasil diupdate');
     }

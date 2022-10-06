@@ -29,11 +29,86 @@
                         <div class="input-group-prepend">
                             <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tindakan</button>
                             <div class="dropdown-menu">
-                              <a class="dropdown-item" href="/admin/adminproduk/tambahproduk">Produk Baru</a>
+                              <a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#tambahModal">Produk Baru</a>
                             </div>
                           </div>
                     </div>  
                 </div>
+
+                
+
+                <div class="modal fade" id="tambahModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Tambah Produk</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+
+
+                      
+                  <form action="{{ url('admin/adminproduk/') }}" method="POST" enctype="multipart/form-data">
+                      @csrf
+                      <div class="modal-body">
+                          <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Kode Produk</label>
+                            <input type="text" required class="form-control  @error('kode_produk') is-invalid @enderror" id="kode_produk" name="kode_produk" value="{{ old('kode_produk')}}">
+                            @error('kode_produk')
+                            <div class="invalid-feedback">
+                            {{ $message }}
+                            </div>
+                          @enderror
+                          </div>
+                          <div class="mb-3">
+                            <label for="message-text" class="col-form-label">Nama Produk</label>
+                            <input type="text" required class="form-control" id="nama_produk" name="nama_produk">
+                          </div>
+                          <div class="mb-3">
+                            <label for="message-text" class="col-form-label">Kategori Produk</label>
+                            <select class="form-select" aria-label="Default select example" name="kategori_produk" >
+                              @foreach ($datakategori as $kunci)
+                              <option value="{{ $kunci->jenis_kategori }}">{{ $kunci->jenis_kategori }}</option>
+                              @endforeach
+                            </select>
+                          </div>
+                          <div class="mb-3">
+                            <label for="message-text" class="col-form-label">Kuantitas Produk</label>
+                            <input type="number" required class="form-control" id="kuantitas_produk" name="kuantitas_produk">
+                          </div>
+                          <div class="mb-3">
+                            <label for="message-text" class="col-form-label">Unit Produk</label>
+                            <select class="form-select" aria-label="Default select example" name="unit_produk">
+                              <option value="PCS">PCS</option>
+                              <option value="KG">KG</option>
+                              <option value="BTL">BTL</option>
+                            </select>
+                          </div>
+                          <div class="mb-3">
+                            <label for="message-text" class="col-form-label">Harga Produk</label>
+                            <input type="number" required class="form-control" id="harga_produk" name="harga_produk">
+                          </div>
+                          <div class="mb-3">
+                            <label for="formFileMultiple" class="form-label">Gambar Produk</label>
+                            <input class="form-control @error('gambar_produk') is-invalid @enderror" type="file" id="formFileMultiple" name="gambar_produk" multiple>
+                          @error('gambar_produk')
+                            <div class="invalid-feedback">
+                            {{ $message }}
+                            </div>
+                          @enderror
+                          </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Tambah Kategori</button>
+                      </div>
+                  </form>   
+                    </div>
+                  </div>
+              
+               </div>
+              
+              {{-- TAMBAH MODAL --}}
+
                     <div class="row">
                       <div class="col-xl-3 col-sm-6 col-12 mb-4">
                         <div class="card">
@@ -120,6 +195,46 @@
                         </div>
                       </div>
                     </div>
+
+                    {{-- TAMBAH MODAL --}}
+
+                {{-- NOTIFIKASI BERHASIL --}}
+                @if(session()->has('notifikasiproduk'))
+
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="alert alert-success d-flex d-inline align-items-center alert-dismissible fade show" role="alert">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                            </svg>
+                    <div class="mx-2">
+                 {{ session('notifikasiproduk') }}
+
+                 @endif
+
+                {{-- NOTIFIKASI BERHASIL --}}
+
+                {{-- NOTIFIKASI ERROR --}}
+               
+                @foreach($errors->all() as $error)
+                <div class="row">
+                  <div class="col-xl-6 col-lg-6">
+                      <div class="alert alert-danger d-flex d-inline align-items-center alert-dismissible fade show" role="alert">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+                        </svg>
+                  <div>
+                      <strong class="mx-2">{{ $error }}</strong>
+                  </div>
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                  </div>
+                  </div>
+                @endforeach
+                 {{-- NOTIFIKASI ERROR --}}
+
+                  
+
                     <div class="row row-keranjang">
                         <div class="col table-responsive">
                             <table class="table text-center">
@@ -134,15 +249,18 @@
                                   </tr>
                                 </thead>
                                 <tbody class="align-middle">
+                                  @foreach ($dataproduk as $kunciproduk)
+                                      
                                   <tr>
-                                    <th scope="row">001/001/001</th>
-                                    <td><a href="/admin/adminproduk/detailproduk">Gas Elpiji 5KG</td>
-                                    <td>Gas</td>
-                                    <td>12</td>
-                                    <td>KG</span>
-                                    </td>
-                                    <td>Rp. 25.000</td>
+                                    <th scope="row">{{ $kunciproduk->kode_produk}}</th>
+                                    <td><a href="{{ url('admin/kategoriproduk/detailproduk='.$kunciproduk->id) }}">{{ $kunciproduk->nama_produk}}</td>
+                                    <td>{{ $kunciproduk->kategori_produk}}</td>
+                                    <td>{{ $kunciproduk->kuantitas_produk}}</td>
+                                    <td>{{ $kunciproduk->unit_produk}}</td>
+                                    <td>Rp {{ $kunciproduk->harga_produk}},-</td>
                                   </tr>
+
+                                  @endforeach
                                 </tbody>
                               </table>
                         </div>

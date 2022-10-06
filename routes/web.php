@@ -13,7 +13,6 @@ use App\Http\Controllers\KeranjangController;
 use App\Http\Controllers\AdminLoginController;
 use App\Http\Controllers\AdminProdukController;
 use App\Http\Controllers\DetailProdukController;
-use App\Http\Controllers\AdminAddProdukController;
 
 
 
@@ -55,8 +54,6 @@ Route::resource('/admin', AdminLoginController::class)->except('show')->middlewa
 Route::resource('/admin/pesanan', PesananController::class)->except('show')->middleware('is_admin');
 
 Route::resource('/admin/adminproduk', AdminProdukController::class)->except('show')->middleware('is_admin');
-
-Route::resource('/admin/adminproduk/tambahproduk', AdminAddProdukController::class)->except('show')->middleware('is_admin');
 
 Route::resource('/admin/adminproduk/detailproduk', DetailProdukController::class)->except('show')->middleware('is_admin');
 
