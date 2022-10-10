@@ -89,7 +89,7 @@
                           </div>
                           <div class="mb-3">
                             <label for="formFileMultiple" class="form-label">Gambar Produk</label>
-                            <img id="image_preview" class="col-sm-5 p-3"/>
+                            <img id="image_preview" class="col-sm-5 p-3 d-block img-fluid"/>
                             <input class="form-control @error('gambar_produk') is-invalid @enderror" type="file" id="formFileMultiple" name="gambar_produk" id="gambar_produk" onchange="previewImage(event)" multiple>
                           @error('gambar_produk')
                             <div class="invalid-feedback">

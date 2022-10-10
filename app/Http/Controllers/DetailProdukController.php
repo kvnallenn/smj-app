@@ -36,6 +36,6 @@ class DetailProdukController extends Controller
         $model->image = $request->file('gambar_produk')->store('post-images');
         $model->save();
 
-        return redirect('admin/adminproduk')->with('notifikasi','Produk berhasil diupdate');
+        return redirect('admin/adminproduk/detailproduk/'.$model->id)->with('notifikasiupdate','Produk berhasil diupdate');
     }
 }
