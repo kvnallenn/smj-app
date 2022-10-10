@@ -89,7 +89,8 @@
                           </div>
                           <div class="mb-3">
                             <label for="formFileMultiple" class="form-label">Gambar Produk</label>
-                            <input class="form-control @error('gambar_produk') is-invalid @enderror" type="file" id="formFileMultiple" name="gambar_produk" multiple>
+                            <img id="image_preview" class="col-sm-5 p-3"/>
+                            <input class="form-control @error('gambar_produk') is-invalid @enderror" type="file" id="formFileMultiple" name="gambar_produk" id="gambar_produk" onchange="previewImage(event)" multiple>
                           @error('gambar_produk')
                             <div class="invalid-feedback">
                             {{ $message }}
@@ -296,7 +297,7 @@
 
 
 
-    
+    <script src="../js/Imagepreview.js"></script>
     <script src="../js/Sidebar.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.6/dist/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>

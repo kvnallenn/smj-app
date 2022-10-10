@@ -32,7 +32,7 @@
                             <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tindakan</button>
                             <div class="dropdown-menu">
                               <a class="dropdown-item btn" data-bs-toggle="modal" data-bs-target="#exampleModal">Stock Opname</a>
-                              <a class="dropdown-item" href="update-produk.html">Ubah Produk</a>
+                              <a class="dropdown-item btn" data-bs-toggle="modal" data-bs-target="#updateModal--{{ $datalistproduk->id }}">Ubah Produk</a>
                             </div>
                           </div>
                     </div>  
@@ -84,6 +84,70 @@
                       </div>
 
                     <!-- MODAL -->
+
+                    {{-- UPDATE MODAL --}}
+                      
+                    
+                    <div class="modal fade" id="updateModal--{{ $datalistproduk->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Ubah Produk</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+    
+    
+                          
+                      <form action="{{ url('admin/adminproduk/detailproduk/'.$datalistproduk->id) }}" method="POST" enctype="multipart/form-data">
+                          @method('put')
+                          @csrf
+                          <div class="modal-body">
+                              <div class="mb-3">
+                                <label for="message-text" class="col-form-label">Nama Produk</label>
+                                <input type="text" required class="form-control" id="nama_produk" name="nama_produk" value="{{ $datalistproduk->nama_produk }}">
+                              </div>
+                              <div class="mb-3">
+                                <label for="message-text" class="col-form-label">Kategori Produk</label>
+                                <select class="form-select" aria-label="Default select example" name="kategori_produk" >
+                                  @foreach ($datalistkategori as $kunci)
+                                  <option value="{{ $kunci->jenis_kategori }}">{{ $kunci->jenis_kategori }}</option>
+                                  @endforeach
+                                </select>
+                              </div>
+                              <div class="mb-3">
+                                <label for="message-text" class="col-form-label">Unit Produk</label>
+                                <select class="form-select" aria-label="Default select example" name="unit_produk">
+                                  <option value="PCS">PCS</option>
+                                  <option value="KG">KG</option>
+                                  <option value="BTL">BTL</option>
+                                </select>
+                              </div>
+                              <div class="mb-3">
+                                <label for="message-text" class="col-form-label">Harga Produk</label>
+                                <input type="number" required class="form-control" id="harga_produk" name="harga_produk" value="{{ $datalistproduk->id }}">
+                              </div>
+                              <div class="mb-3">
+                                <label for="formFileMultiple" class="form-label">Gambar Produk</label>
+                                <img id="image_preview" src="{{ asset('storage/'.$datalistproduk->image)}}" class="col-sm-5 p-3 d-block"/>
+                                <input class="form-control @error('gambar_produk') is-invalid @enderror" type="file" id="formFileMultiple" name="gambar_produk" id="gambar_produk" onchange="previewImage(event)" multiple>
+                              @error('gambar_produk')
+                                <div class="invalid-feedback">
+                                {{ $message }}
+                                </div>
+                              @enderror
+                              </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Tambah Kategori</button>
+                          </div>
+                      </form>   
+                        </div>
+                      </div>
+                   </div>
+                  
+
+                    {{-- UPDATE MODAL --}}
                 </div>
                 <div class="row row-keranjang">
                     <h5>Detail Produk</h5>
@@ -176,7 +240,7 @@
 
 
 
-
+    <script src="/js/Imagepreview.js"></script>
     <script src="/js/Sidebar.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.6/dist/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
