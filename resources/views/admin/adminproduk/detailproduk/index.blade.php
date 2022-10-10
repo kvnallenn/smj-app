@@ -11,6 +11,7 @@
     <link href='https://unpkg.com/boxicons@2.1.3/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/fonts/simple-line-icons/style.min.css">
     <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/colors.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
@@ -23,7 +24,7 @@
             <div class="container-fluid border p-4">
                 <div class="row"> 
                     <div class="col">
-                        <h4>Detail Produk</h4>
+                      <a class="icon-back" href="{{ url('admin/adminproduk/') }}"><i class="bi bi-arrow-left-square-fill" style="font-size: 30px;"></i></a>
                     </div>
                     
                     <div class="col-xl-2 pb-3" id="produk-action">
@@ -85,31 +86,39 @@
                     <!-- MODAL -->
                 </div>
                 <div class="row row-keranjang">
-                    <h5>Informasi</h5>
+                    <h5>Detail Produk</h5>
                     <br>
                     <div class="col table-responsive">
                         <table class="table">
                             <thead class="table-secondary th-header">
                                 <tr class="informasi-produk">
-                                  <th scope="col" class="th-header">Tanggal</th>
-                                  <th scope="col" class="th-header">Invoice</th>
+                                  <th scope="col" class="th-header">Informasi</th>
+                                  <th scope="col" class="th-header"></th>
                                 </tr>
                             <tbody class="align-middle">
                               <tr>
                                 <th scope="row">Gambar Produk</th>
-                                <td><img src="/img/assets/orangcuk.png" alt="" width="200"></td>
+                                <td><img src="{{ asset('storage/'.$datalistproduk->image)}}" alt="" width="200"></td>
                               </tr>
                               <tr>
                                 <th scope="row">Nama Produk</th>
-                                <td>Gas Elpiji 5KG</td>
+                                <td>{{ $datalistproduk->nama_produk }}</td>
                               </tr>
                               <tr>
-                                <th scope="row">Nama Produk</th>
-                                <td>Gas Elpiji 5KG</td>
+                                <th scope="row">Kategori Produk</th>
+                                <td>{{ $datalistproduk->kategori_produk }}</td>
                               </tr>
                               <tr>
-                                <th scope="row">Nama Produk</th>
-                                <td>Gas Elpiji 5KG</td>
+                                <th scope="row">Kuantitas Produk</th>
+                                <td>{{ $datalistproduk->kuantitas_produk }}</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Unit Produk</th>
+                                <td>{{ $datalistproduk->unit_produk }}</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Harga Produk</th>
+                                <td>Rp{{ $datalistproduk->harga_produk }},-</td>
                               </tr>
                             </tbody>
                           </table>

@@ -14,8 +14,6 @@ use App\Http\Controllers\AdminLoginController;
 use App\Http\Controllers\AdminProdukController;
 use App\Http\Controllers\DetailProdukController;
 
-
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,15 +47,17 @@ Route::get('/keranjang', [KeranjangController::class, 'index']);
 
 Route::get('/checkout', [CheckoutController::class, 'index']);
 
+Route::resource('/admin/adminproduk/detailproduk', DetailProdukController::class)->middleware('is_admin');
+
 Route::resource('/admin', AdminLoginController::class)->except('show')->middleware('is_admin');
 
 Route::resource('/admin/pesanan', PesananController::class)->except('show')->middleware('is_admin');
 
 Route::resource('/admin/adminproduk', AdminProdukController::class)->except('show')->middleware('is_admin');
 
-Route::resource('/admin/adminproduk/detailproduk', DetailProdukController::class)->except('show')->middleware('is_admin');
-
 Route::resource('/admin/kategoriproduk', KategoriController::class)->except('show')->middleware('is_admin');
+
+
 
 
 

@@ -209,8 +209,12 @@
                             </svg>
                     <div class="mx-2">
                  {{ session('notifikasiproduk') }}
-
-                 @endif
+                    </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      </div>
+                    </div>
+                    </div>
+                @endif
 
                 {{-- NOTIFIKASI BERHASIL --}}
 
@@ -253,7 +257,7 @@
                                       
                                   <tr>
                                     <th scope="row">{{ $kunciproduk->kode_produk}}</th>
-                                    <td><a href="{{ url('admin/kategoriproduk/detailproduk='.$kunciproduk->id) }}">{{ $kunciproduk->nama_produk}}</td>
+                                    <td><a href="{{ url('admin/adminproduk/detailproduk/'.$kunciproduk->id) }}">{{ $kunciproduk->nama_produk}}</td>
                                     <td>{{ $kunciproduk->kategori_produk}}</td>
                                     <td>{{ $kunciproduk->kuantitas_produk}}</td>
                                     <td>{{ $kunciproduk->unit_produk}}</td>

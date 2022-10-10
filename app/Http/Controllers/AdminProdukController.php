@@ -35,7 +35,7 @@ class AdminProdukController extends Controller
             'kuantitas_produk' => 'required',
             'unit_produk' => 'required',
             'harga_produk' => 'required',
-            'gambar_produk' => 'image|file|max:400', 
+            'gambar_produk' => 'required|image|file|max:400', 
         ]);
 
         $model = new Product;
