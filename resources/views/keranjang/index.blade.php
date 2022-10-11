@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/keranjang.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <title>PT Sentra Medan Jaya | {{ $title }}</title>
+    <title>PT Sentra Medan Jaya |</title>
   </head>
   <body>
     @include('partials.navbarshop')
@@ -39,42 +39,20 @@
                       </tr>
                     </thead>
                     <tbody class="align-middle">
+                      @foreach ( $datacart as $kuncicart)
                       <tr>
                         <th scope="row"><a href=""><i class="bi bi-x-circle-fill" style="font-size: 25px;"></i></a></th>
-                        <td><img src="../img/banner1.jpeg" alt="" class="img-keranjang"></td>
-                        <td>Gas Elpiji 5KG</td>
-                        <td>Rp. 25.000</td>
+                        <td><img src="{{ $kuncicart->image }}" alt="" class="img-keranjang"></td>
+                        <td>{{ $kuncicart->nama_produk }}</td>
+                        <td>{{ $kuncicart->harga_produk }}</td>
                         <td>
                             <button type="button" class="btn btn-dark btn-sm"><i class="bi bi-dash"></i></button>
-                            <span class="mx-2">2</span>
+                            <span class="mx-2">{{ $kuncicart->unit_produk }}</span>
                             <button type="button" class="btn btn-dark btn-sm"><i class="bi bi-plus-lg text-white"></i></button>
                         </td>
-                        <td>Rp. 25.000</td>
+                        <td>Rp {{ $kuncicart->harga_produk }},-</td>
                       </tr>
-                      <tr>
-                        <th scope="row"><a href=""><i class="bi bi-x-circle-fill" style="font-size: 25px;"></i></a></th>
-                        <td><img src="../img/banner1.jpeg" alt="" class="img-keranjang"></td>
-                        <td>Gas Elpiji 5KG</td>
-                        <td>Rp. 25.000</td>
-                        <td>
-                            <button type="button" class="btn btn-dark btn-sm"><i class="bi bi-dash"></i></button>
-                            <span class="mx-2">2</span>
-                            <button type="button" class="btn btn-dark btn-sm"><i class="bi bi-plus-lg text-white"></i></button>
-                        </td>
-                        <td>Rp. 25.000</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href=""><i class="bi bi-x-circle-fill" style="font-size: 25px;"></i></a></th>
-                        <td><img src="../img/banner1.jpeg" alt="" class="img-keranjang"></td>
-                        <td>Gas Elpiji 5KG</td>
-                        <td>Rp. 25.000</td>
-                        <td>
-                            <button type="button" class="btn btn-dark btn-sm"><i class="bi bi-dash"></i></button>
-                            <span class="mx-2">2</span>
-                            <button type="button" class="btn btn-dark btn-sm"><i class="bi bi-plus-lg text-white"></i></button>
-                        </td>
-                        <td>Rp. 25.000</td>
-                      </tr>
+                      @endforeach
                     </tbody>
                   </table>
             </div>
@@ -90,7 +68,7 @@
                     <tbody>
                       <tr>
                         <td class="fw-bold th-header">Total Harga</td>
-                        <td class="th-header">Rp 2.000.000</td>
+                        <td class="th-header">Rp {{ $total }},-</td>
                       </tr>
                       <tr>
                           <td colspan="2" class="th-header">

@@ -137,10 +137,16 @@
                 <i class="fas fa-star"></i>
               </div>
               <p class="card-text mt-2">Rp {{ $kunciproduk->harga_produk }},-</p>
-              <input type="hidden" name="nama_produk" value="{{ $kunciproduk->nama_produk }}">
-              <input type="hidden" name="harga_produk" value="{{ $kunciproduk->harga_produk }}">
-              <input type="hidden" name="gambar_produk" value="{{ asset('storage/'.$kunciproduk->image)}}">
-              <a href="{{ url('/keranjang/') }}" class="btn btn-dark d-grid mt-2">Keranjang</a>
+              <form action="{{ url('/keranjang/') }}" method="post">
+                @method('POST')
+                @csrf
+                <input type="hidden" name="nama_user" value="{{ $namauser }}">
+                <input type="hidden" name="nama_produk" value="{{ $kunciproduk->nama_produk }}">
+                <input type="hidden" name="harga_produk" value="{{ $kunciproduk->harga_produk }}">
+                <input type="hidden" name="unit_produk" value="1">
+                <input type="hidden" name="gambar_produk" value="{{ asset('storage/'.$kunciproduk->image)}}">
+                <center><button type="submit" class="btn btn-dark d-grid mt-2">Keranjang</button></center>
+              </form>
             </div>
           </div>
          </div>
