@@ -120,14 +120,15 @@
 
     <div class="container mt-5">
       <div class="judul-kategori" style="background-color: #fff; padding: 5px 10px;">
-        <h5 class="text-center" style="margin-top: 5px;">PROMO</h5>
+        <h5 class="text-center" style="margin-top: 5px;">PRODUK TERBARU</h5>
       </div>
       <div class="row mt-3">
+        @foreach ($dataproduk as $kunciproduk)
          <div class="col-lg-2 col-md-2 col-sm-4 col-6 mt-4">
           <div class="card text-center">
-            <img src="../img/banner1.jpeg" class="card-img-top" alt="...">
+            <img src="{{ asset('storage/'.$kunciproduk->image)}}" class="card-img-top mt-2" alt="...">
             <div class="card-body">
-              <h5 class="card-title">Gas Lpg</h5>
+              <h5 class="card-title">{{ $kunciproduk->nama_produk }}</h5>
               <div class="icon-bintang" style="color: orange;">
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
@@ -135,210 +136,15 @@
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
               </div>
-              <p class="card-text mt-2">Rp 25.000</p>
-              <a href="#" class="btn btn-dark d-grid">Beli</a>
-              <a href="#" class="btn btn-dark d-grid mt-2">Keranjang</a>
+              <p class="card-text mt-2">Rp {{ $kunciproduk->harga_produk }},-</p>
+              <input type="hidden" name="nama_produk" value="{{ $kunciproduk->nama_produk }}">
+              <input type="hidden" name="harga_produk" value="{{ $kunciproduk->harga_produk }}">
+              <input type="hidden" name="gambar_produk" value="{{ asset('storage/'.$kunciproduk->image)}}">
+              <a href="{{ url('/keranjang/') }}" class="btn btn-dark d-grid mt-2">Keranjang</a>
             </div>
           </div>
          </div>
-         <div class="col-lg-2 col-md-2 col-sm-4 col-6 mt-4">
-          <div class="card text-center">
-            <img src="../img/banner1.jpeg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Gas Lpg</h5>
-              <div class="icon-bintang" style="color: orange;">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-              <p class="card-text mt-2">Rp 25.000</p>
-              <a href="#" class="btn btn-dark d-grid">Beli</a>
-              <a href="#" class="btn btn-dark d-grid mt-2">Keranjang</a>
-            </div>
-          </div>
-         </div>
-         <div class="col-lg-2 col-md-2 col-sm-4 col-6 mt-4">
-          <div class="card text-center">
-            <img src="../img/banner1.jpeg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Gas Lpg</h5>
-              <div class="icon-bintang" style="color: orange;">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-              <p class="card-text mt-2">Rp 25.000</p>
-              <a href="#" class="btn btn-dark d-grid">Beli</a>
-              <a href="#" class="btn btn-dark d-grid mt-2">Keranjang</a>
-            </div>
-          </div>
-         </div>
-         <div class="col-lg-2 col-md-2 col-sm-4 col-6 mt-4">
-          <div class="card text-center">
-            <img src="../img/banner1.jpeg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Gas Lpg</h5>
-              <div class="icon-bintang" style="color: orange;">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-              <p class="card-text mt-2">Rp 25.000</p>
-              <a href="#" class="btn btn-dark d-grid">Beli</a>
-              <a href="#" class="btn btn-dark d-grid mt-2">Keranjang</a>
-            </div>
-          </div>
-         </div>
-         <div class="col-lg-2 col-md-2 col-sm-4 col-6 mt-4">
-          <div class="card text-center">
-            <img src="../img/banner1.jpeg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Gas Lpg</h5>
-              <div class="icon-bintang" style="color: orange;">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-              <p class="card-text mt-2">Rp 25.000</p>
-              <a href="#" class="btn btn-dark d-grid">Beli</a>
-              <a href="#" class="btn btn-dark d-grid mt-2">Keranjang</a>
-            </div>
-          </div>
-         </div>
-         <div class="col-lg-2 col-md-2 col-sm-4 col-6 mt-4">
-          <div class="card text-center">
-            <img src="../img/banner1.jpeg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Gas Lpg</h5>
-              <div class="icon-bintang" style="color: orange;">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-              <p class="card-text mt-2">Rp 25.000</p>
-              <a href="#" class="btn btn-dark d-grid">Beli</a>
-              <a href="#" class="btn btn-dark d-grid mt-2">Keranjang</a>
-            </div>
-          </div>
-         </div>
-         <div class="col-lg-2 col-md-2 col-sm-4 col-6 mt-4">
-          <div class="card text-center">
-            <img src="../img/banner1.jpeg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Gas Lpg</h5>
-              <div class="icon-bintang" style="color: orange;">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-              <p class="card-text mt-2">Rp 25.000</p>
-              <a href="#" class="btn btn-dark d-grid">Beli</a>
-              <a href="#" class="btn btn-dark d-grid mt-2">Keranjang</a>
-            </div>
-          </div>
-         </div>
-         <div class="col-lg-2 col-md-2 col-sm-4 col-6 mt-4">
-          <div class="card text-center">
-            <img src="../img/banner1.jpeg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Gas Lpg</h5>
-              <div class="icon-bintang" style="color: orange;">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-              <p class="card-text mt-2">Rp 25.000</p>
-              <a href="#" class="btn btn-dark d-grid">Beli</a>
-              <a href="#" class="btn btn-dark d-grid mt-2">Keranjang</a>
-            </div>
-          </div>
-         </div>
-         <div class="col-lg-2 col-md-2 col-sm-4 col-6 mt-4">
-          <div class="card text-center">
-            <img src="../img/banner1.jpeg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Gas Lpg</h5>
-              <div class="icon-bintang" style="color: orange;">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-              <p class="card-text mt-2">Rp 25.000</p>
-              <a href="#" class="btn btn-dark d-grid">Beli</a>
-              <a href="#" class="btn btn-dark d-grid mt-2">Keranjang</a>
-            </div>
-          </div>
-         </div>
-         <div class="col-lg-2 col-md-2 col-sm-4 col-6 mt-4">
-          <div class="card text-center">
-            <img src="../img/banner1.jpeg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Gas Lpg</h5>
-              <div class="icon-bintang" style="color: orange;">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-              <p class="card-text mt-2">Rp 25.000</p>
-              <a href="#" class="btn btn-dark d-grid">Beli</a>
-              <a href="#" class="btn btn-dark d-grid mt-2">Keranjang</a>
-            </div>
-          </div>
-         </div>
-         <div class="col-lg-2 col-md-2 col-sm-4 col-6 mt-4">
-          <div class="card text-center">
-            <img src="../img/banner1.jpeg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Gas Lpg</h5>
-              <div class="icon-bintang" style="color: orange;">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-              <p class="card-text mt-2">Rp 25.000</p>
-              <a href="#" class="btn btn-dark d-grid">Beli</a>
-              <a href="#" class="btn btn-dark d-grid mt-2">Keranjang</a>
-            </div>
-          </div>
-         </div>
-         <div class="col-lg-2 col-md-2 col-sm-4 col-6 mt-4">
-          <div class="card text-center">
-            <img src="../img/banner1.jpeg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Gas Lpg</h5>
-              <div class="icon-bintang" style="color: orange;">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-              <p class="card-text mt-2">Rp 25.000</p>
-              <a href="#" class="btn btn-dark d-grid">Beli</a>
-              <a href="#" class="btn btn-dark d-grid mt-2">Keranjang</a>
-            </div>
-          </div>
-         </div>
+         @endforeach
       </div>
     </div>
     @include('partials.footer')
