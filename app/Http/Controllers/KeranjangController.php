@@ -28,18 +28,43 @@ class KeranjangController extends Controller
 
     public function store(Request $request)
     {
-            
+         
+        $namauser = auth()->user()->name;
+        $lockproduk = $request->get('nama_produk'); 
+        $kuncitasproduk = Cart::where('nama_produk','=',$lockproduk)->first(); 
         
-        $model = new Cart;
-        $model->nama_user = $request->get('nama_user');
-        $model->nama_produk = $request->get('nama_produk');
-        $model->harga_produk = $request->get('harga_produk');
-        $model->unit_produk = $request->get('unit_produk');
-        $model->image = $request->get('gambar_produk');
-        $model->save();
-        return redirect('/keranjang/')->with('notifikasi','Berhasil menambah ke keranjang!');
-       
-    }
+       if(empty($kuncitasproduk)){
+
+            $model = new Cart;
+            $model->nama_user = $request->get('nama_user');
+            $model->nama_produk = $request->get('nama_produk');
+            $model->harga_produk = $request->get('harga_produk');
+            $model->unit_produk = $request->get('unit_produk');
+            $model->image = $request->get('gambar_produk');
+            $model->save();
+            return redirect('/keranjang/')->with('notifikasi','Berhasil menambah ke keranjang!');
+
+        }elseif($lockproduk == $kuncitasproduk->nama_produk){
+            
+            
+            $kunciquery = Cart::where(['nama_user' => $namauser, 'nama_produk' => $lockproduk])->first();
+            $produkkunci = $kunciquery->unit_produk;
+            $produkkunci = $produkkunci+1;  
+            $kunciquery->unit_produk = $produkkunci;
+            $kunciquery->save();
+            return redirect('/keranjang/')->with('notifikasi','Berhasil menambah ke keranjang!');
+
+        }else{
+            $model = new Cart;
+            $model->nama_user = $request->get('nama_user');
+            $model->nama_produk = $request->get('nama_produk');
+            $model->harga_produk = $request->get('harga_produk');
+            $model->unit_produk = $request->get('unit_produk');
+            $model->image = $request->get('gambar_produk');
+            $model->save();
+            return redirect('/keranjang/')->with('notifikasi','Berhasil menambah ke keranjang!');
+        }
+   }
 
     public function destroy($id)
     {
