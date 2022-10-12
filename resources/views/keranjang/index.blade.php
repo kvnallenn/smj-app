@@ -17,8 +17,8 @@
     <div class="container">
       <nav aria-label="breadcrumb" style="background-color: #fff;" class="mt-3">
         <ol class="breadcrumb p-3">
-          <li class="breadcrumb-item"><a href="#">Home</a></li>
-          <li class="breadcrumb-item"><a href="#">Keranjang</a></li>
+          <li class="breadcrumb-item"><a href="/shop">Home</a></li>
+          <li class="breadcrumb-item"><a href="/keranjang">Keranjang</a></li>
           
         </ol>
       </nav>
@@ -41,10 +41,10 @@
                     <tbody class="align-middle">
                       @foreach ( $datacart as $kuncicart)
                       <tr>
-                        <th scope="row"><a href=""><i class="bi bi-x-circle-fill" style="font-size: 25px;"></i></a></th>
+                        <th scope="row"><a href="{{ route('destroy', $kuncicart->id) }}"><i class="bi bi-x-circle-fill" style="font-size: 25px;"></i></a></th>
                         <td><img src="{{ $kuncicart->image }}" alt="" class="img-keranjang"></td>
                         <td>{{ $kuncicart->nama_produk }}</td>
-                        <td>{{ $kuncicart->harga_produk }}</td>
+                        <td>Rp {{ $kuncicart->harga_produk }},-</td>
                         <td>
                             <button type="button" class="btn btn-dark btn-sm"><i class="bi bi-dash"></i></button>
                             <span class="mx-2">{{ $kuncicart->unit_produk }}</span>

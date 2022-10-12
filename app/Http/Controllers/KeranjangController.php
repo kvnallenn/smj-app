@@ -13,10 +13,11 @@ class KeranjangController extends Controller
         
         $namauser = auth()->user()->name;
         $datacart = Cart::where('nama_user','=',$namauser)->get();
+        $totalcart = Cart::where('nama_user','=',$namauser)->sum('unit_produk');
         $total = Cart::where('nama_user','=',$namauser)->sum('harga_produk');
         return view ('keranjang.index', [
             "title" => "Keranjang"
-        ], compact('datacart', 'namauser', 'total'));
+        ], compact('datacart', 'namauser', 'total', 'totalcart'));
     }
    
 
@@ -27,6 +28,7 @@ class KeranjangController extends Controller
 
     public function store(Request $request)
     {
+            
         
         $model = new Cart;
         $model->nama_user = $request->get('nama_user');
@@ -37,6 +39,13 @@ class KeranjangController extends Controller
         $model->save();
         return redirect('/keranjang/')->with('notifikasi','Berhasil menambah ke keranjang!');
        
+    }
+
+    public function destroy($id)
+    {
+        $model = Cart::find($id);
+        $model->delete();
+        return redirect('/keranjang')->with('notifikasi','Berhasil menghapus produk dari keranjang!');
     }
 
 

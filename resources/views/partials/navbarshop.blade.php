@@ -11,7 +11,7 @@
         </form>
         <ul class="navbar-nav ms-auto">
           <li class="nav-item me-1">
-            <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-bag-check" style="font-size: 20px;"><span class="badge badge-light rounded-circle">5</span></i><label class="keterangan">&nbsp;&nbsp;Cart</label></a>
+            <a class="nav-link active" aria-current="page" href="/keranjang"><i class="bi bi-bag-check" style="font-size: 20px;"><span class="badge badge-light rounded-circle">{{ $totalcart }}</span></i><label class="keterangan">&nbsp;&nbsp;Cart</label></a>
           </li>
           <li class="nav-item me-1">
             <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-bell" style="font-size: 20px;"><span class="badge badge-light rounded-circle">5</span></i><label class="keterangan">&nbsp;&nbsp;Notification</label></a>
