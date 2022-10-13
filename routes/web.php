@@ -49,6 +49,9 @@ Route::post('/keranjang', [KeranjangController::class, 'store']);
 
 Route::get('/keranjang/{id}', [KeranjangController::class, 'destroy'])->name('destroy');
 
+Route::get('/keranjang/tambahq/{id}', [KeranjangController::class, 'tambahq']);
+
+Route::get('/keranjang/kurangq/{id}', [KeranjangController::class, 'kurangq']);
 
 // Route::resource('/keranjang', KeranjangController::class);
 

@@ -46,11 +46,12 @@
                         <td>{{ $kuncicart->nama_produk }}</td>
                         <td>Rp {{ $kuncicart->harga_produk }},-</td>
                         <td>
-                            <button type="button" class="btn btn-dark btn-sm"><i class="bi bi-dash"></i></button>
+                            
+                            <a href="{{ url('/keranjang/kurangq/'.$kuncicart->id) }}" class="btn btn-dark btn-sm"><i class="bi bi-dash"></i></a>
                             <span class="mx-2">{{ $kuncicart->unit_produk }}</span>
-                            <button type="button" class="btn btn-dark btn-sm"><i class="bi bi-plus-lg text-white"></i></button>
+                            <a href="{{ url('/keranjang/tambahq/'.$kuncicart->id) }}" class="btn btn-dark btn-sm"><i class="bi bi-plus-lg text-white"></i></a>
                         </td>
-                        <td>Rp {{ $kuncicart->harga_produk }},-</td>
+                        <td>Rp {{ $kuncicart->harga_produk*$kuncicart->unit_produk }},-</td>
                       </tr>
                       @endforeach
                     </tbody>

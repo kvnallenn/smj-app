@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cart;
+use Illuminate\Support\Facades\DB;
 
 class KeranjangController extends Controller
 {   
@@ -14,7 +15,7 @@ class KeranjangController extends Controller
         $namauser = auth()->user()->name;
         $datacart = Cart::where('nama_user','=',$namauser)->get();
         $totalcart = Cart::where('nama_user','=',$namauser)->sum('unit_produk');
-        $total = Cart::where('nama_user','=',$namauser)->sum('harga_produk');
+        $total = Cart::where('nama_user','=',$namauser)->sum(DB::raw('harga_produk*unit_produk'));
         return view ('keranjang.index', [
             "title" => "Keranjang"
         ], compact('datacart', 'namauser', 'total', 'totalcart'));
@@ -31,7 +32,7 @@ class KeranjangController extends Controller
          
         $namauser = auth()->user()->name;
         $lockproduk = $request->get('nama_produk'); 
-        $kuncitasproduk = Cart::where('nama_produk','=',$lockproduk)->first(); 
+        $kuncitasproduk = Cart::where(['nama_user' => $namauser, 'nama_produk' => $lockproduk])->first();
         
        if(empty($kuncitasproduk)){
 
@@ -71,6 +72,32 @@ class KeranjangController extends Controller
         $model = Cart::find($id);
         $model->delete();
         return redirect('/keranjang')->with('notifikasi','Berhasil menghapus produk dari keranjang!');
+    }
+
+    public function tambahq($id)
+    {
+        $model = Cart::find($id);
+        $uasli = $model->unit_produk;
+        $uasli = $uasli+1;
+        $model->unit_produk = $uasli;
+        $model->save();
+        return redirect('/keranjang/')->with('notifikasi','Berhasil menambah ke keranjang!');
+    }
+
+    public function kurangq($id)
+    {
+        $model = Cart::find($id);
+        $uasli = $model->unit_produk;
+        $uasli = $uasli-1;
+        if($uasli == 0){
+          $model->delete(); 
+          return redirect('/keranjang/')->with('notifikasi','Berhasil menambah ke keranjang!');
+        }else{
+          $model->unit_produk = $uasli;
+          $model->save();
+          return redirect('/keranjang/')->with('notifikasi','Berhasil menambah ke keranjang!');
+        }
+        
     }
 
 
