@@ -43,6 +43,8 @@ Route::get('/shop', [ShopController::class, 'index']);
 
 Route::get('/produk', [ProdukController::class, 'index']);
 
+Route::get('/produk/{id}', [ProdukController::class, 'show']);
+
 Route::get('/keranjang', [KeranjangController::class, 'index']);
 
 Route::post('/keranjang', [KeranjangController::class, 'store']);

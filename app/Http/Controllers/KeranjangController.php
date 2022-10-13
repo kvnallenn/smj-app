@@ -47,10 +47,14 @@ class KeranjangController extends Controller
 
         }elseif($lockproduk == $kuncitasproduk->nama_produk){
             
-            
+            $kuncidaridp = $request->get('unit_produk');
             $kunciquery = Cart::where(['nama_user' => $namauser, 'nama_produk' => $lockproduk])->first();
             $produkkunci = $kunciquery->unit_produk;
-            $produkkunci = $produkkunci+1;  
+            if($kuncidaridp == 0){
+              $produkkunci = $produkkunci+1;  
+            }else{
+              $produkkunci = $produkkunci+$kuncidaridp;  
+            }
             $kunciquery->unit_produk = $produkkunci;
             $kunciquery->save();
             return redirect('/keranjang/')->with('notifikasi','Berhasil menambah ke keranjang!');

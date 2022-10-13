@@ -126,6 +126,7 @@
         @foreach ($dataproduk as $kunciproduk)
          <div class="col-lg-2 col-md-2 col-sm-4 col-6 mt-4">
           <div class="card text-center">
+          <a href="{{ url('/produk/'.$kunciproduk->id) }}" class="bungkus-div">
             <img src="{{ asset('storage/'.$kunciproduk->image)}}" class="card-img-top mt-2" alt="...">
             <div class="card-body">
               <h5 class="card-title">{{ $kunciproduk->nama_produk }}</h5>
@@ -148,6 +149,7 @@
                 <center><button type="submit" class="btn btn-dark d-grid mt-2">Keranjang</button></center>
               </form>
             </div>
+          </a>
           </div>
          </div>
          @endforeach

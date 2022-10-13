@@ -65,7 +65,14 @@ body {
     margin: 0px;
 }
 
+.bungkus-div{
+  text-decoration: none;
+  color: black;
+}
 
+.bungkus-div:hover{
+  color: black;
+}
 
 
 /*--------------------------------------------------------------
