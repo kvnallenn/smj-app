@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/checkout.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <title>PT Sentra Medan Jaya | {{ $title }}</title>
+    <title>PT Sentra Medan Jaya |</title>
   </head>
   <body>
     @include('partials.navbarshop')
@@ -42,21 +42,23 @@
                 </div>
               </div>
               <hr/>
+              @foreach ( $model as $kuncick )
               <div class="row">
                 <div class="col-sm pilih-pembayaran col-md-7">
-                  <h6 class="label-pesanan"><strong>Pesanan 1</strong></h6>
-                  <h6 class="label-pesanan mt-3"><strong>PT Sentra Medan Jaya</strong></h6>
+                  
+                 
+                  <h6 class="label-pesanan"><strong>PT Sentra Medan Jaya</strong></h6>
                   <div class="row">
                       <div class="col-lg-3">
-                        <img src="../img/banner1.jpeg" alt="" class="img-checkout rounded">
+                        <img src="{{ $kuncick->image }}" alt="" class="img-checkout rounded">
                       </div>
                       <div class="col-md-auto">
-                      Gas Elpji 5KG 
+                     {{ $kuncick->nama_produk}}
                       <div class="row">
-                        <div class="col"><h6 class="harga-checkout mt-1">1 PCS</h6></div>
+                        <div class="col"><h6 class="harga-checkout mt-1">{{ $kuncick->unit_produk}} PCS</h6></div>
                       </div>
                       <div class="row">
-                        <div class="col"><h6 class="harga-checkout">Rp 2.000.000</h6></div>
+                        <div class="col"><h6 class="harga-checkout">Rp {{ $kuncick->harga_produk*$kuncick->unit_produk }},-</h6></div>
                       </div>
                       </div>
                   </div>
@@ -69,60 +71,8 @@
                 </div>
               </div>
               <hr>
-              <div class="row">
-                <div class="col-sm pilih-pembayaran col-md-7">
-                  <h6 class="label-pesanan"><strong>Pesanan 2</strong></h6>
-                  <h6 class="label-pesanan mt-3"><strong>PT Sentra Medan Jaya</strong></h6>
-                  <div class="row">
-                      <div class="col-lg-3">
-                        <img src="../img/banner1.jpeg" alt="" class="img-checkout rounded">
-                      </div>
-                      <div class="col-md-auto">
-                      Gas Elpji 5KG 
-                      <div class="row">
-                        <div class="col"><h6 class="harga-checkout mt-1">1 PCS</h6></div>
-                      </div>
-                      <div class="row">
-                        <div class="col"><h6 class="harga-checkout">Rp 2.000.000</h6></div>
-                      </div>
-                      </div>
-                  </div>
-                  </div>
-                <div class="col-sm pilih-pembayaran col-md-5">
-                  <div class="btn-checkout">
-                    <h6 class="label-pesanan"><strong>Pilih Durasi</strong></h6>
-                    <button class="btn btn-dark" style="width: 100%;">Pengiriman</button>
-                  </div>
-                </div>
-              </div>
-              <hr>
-              <div class="row">
-                <div class="col-sm pilih-pembayaran col-md-7">
-                  <h6 class="label-pesanan"><strong>Pesanan 3</strong></h6>
-                  <h6 class="label-pesanan mt-3"><strong>PT Sentra Medan Jaya</strong></h6>
-                  <div class="row">
-                      <div class="col-lg-3">
-                        <img src="../img/banner1.jpeg" alt="" class="img-checkout rounded">
-                      </div>
-                      <div class="col-md-auto">
-                      Gas Elpji 5KG 
-                      <div class="row">
-                        <div class="col"><h6 class="harga-checkout mt-1">1 PCS</h6></div>
-                      </div>
-                      <div class="row">
-                        <div class="col"><h6 class="harga-checkout">Rp 2.000.000</h6></div>
-                      </div>
-                      </div>
-                  </div>
-                  </div>
-                <div class="col-sm pilih-pembayaran col-md-5">
-                  <div class="btn-checkout">
-                    <h6 class="label-pesanan"><strong>Pilih Durasi</strong></h6>
-                    <button class="btn btn-dark" style="width: 100%;">Pengiriman</button>
-                  </div>
-                </div>
-              </div>
-              <hr>
+              @endforeach
+              
             </div>
             <div class="col-sm-6 warna-container pb-2">
               <div class="container bks pt-3 pb-3 mt-2">
@@ -137,7 +87,7 @@
                             <tbody>
                               <tr>
                                 <td class="fw-bold th-header">Total Harga</td>
-                                <td class="th-header">Rp 6.000.000</td>
+                                <td class="th-header">Rp {{ $totalck }},-</td>
                               </tr>
                               <tr>
                                 <td class="fw-bold th-header">Biaya</td>

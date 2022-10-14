@@ -74,6 +74,8 @@
                         <input type="hidden" value="{{$kuncicart->nama_produk}}" name="nama_produk[]"/>
                         <input type="hidden" value="{{$kuncicart->harga_produk}}" name="harga_produk[]"/>
                         <input type="hidden" value="{{$kuncicart->unit_produk}}" name="unit_produk[]"/>
+                        <input type="hidden" value="{{$kuncicart->image}}" name="gambar_produk[]"/>
+                        <input type="hidden" value="{{ auth()->user()->name; }}" name="nama_user[]"/>
                         @endforeach
                       <tr>
                         <td class="fw-bold th-header">Total Harga</td>

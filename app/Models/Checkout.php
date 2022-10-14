@@ -9,5 +9,12 @@ class Checkout extends Model
 {
     use HasFactory;
     protected $table = "checkouts";
-    protected $guarded = []; 
+    protected $fillable = [
+        'nama_produk',
+        'unit_produk',
+        'harga_produk',
+        'nama_user',
+        'totalharga_produk',
+        'image'
+    ]; 
 }
