@@ -67,8 +67,17 @@
                       </tr>
                     </thead>
                     <tbody>
+                      <form action="{{ url('/checkout') }}" method="post">
+                        @method('POST')
+                        @csrf
+                        @foreach ( $datacart as $kuncicart) 
+                        <input type="hidden" value="{{$kuncicart->nama_produk}}" name="nama_produk[]"/>
+                        <input type="hidden" value="{{$kuncicart->harga_produk}}" name="harga_produk[]"/>
+                        <input type="hidden" value="{{$kuncicart->unit_produk}}" name="unit_produk[]"/>
+                        @endforeach
                       <tr>
                         <td class="fw-bold th-header">Total Harga</td>
+                        <input type="hidden" value="{{$total}}" name="total_produk"/>
                         <td class="th-header">Rp {{ $total }},-</td>
                       </tr>
                       <tr>
@@ -78,6 +87,8 @@
                               </div>
                           </td>
                       </tr>
+                      
+                      </form>
                     </tbody>
                   </table>
             </div>

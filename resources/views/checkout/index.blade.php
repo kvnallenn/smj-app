@@ -126,12 +126,9 @@
             </div>
             <div class="col-sm-6 warna-container pb-2">
               <div class="container bks pt-3 pb-3 mt-2">
-                  <div class="btn btn-produk text-center p-3 border border-1 rounded border-success" style="width: 100%;">
-                      <a><i class="bi bi-cash-coin d-inline-block align-text-top me-2"></i>Makin hemat pakai promo</a>
-                  </div>
                   <div class="row row-keranjang">
                     <div class="col">
-                        <table class="table ms-auto text-center mb-5 mt-3 mx-3" id="table-checkout">
+                        <table class="table ms-auto text-center mb-4 mx-3" id="table-checkout">
                             <thead class="table-secondary">
                               <tr>
                                 <th scope="col" colspan="2" class="th-header">Ringkasan Belanja</th>

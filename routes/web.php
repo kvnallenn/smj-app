@@ -59,6 +59,8 @@ Route::get('/keranjang/kurangq/{id}', [KeranjangController::class, 'kurangq']);
 
 Route::get('/checkout', [CheckoutController::class, 'index']);
 
+Route::post('/checkout', [CheckoutController::class, 'store']);
+
 Route::resource('/admin/adminproduk/detailproduk', DetailProdukController::class)->middleware('is_admin');
 
 Route::resource('/admin', AdminLoginController::class)->except('show')->middleware('is_admin');

@@ -13,12 +13,13 @@ class KeranjangController extends Controller
     {
         
         $namauser = auth()->user()->name;
+        $item = array();
         $datacart = Cart::where('nama_user','=',$namauser)->get();
         $totalcart = Cart::where('nama_user','=',$namauser)->sum('unit_produk');
         $total = Cart::where('nama_user','=',$namauser)->sum(DB::raw('harga_produk*unit_produk'));
         return view ('keranjang.index', [
             "title" => "Keranjang"
-        ], compact('datacart', 'namauser', 'total', 'totalcart'));
+        ], compact('datacart', 'namauser', 'total', 'totalcart', 'item'));
     }
    
 
