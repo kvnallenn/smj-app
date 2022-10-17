@@ -35,9 +35,13 @@ class CheckoutController extends Controller
                 );
             
                 Checkout::create($data2);
+               
 
             }
             
+            $id = $request->get('id_produk');
+            $model = Cart::find($id);
+            $model->each->delete();
             return redirect('/checkout')->with('notifikasi','Berhasil menambah ke keranjang!');
 
         }

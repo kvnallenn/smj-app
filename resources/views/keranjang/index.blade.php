@@ -62,9 +62,13 @@
             <div class="col table-responsive">
                 <table class="table ms-auto text-center mb-5 mt-3 mx-3" id="table-checkout">
                     <thead class="table-secondary">
+                      @if( $total == null)
+                  
+                      @else
                       <tr>
                         <th scope="col" colspan="2" class="th-header">Total Keranjang Belanja</th>
                       </tr>
+                      @endif
                     </thead>
                     <tbody>
                       <form action="{{ url('/checkout') }}" method="post">
@@ -75,8 +79,11 @@
                         <input type="hidden" value="{{$kuncicart->harga_produk}}" name="harga_produk[]"/>
                         <input type="hidden" value="{{$kuncicart->unit_produk}}" name="unit_produk[]"/>
                         <input type="hidden" value="{{$kuncicart->image}}" name="gambar_produk[]"/>
+                        <input type="hidden" value="{{$kuncicart->id}}" name="id_produk[]"/>
                         <input type="hidden" value="{{ auth()->user()->name; }}" name="nama_user[]"/>
                         @endforeach
+                      @if( $total == null)
+                      @else
                       <tr>
                         <td class="fw-bold th-header">Total Harga</td>
                         <input type="hidden" value="{{$total}}" name="total_produk"/>
@@ -89,7 +96,7 @@
                               </div>
                           </td>
                       </tr>
-                      
+                      @endif
                       </form>
                     </tbody>
                   </table>
