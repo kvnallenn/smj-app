@@ -13,6 +13,7 @@ use App\Http\Controllers\KeranjangController;
 use App\Http\Controllers\AdminLoginController;
 use App\Http\Controllers\AdminProdukController;
 use App\Http\Controllers\DetailProdukController;
+use App\Http\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +55,8 @@ Route::get('/keranjang/{id}', [KeranjangController::class, 'destroy'])->name('de
 Route::get('/keranjang/tambahq/{id}', [KeranjangController::class, 'tambahq']);
 
 Route::get('/keranjang/kurangq/{id}', [KeranjangController::class, 'kurangq']);
+
+Route::get('/payment', [PaymentController::class, 'index']);
 
 // Route::resource('/keranjang', KeranjangController::class);
 
