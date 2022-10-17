@@ -10,50 +10,24 @@ use Illuminate\Support\Facades\DB;
 class CheckoutController extends Controller
 {
     public function index(){
+        
+         
         $namauser = auth()->user()->name;
         $totalcart = Cart::where('nama_user','=',$namauser)->sum('unit_produk');
+        $aturcart = Cart::where('nama_user','=',$namauser)->get();
+        $total = Cart::where('nama_user','=',$namauser)->sum(DB::raw('harga_produk*unit_produk'));
         return view ('checkout.index', [
             "title" => "Checkout"
-        ], compact('totalcart'));
+        ], compact('totalcart', 'aturcart','total'));
     }
 
     public function store(Request $request)
     {
-        $data = $request->all();
-   
        
-
-        if (count(array($data['nama_produk'] > 0))){
-            foreach($data['nama_produk'] as $item => $value){
-                $data2 = array(
-                    'nama_produk' => $data['nama_produk'][$item],
-                    'unit_produk' => $data['unit_produk'][$item],
-                    'harga_produk' => $data['harga_produk'][$item],
-                    'nama_user' =>$data['nama_user'][$item],
-                    'totalharga_produk' => $data['harga_produk'][$item]*$data['unit_produk'][$item],
-                    'image'=>$data['gambar_produk'][$item],
-                );
-            
-                Checkout::create($data2);
-               
-
-            }
-            
-            $id = $request->get('id_produk');
-            $model = Cart::find($id);
-            $model->each->delete();
-            return redirect('/checkout')->with('notifikasi','Berhasil menambah ke keranjang!');
-
-        }
    }
 
    public function detail(){
-      $namauser = auth()->user()->name;
-      $totalcart = Cart::where('nama_user','=',$namauser)->sum('unit_produk');
-      $totalck = Cart::where('nama_user','=',$namauser)->sum(DB::raw('harga_produk*unit_produk'));
-      $model = Checkout::all();
-       return view ('checkout.index', 
-       compact('model', 'totalcart', 'totalck'));
+ 
    }
 
 

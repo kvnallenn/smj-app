@@ -59,9 +59,7 @@ Route::get('/keranjang/kurangq/{id}', [KeranjangController::class, 'kurangq']);
 
 Route::get('/checkout', [CheckoutController::class, 'index']);
 
-Route::get('/checkout', [CheckoutController::class, 'detail']);
-
-Route::post('/checkout', [CheckoutController::class, 'store']);
+Route::post('/checkout', [CheckoutController::class, 'index']);
 
 Route::resource('/admin/adminproduk/detailproduk', DetailProdukController::class)->middleware('is_admin');
 

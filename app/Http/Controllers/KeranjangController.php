@@ -96,11 +96,11 @@ class KeranjangController extends Controller
         $uasli = $uasli-1;
         if($uasli == 0){
           $model->delete(); 
-          return redirect('/keranjang/')->with('notifikasi','Berhasil menambah ke keranjang!');
+          return redirect('/keranjang/')->with('notifikasi','Keranjang telah dihapus!');
         }else{
           $model->unit_produk = $uasli;
           $model->save();
-          return redirect('/keranjang/')->with('notifikasi','Berhasil menambah ke keranjang!');
+          return redirect('/keranjang/')->with('notifikasi','Keranjang berhasil diubah!');
         }
         
     }

@@ -18,7 +18,6 @@
       <nav aria-label="breadcrumb" style="background-color: #fff;" class="mt-3">
         <ol class="breadcrumb p-3">
           <li class="breadcrumb-item"><a href="#">Home</a></li>
-          <li class="breadcrumb-item"><a href="#">Library</a></li>
           <li class="breadcrumb-item active" aria-current="page">Checkout</li>
         </ol>
       </nav>
@@ -42,7 +41,7 @@
                 </div>
               </div>
               <hr/>
-              @foreach ( $model as $kuncick )
+              @foreach ( $aturcart as $kuncick )
               <div class="row">
                 <div class="col-sm pilih-pembayaran col-md-7">
                   
@@ -74,6 +73,66 @@
               @endforeach
               
             </div>
+              {{-- MODAL PAYMENT --}}
+
+              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">Pembayaran</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="row">
+                        <div class="col fw-bold">Metode Pembayaran</div>
+                      </div>  
+                      <div class="row">
+                        <div class="col mt-4">
+                          <div class="form-check form-check-inline">
+                            <label class="form-check-label fw-bold" for="flexRadioDefault1">
+                             <img src="/img/assets/bca.png" class="img-fluid me-3" width="75px">BCA ( Transfer Manual )
+                            </label>
+                            <input class="form-check-input inline" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col mt-3 mb-5">
+                          <div class="form-check form-check-inline">
+                            <label class="form-check-label fw-bold" for="flexRadioDefault1">
+                             <img src="/img/assets/mandiri.png" class="img-fluid me-3" width="75px">Mandiri ( Transfer Manual )
+                            </label>
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                          </div>
+                        </div>
+                      </div>
+                    
+
+                      <div class="row">
+                        <div class="fw-bold">Ringkasan Pembayaran</div>
+                      </div>
+                      <div class="row mt-2">
+                        <div class="col-9">Total Belanja</div>
+                        <div class="col">Rp {{ $total }},-</div>
+                      </div>
+                    </div>
+                    
+                    <div class="row modal-footer">
+                      <div class="col-9">
+                        <div class="row">
+                          <div class="col fw-bold">Total Tagihan</div>
+                        </div>
+                       <b>Rp {{ $total }},-</b>
+                      </div>
+                      <div class="col">
+                        <button type="button" class="btn btn-primary">Bayar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {{-- MODAL PAYMENT --}}
             <div class="col-sm-6 warna-container pb-2">
               <div class="container bks pt-3 pb-3 mt-2">
                   <div class="row row-keranjang">
@@ -87,16 +146,16 @@
                             <tbody>
                               <tr>
                                 <td class="fw-bold th-header">Total Harga</td>
-                                <td class="th-header">Rp {{ $totalck }},-</td>
+                                <td class="th-header">Rp {{ $total }},-</td>
                               </tr>
                               <tr>
                                 <td class="fw-bold th-header">Biaya</td>
-                                <td class="th-header">-----</td>
+                                <td class="th-header">-</td>
                               </tr>
                               <tr>
                                   <td colspan="2" class="th-header">
                                       <div class="btn-checkout d-grid">
-                                          <button class="btn btn-dark mx-4">Pilih pembayaran</button>
+                                          <button class="btn btn-dark mx-4" data-bs-toggle="modal" data-bs-target="#exampleModal">Pilih pembayaran</button>
                                       </div>
                                   </td>
                               </tr>
@@ -104,39 +163,7 @@
                           </table>
                     </div>
                 </div>
-                <div class="row">
-                  <div class="col">
-                    <div class="container">
-                      <div class="iklan-banner">
-                        <div class="btn btn-produk text-center p-3 border border-1 rounded border-success" style="width: 100%;">
-                          <a>Pasang Iklan Anda Disini</a>
-                      </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row mt-3">
-                  <div class="col">
-                    <div class="container">
-                      <div class="iklan-banner">
-                        <div class="btn btn-produk text-center p-3 border border-1 rounded border-success" style="width: 100%;">
-                          <a>Pasang Iklan Anda Disini</a>
-                      </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row mt-3">
-                  <div class="col">
-                    <div class="container">
-                      <div class="iklan-banner">
-                        <div class="btn btn-produk text-center p-3 border border-1 rounded border-success" style="width: 100%;">
-                          <a>Pasang Iklan Anda Disini</a>
-                      </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+               
               </div>
               
             </div>

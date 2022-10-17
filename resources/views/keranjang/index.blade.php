@@ -27,6 +27,25 @@
     <div class="container">
         <div class="row row-keranjang">
             <div class="col table-responsive mt-4 mx-3">
+
+              {{-- ALERT --}}
+              @if(session()->has('notifikasi'))
+              <div class="row">
+                  <div class="col-xl-6 col-lg-6">
+                      <div class="alert alert-success d-flex d-inline align-items-center alert-dismissible fade show" role="alert">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                          </svg>
+                  <div class="mx-2">
+               {{ session('notifikasi') }}
+                  </div>
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                  </div>
+                  </div>
+              @endif
+              {{-- ALERT --}}
+              
                 <table class="table">
                     <thead class="table-secondary th-header">
                       <tr>
@@ -63,7 +82,16 @@
                 <table class="table ms-auto text-center mb-5 mt-3 mx-3" id="table-checkout">
                     <thead class="table-secondary">
                       @if( $total == null)
-                  
+                      <div class="container">
+                        <div class="bg-light rounded-3 text-center">
+                          <div class="container-fluid py-4 text-center">
+                            <img src="/img/assets/emp-cart.png" class="img-fluid">
+                            <h2 class="fw-bold text-center">Wah, keranjang belanjamu kosong</h2>
+                            <a href="/shop" class="btn btn-primary btn-md" type="button">Mulai Belanja</a>
+                          </div>
+                        </div>
+                    
+                      </div>
                       @else
                       <tr>
                         <th scope="col" colspan="2" class="th-header">Total Keranjang Belanja</th>
@@ -71,17 +99,6 @@
                       @endif
                     </thead>
                     <tbody>
-                      <form action="{{ url('/checkout') }}" method="post">
-                        @method('POST')
-                        @csrf
-                        @foreach ( $datacart as $kuncicart) 
-                        <input type="hidden" value="{{$kuncicart->nama_produk}}" name="nama_produk[]"/>
-                        <input type="hidden" value="{{$kuncicart->harga_produk}}" name="harga_produk[]"/>
-                        <input type="hidden" value="{{$kuncicart->unit_produk}}" name="unit_produk[]"/>
-                        <input type="hidden" value="{{$kuncicart->image}}" name="gambar_produk[]"/>
-                        <input type="hidden" value="{{$kuncicart->id}}" name="id_produk[]"/>
-                        <input type="hidden" value="{{ auth()->user()->name; }}" name="nama_user[]"/>
-                        @endforeach
                       @if( $total == null)
                       @else
                       <tr>
@@ -92,7 +109,7 @@
                       <tr>
                           <td colspan="2" class="th-header">
                               <div class="btn-checkout d-grid">
-                                  <button class="btn btn-dark mx-4">Checkout</button>
+                                  <a href="/checkout" class="btn btn-dark mx-4">Checkout</a>
                               </div>
                           </td>
                       </tr>

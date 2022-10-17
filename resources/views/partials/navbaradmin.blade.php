@@ -9,35 +9,30 @@
         <li>
             <i class="bx bx-search"></i>
             <input type="text" placeholder="Search...">
-            <span class="tooltip">Beranda</span>
         </li>
         <li>
             <a href="pesanan.html">
                 <i class='bx bx-clipboard'></i>
                 <span class="links_name">Penjualan</span>
             </a>
-            <span class="tooltip">Beranda</span>
         </li>
         <li>
             <a href="#">
                 <i class='bx bx-message-rounded-dots' ></i>
                 <span class="links_name">Pesan</span>
             </a>
-            <span class="tooltip">Beranda</span>
         </li>
         <li>
             <a href="/admin/adminproduk">
                 <i class='bx bx-package'></i>
                 <span class="links_name">Produk</span>
             </a>
-            <span class="tooltip">Beranda</span>
         </li>
         <li>
             <a href="/admin/kategoriproduk">
                 <i class='bx bxs-box'></i>
                 <span class="links_name">Kategori</span>
             </a>
-            <span class="tooltip">Beranda</span>
         </li>
     </ul>
     <div class="profile_content fixed">

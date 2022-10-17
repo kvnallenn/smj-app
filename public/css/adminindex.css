@@ -358,7 +358,7 @@ ul{
 /* Gambar */
 
 .img-fluid.icon-org{
-  width: 75px;
+  width: 50px;
 }
 
 /* Gambar */
@@ -370,7 +370,7 @@ ul{
 
 #riwayat-log{
   width: 100%;
-  height: 71%;
+  height: 52%;
   overflow: auto;
   overflow-x: hidden;
 }
@@ -405,3 +405,13 @@ ul{
   text-decoration: none;
   color: black;
 }
+
+.toast.fade.show{
+  width: 540px;
+  margin-top: 10px;
+}
+
+.form-check-input.inline + .img-fluid.me-3{
+  display:inline-block;
+  vertical-align:middle
+} 

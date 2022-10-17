@@ -118,46 +118,52 @@
                     <div class="col-sm-12 col-xl mx-4 mt-5">
                         <h5 class="fw-bolder mb-3 mx-1">Riwayat Aktvitas</h5>
                     <div id="riwayat-log">
-                        <div class="row border p-2">
-                            <div class="col-xl-1 p-2">
-                                <img src="../img/assets/orangcuk.png" class="img-fluid icon-org" alt="">
-                            </div>
-                            <div class="col">
-                            <b>Kevin Allen</b> melakukan perubahan pada nama produk
-                                <br>
-                                <span class="tanggal">20 September, 14:54</span>
-                            </div>
+                        <div role="alert" aria-live="assertive" aria-atomic="true" class="toast fade show" data-bs-autohide="false">
+                          <div class="toast-header">
+                            <svg class="bd-placeholder-img rounded me-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#007aff"></rect></svg>
+                        
+                            <strong class="me-auto">Notification</strong>
+                            <small>11 mins ago</small>
+                          </div>
+                          <div class="toast-body  ">
+                            <img src="../img/assets/orangcuk.png" class="img-fluid icon-org" alt=""> Hello, world! This is a toast message.
+                          </div>
                         </div>
-                        <div class="row border p-2">
-                            <div class="col-xl-1 p-2">
-                              <img src="../img/assets/orangcuk.png" class="img-fluid icon-org" alt="">
-                            </div>
-                            <div class="col">
-                            <b>Agus</b> melakukan perubahan pada nama produk
-                                <br>
-                                <span class="tanggal">20 September, 14:54</span>
-                            </div>
+                        <div role="alert" aria-live="assertive" aria-atomic="true" class="toast fade show" data-bs-autohide="false">
+                          <div class="toast-header">
+                            <svg class="bd-placeholder-img rounded me-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#007aff"></rect></svg>
+                        
+                            <strong class="me-auto">Notification</strong>
+                            <small>11 mins ago</small>
+                          </div>
+                          <div class="toast-body  ">
+                            <img src="../img/assets/orangcuk.png" class="img-fluid icon-org" alt=""> Hello, world! This is a toast message.
+                          </div>
                         </div>
-                        <div class="row border p-2">
-                            <div class="col-xl-1 p-2">
-                              <img src="../img/assets/orangcuk.png" class="img-fluid icon-org" alt="">
-                            </div>
-                            <div class="col">
-                            <b>Burgir</b> melakukan perubahan pada nama produk
-                                <br>
-                                <span class="tanggal">20 September, 14:54</span>
-                            </div>
+                        <div role="alert" aria-live="assertive" aria-atomic="true" class="toast fade show" data-bs-autohide="false">
+                          <div class="toast-header">
+                            <svg class="bd-placeholder-img rounded me-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#007aff"></rect></svg>
+                        
+                            <strong class="me-auto">Notification</strong>
+                            <small>11 mins ago</small>
+                          </div>
+                          <div class="toast-body  ">
+                            <img src="../img/assets/orangcuk.png" class="img-fluid icon-org" alt=""> Hello, world! This is a toast message.
+                          </div>
                         </div>
-                        <div class="row border p-2">
-                            <div class="col-xl-1 p-2">
-                              <img src="../img/assets/orangcuk.png" class="img-fluid icon-org" alt="">
-                            </div>
-                            <div class="col">
-                            <b>Kevin Allen</b> melakukan perubahan pada nama produk
-                                <br>
-                                <span class="tanggal">20 September, 14:54</span>
-                            </div>
+                        <div role="alert" aria-live="assertive" aria-atomic="true" class="toast fade show" data-bs-autohide="false">
+                          <div class="toast-header">
+                            <svg class="bd-placeholder-img rounded me-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#007aff"></rect></svg>
+                        
+                            <strong class="me-auto">Notification</strong>
+                            <small>11 mins ago</small>
+                          </div>
+                          <div class="toast-body  ">
+                            <img src="../img/assets/orangcuk.png" class="img-fluid icon-org" alt=""> Hello, world! This is a toast message.
+                          </div>
                         </div>
+                        
+                       
                     </div>
                 </div>
             </div>
