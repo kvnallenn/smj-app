@@ -421,6 +421,9 @@ ul{
   width : 500px;
 }
 
-
+.modal.fade{
+  padding: 0px !important;
+  margin: 0;
+}
 
 /* coba */

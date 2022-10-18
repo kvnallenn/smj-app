@@ -34,6 +34,12 @@
                 <span class="links_name">Kategori</span>
             </a>
         </li>
+        <li>
+            <a href="/admin/daftartransfer">
+                <i class='bx bxs-wallet'></i>
+                <span class="links_name">Daftar Transfer</span>
+            </a>
+        </li>
     </ul>
     <div class="profile_content fixed">
         <div class="profile">

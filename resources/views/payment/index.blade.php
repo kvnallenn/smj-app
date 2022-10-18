@@ -18,7 +18,7 @@
         <div class="row row-keranjang align-middle">
             <div><h4 class="fw-bold text-center p-4">Selesaikan pembayaran dalam</h4></div>              
             <div><h5 class="text-center">Batas Akhir Pembayaran</div></H4>
-            <div><h4 class="fw-bold text-center">Selesaikan pembayaran dalam</h4></div>   
+            <div><h4 class="fw-bold text-center">Selasa, 18 Oktober 2022 15:23</h4></div>   
                <div class="row">
                 <div class="d-flex justify-content-center mt-4">
                     <div class="col-xl-4 col-12">
@@ -43,10 +43,61 @@
                             <div>
                                 <a href="/shop" class="btn btn-primary btn-md" type="button">Belanja Lagi</a>
                             </div>
+                            <div>
+                              <a href="#" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#paymentModal">Sudah Bayar</a>
+                          </div>
                         </li>
+                        <li class="list-group-item d-flex justify-content-center lh-sm">
+                          <div>
+                            <small class="text my-0 fw-bold">Harap menyimpan bukti transaksi pembayaran</small>
+                        </div>
+                      </li>
                     </div>  
                 </div> 
             </div>
+
+            {{-- MODAL --}}
+
+           
+            <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Bukti Pembayaran</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Nama :</label>
+                        <input type="text" class="form-control" id="recipient-name" placeholder="sesuai dengan nama yang di rekening">
+                      </div>
+                      <div class="mb-3">
+                        <label for="message-text" class="col-form-label">Nominal :</label>
+                        <input type="text" class="form-control" id="recipient-name" placeholder="sesuai dengan jumlah yang di transfer">
+                      </div>
+                      <div class="mb-3">
+                        <label for="formFileMultiple" class="form-label">Bukti Transfer</label>
+                        <img id="image_preview" class="col-sm-5 mb-3 d-block img-fluid"/>
+                        <input class="form-control @error('gambar_produk') is-invalid @enderror" type="file" id="formFileMultiple" name="gambar_produk" id="gambar_produk" onchange="previewImage(event)" multiple>
+                      @error('gambar_produk')
+                        <div class="invalid-feedback">
+                        {{ $message }}
+                        </div>
+                      @enderror
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Send message</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {{-- MODAL --}}
+
             {{-- CARA PENGGUNAAN --}}
             <div class="row">
                 <div class="d-flex justify-content-center mt-1 mb-4">
@@ -147,7 +198,7 @@
       
     @include('partials.footer')
     @include('partials.navbarbot')
-
+    <script src="../js/Imagepreview.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script language="JavaScript" type="text/javascript" src="../js/jquery.js"></script>
     <script language="JavaScript" type="text/javascript" src="../js/Scroll.js"></script>

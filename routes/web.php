@@ -14,6 +14,7 @@ use App\Http\Controllers\AdminLoginController;
 use App\Http\Controllers\AdminProdukController;
 use App\Http\Controllers\DetailProdukController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\DaftarTransferController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,6 +64,8 @@ Route::get('/payment', [PaymentController::class, 'index']);
 Route::get('/checkout', [CheckoutController::class, 'index']);
 
 Route::post('/checkout', [CheckoutController::class, 'index']);
+
+Route::get('/admin/daftartransfer', [DaftarTransferController::class, 'index']);
 
 Route::resource('/admin/adminproduk/detailproduk', DetailProdukController::class)->middleware('is_admin');
 
