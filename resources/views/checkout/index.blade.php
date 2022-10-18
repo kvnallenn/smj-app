@@ -87,12 +87,15 @@
                         <div class="col fw-bold">Metode Pembayaran</div>
                       </div>  
                       <div class="row">
+                      <form action="{{ url('/payment') }}" method="post">
+                        @method('post')
+                        @csrf
                         <div class="col mt-4">
                           <div class="form-check form-check-inline">
                             <label class="form-check-label fw-bold" for="flexRadioDefault1">
                              <img src="/img/assets/bca.png" class="img-fluid me-3" width="75px">BCA ( Transfer Manual )
                             </label>
-                            <input class="form-check-input inline" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                            <input class="form-check-input inline" type="radio" name="namaBank" id="flexRadioDefault1" value="BCA">
                           </div>
                         </div>
                       </div>
@@ -102,7 +105,7 @@
                             <label class="form-check-label fw-bold" for="flexRadioDefault1">
                              <img src="/img/assets/mandiri.png" class="img-fluid me-3" width="75px">Mandiri ( Transfer Manual )
                             </label>
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                            <input class="form-check-input" type="radio" name="namaBank" id="flexRadioDefault1" value="Mandiri">
                           </div>
                         </div>
                       </div>
@@ -125,9 +128,10 @@
                        <b>Rp {{ $total }},-</b>
                       </div>
                       <div class="col">
-                        <button type="button" class="btn btn-primary">Bayar</button>
+                        <button type="submit" class="btn btn-primary">Bayar</button>
                       </div>
                     </div>
+                  </form>
                   </div>
                 </div>
               </div>

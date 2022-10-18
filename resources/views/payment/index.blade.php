@@ -26,7 +26,17 @@
                         <li class="list-group-item d-flex justify-content-between lh-sm">
                             <div>
                             <h6 class="my-0">Nomor Rekening</h6>
-                            <small class="fw-bold">8000875016</small>
+                            @if ( $lockdata == "BCA")
+                            <small class="fw-bold">
+                             8000875016
+                            </small>
+                            @elseif ($lockdata == "Mandiri")
+                            <small class="fw-bold">
+                              1130015226164
+                             </small>
+                             @else
+
+                            @endif
                             </div>
                             <div>
                                 <h6 class="my-2" id="myInput">Salin</h6>
@@ -36,7 +46,7 @@
                         <li class="list-group-item d-flex justify-content-between lh-sm">
                             <div>
                             <h6 class="my-0">Total Pembayaran</h6>
-                            <small class="text fw-bold">Rp 5.000.000</small>
+                            <small class="text fw-bold">Rp {{ $total }},-</small>
                             </div>
                         </li>
                         <li class="list-group-item d-flex justify-content-between lh-sm">
@@ -55,10 +65,12 @@
                     </div>  
                 </div> 
             </div>
-
+             
             {{-- MODAL --}}
 
-           
+           <form action="{{ url ('/status-pesanan') }}" method="post" enctype="multipart/form-data">
+            @method('POST')
+            @csrf
             <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
@@ -70,32 +82,49 @@
                     <form>
                       <div class="mb-3">
                         <label for="recipient-name" class="col-form-label">Nama :</label>
-                        <input type="text" class="form-control" id="recipient-name" placeholder="sesuai dengan nama yang di rekening">
+                        <input type="text" oninput="this.value = this.value.toUpperCase()" class="form-control" id="recipient-name" placeholder="Sesuai dengan nama yang di rekening" name="nama_rek">
                       </div>
                       <div class="mb-3">
                         <label for="message-text" class="col-form-label">Nominal :</label>
-                        <input type="text" class="form-control" id="recipient-name" placeholder="sesuai dengan jumlah yang di transfer">
+                        <input type="text" class="form-control" id="recipient-name" placeholder="Sesuai dengan jumlah yang di transfer" name="nominal_transfer">
+                        <input type="hidden" value="{{ $lockdata }}" name="nama_bank">
+                      </div>
+                      <div class="mb-3">
+                        <label for="message-text" class="col-form-label">Nomor Rekening :</label>
+                        <input type="text" class="form-control" id="recipient-name" placeholder="Nomor rekening pengirim" name="nomor_rek">
                       </div>
                       <div class="mb-3">
                         <label for="formFileMultiple" class="form-label">Bukti Transfer</label>
                         <img id="image_preview" class="col-sm-5 mb-3 d-block img-fluid"/>
-                        <input class="form-control @error('gambar_produk') is-invalid @enderror" type="file" id="formFileMultiple" name="gambar_produk" id="gambar_produk" onchange="previewImage(event)" multiple>
+                        <input class="form-control @error('gambar_produk') is-invalid @enderror" type="file" id="formFileMultiple" name="bukti_transfer" id="gambar_produk" onchange="previewImage(event)" multiple>
                       @error('gambar_produk')
                         <div class="invalid-feedback">
                         {{ $message }}
-                        </div>
+                      </div>
                       @enderror
                       </div>
-                    </form>
+
+                      {{-- @foreach ( $kirimcart as $kunciicart)
+
+                        <input type="hidden" value="{{ $kunciicart->nama_user }}" name="nama_user[]">
+                        <input type="hidden" value="{{ $kunciicart->nama_produk }}" name="nama_produk[]">
+                        <input type="hidden" value="{{ $kunciicart->harga_produk }}" name="harga_produk[]">
+                        <input type="hidden" value="{{ $kunciicart->unit_produk }}" name="unit_produk[]">
+                        <input type="hidden" value="{{ $kunciicart->image }}" name="gambar_produk[]">
+
+                      @endforeach --}}
+
+                   
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Send message</button>
+                    <button type="submit" class="btn btn-primary">Bayar</button>
                   </div>
+                </form>
                 </div>
               </div>
             </div>
-
+          </form>
             {{-- MODAL --}}
 
             {{-- CARA PENGGUNAAN --}}

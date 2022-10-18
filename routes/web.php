@@ -15,6 +15,7 @@ use App\Http\Controllers\AdminProdukController;
 use App\Http\Controllers\DetailProdukController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\DaftarTransferController;
+use App\Http\Controllers\StatusPesananController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,11 +60,17 @@ Route::get('/keranjang/kurangq/{id}', [KeranjangController::class, 'kurangq']);
 
 Route::get('/payment', [PaymentController::class, 'index']);
 
+Route::post('/payment', [PaymentController::class, 'store']);
+
 // Route::resource('/keranjang', KeranjangController::class);
 
 Route::get('/checkout', [CheckoutController::class, 'index']);
 
 Route::post('/checkout', [CheckoutController::class, 'index']);
+
+Route::get('/status-pesanan', [StatusPesananController::class, 'index']);
+
+Route::post('/status-pesanan', [StatusPesananController::class, 'store']);
 
 Route::get('/admin/daftartransfer', [DaftarTransferController::class, 'index']);
 

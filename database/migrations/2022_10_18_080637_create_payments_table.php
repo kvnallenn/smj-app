@@ -16,11 +16,13 @@ return new class extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->string('nama_user');
+            $table->string('nama_rek');
+            $table->string('nomor_rek');
             $table->string('nominal_transfer');
+            $table->timestamps();
             $table->string('invoice_produk');
             $table->string('bukti_transfer');
-            $table->string('status_transaksi');
-            $table->timestamps();
+            $table->string('nama_bank');
         });
     }
 
