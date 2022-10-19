@@ -11,11 +11,12 @@ class PaymentController extends Controller
 {
     public function index()
     {
-       
+      
     }
 
     public function store(Request $request)
     {
+
 
         $namauser = auth()->user()->name;
         $totalcart = Cart::where('nama_user','=',$namauser)->sum('unit_produk');

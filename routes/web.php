@@ -16,6 +16,7 @@ use App\Http\Controllers\DetailProdukController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\DaftarTransferController;
 use App\Http\Controllers\StatusPesananController;
+use App\Http\Controllers\InvoiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,6 +74,8 @@ Route::get('/status-pesanan', [StatusPesananController::class, 'index']);
 Route::post('/status-pesanan', [StatusPesananController::class, 'store']);
 
 Route::get('/admin/daftartransfer', [DaftarTransferController::class, 'index']);
+
+Route::get('/invoices/{id}', [InvoiceController::class, 'index']);
 
 Route::post('/admin/daftartransfer/{id}', [DaftarTransferController::class, 'update']);
 

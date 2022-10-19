@@ -42,7 +42,7 @@
                                 <tbody class="align-middle">
                                   @foreach ($datapay as $item)
                                   <tr>
-                                    <td><a href="#">SMJ-{{ $item->invoice_produk }}</a></td>
+                                    <td><a href="{{ url('/invoices/'.$item->invoice_produk) }}">SMJ-{{ $item->invoice_produk }}</a></td>
                                     <td>{{ $item->nama_user }}</td>
                                     <td>{{ $item->nama_rek }}</td>
                                     <td>{{ $item->nomor_rek }}</td>

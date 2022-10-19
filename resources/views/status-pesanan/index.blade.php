@@ -32,10 +32,10 @@
               @if(session()->has('notifikasi'))
               <div class="row">
                   <div class="col-xl-6 col-lg-6">
-                      <div class="alert alert-success d-flex d-inline align-items-center alert-dismissible fade show" role="alert">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
-                              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-                          </svg>
+                      <div class="alert alert-warning d-flex d-inline align-items-center alert-dismissible fade show" role="alert">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle-fill" viewBox="0 0 16 16">
+                          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+                        </svg>
                   <div class="mx-2">
                {{ session('notifikasi') }}
                   </div>
@@ -57,10 +57,10 @@
                         <th scope="col" class="th-header">Status</th>
                       </tr>
                     </thead>
-                    @foreach ($datapay as $item)
                     <tbody class="align-middle">
+                      @foreach ($datapay as $item)
                       <tr>
-                        <td><a href="">SMJ-{{ $item->invoice_produk }}</a></td>
+                        <td><a href="{{ url('/invoices/'.$item->invoice_produk) }}">SMJ-{{ $item->invoice_produk }}</a></td>
                         <td>{{ $item->nama_user }}</td>
                         <td>{{ $item->nama_rek }}</td>
                         <td>{{ $item->nama_bank }}</td>
@@ -78,8 +78,9 @@
 
                         </td>
                       </tr>
+                      @endforeach
                     </tbody>
-                    @endforeach
+                   
                   </table>
             </div>
         </div>

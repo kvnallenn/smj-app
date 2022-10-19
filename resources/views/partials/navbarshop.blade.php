@@ -30,7 +30,7 @@
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="#">Profil</a></li>
-                <li><a class="dropdown-item" href="#">Pesanan</a></li>
+                <li><a class="dropdown-item" href="/status-pesanan">Pesanan</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <form action="/logout" method="post">
                   @csrf

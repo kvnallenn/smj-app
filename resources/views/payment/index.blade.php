@@ -104,15 +104,15 @@
                       @enderror
                       </div>
 
-                      {{-- @foreach ( $kirimcart as $kunciicart)
+                      @foreach ( $kirimcart as $kunciicart)
 
-                        <input type="hidden" value="{{ $kunciicart->nama_user }}" name="nama_user[]">
+                
                         <input type="hidden" value="{{ $kunciicart->nama_produk }}" name="nama_produk[]">
                         <input type="hidden" value="{{ $kunciicart->harga_produk }}" name="harga_produk[]">
                         <input type="hidden" value="{{ $kunciicart->unit_produk }}" name="unit_produk[]">
                         <input type="hidden" value="{{ $kunciicart->image }}" name="gambar_produk[]">
 
-                      @endforeach --}}
+                      @endforeach
 
                    
                   </div>

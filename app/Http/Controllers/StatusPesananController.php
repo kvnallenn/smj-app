@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Payment;
 use App\Models\Cart;
+use App\Models\Invoice;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 
@@ -46,9 +48,26 @@ class StatusPesananController extends Controller
         $model->bukti_transfer = $request->file('bukti_transfer')->store('bukti-transfer');
         $model->save();
 
+        $data = $request->all();
+        if (count(array($data['nama_produk']>0))){
+            foreach($data['nama_produk'] as $item=>$value){
+                $data2 = array(
+                    'id_invoice'=>$model->id,
+                    'invoice_produk'=>$model->invoice_produk,
+                    'nama_user'=>$model->nama_user,
+                    'nama_bank'=>$model->nama_bank,
+                    'nama_produk'=>$data['nama_produk'][$item],
+                    'unit_produk'=>$data['unit_produk'][$item],
+                    'harga_produk'=>$data['harga_produk'][$item],
+                    'gambar_produk'=>$data['gambar_produk'][$item],
+                );
+                Invoice::create($data2);
+            }
+        }
+
         $hapus = Cart::where(['nama_user' => $namauser]);
         $hapus->delete();
-        return redirect('/keranjang')->with('notifikasi','Berhasil menghapus produk dari keranjang!');
+        return redirect('/status-pesanan');
     }
 
 }
