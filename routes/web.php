@@ -74,6 +74,8 @@ Route::post('/status-pesanan', [StatusPesananController::class, 'store']);
 
 Route::get('/admin/daftartransfer', [DaftarTransferController::class, 'index']);
 
+Route::post('/admin/daftartransfer/{id}', [DaftarTransferController::class, 'update']);
+
 Route::resource('/admin/adminproduk/detailproduk', DetailProdukController::class)->middleware('is_admin');
 
 Route::resource('/admin', AdminLoginController::class)->except('show')->middleware('is_admin');

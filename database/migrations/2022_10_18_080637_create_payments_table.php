@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('invoice_produk');
             $table->string('bukti_transfer');
             $table->string('nama_bank');
+            $table->string('status_transaksi')->nullable();
         });
     }
 

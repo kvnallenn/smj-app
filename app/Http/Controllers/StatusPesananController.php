@@ -6,13 +6,21 @@ use App\Models\Payment;
 use App\Models\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 class StatusPesananController extends Controller
 {
     public function index()
     {
         
-        return view ('status-pesanan.index');
+        $namauser = auth()->user()->name;
+        $datacart = Cart::where('nama_user','=',$namauser)->get();
+        $datapay = Payment::where('nama_user','=',$namauser)->get();
+        $totalcart = Cart::where('nama_user','=',$namauser)->sum('unit_produk');
+        $total = Cart::where('nama_user','=',$namauser)->sum(DB::raw('harga_produk*unit_produk'));
+        return view ('status-pesanan.index', [
+            "title" => "Keranjang"
+        ], compact('datacart', 'namauser', 'total', 'totalcart', 'datapay'));
        
     }
 
@@ -38,7 +46,9 @@ class StatusPesananController extends Controller
         $model->bukti_transfer = $request->file('bukti_transfer')->store('bukti-transfer');
         $model->save();
 
-
+        $hapus = Cart::where(['nama_user' => $namauser]);
+        $hapus->delete();
+        return redirect('/keranjang')->with('notifikasi','Berhasil menghapus produk dari keranjang!');
     }
 
 }
