@@ -77,6 +77,8 @@ Route::get('/admin/daftartransfer', [DaftarTransferController::class, 'index'])-
 
 Route::get('/invoices/{id}', [InvoiceController::class, 'index']);
 
+Route::get('/cetak_invoice/{id}', [StatusPesananController::class, 'cetak_invoice']);
+
 Route::post('/admin/daftartransfer/{id}', [DaftarTransferController::class, 'update'])->middleware('is_admin');
 
 Route::resource('/admin/adminproduk/detailproduk', DetailProdukController::class)->middleware('is_admin');

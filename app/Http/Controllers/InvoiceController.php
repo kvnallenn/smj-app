@@ -7,6 +7,7 @@ use App\Models\Payment;
 use App\Models\Invoice;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use PDF;
 
 class InvoiceController extends Controller
 {
@@ -37,4 +38,6 @@ class InvoiceController extends Controller
             'datainvoice', 'hitunginvoice','datacart'
         ));
     }
+
+    
 }

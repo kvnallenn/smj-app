@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use PDF;
 
 class StatusPesananController extends Controller
 {
@@ -68,6 +69,14 @@ class StatusPesananController extends Controller
         $hapus = Cart::where(['nama_user' => $namauser]);
         $hapus->delete();
         return redirect('/status-pesanan');
+    }
+
+    public function cetak_invoice($invoicep){
+
+        $datainvoice = Invoice::where('invoice_produk','=',$invoicep)->get();
+        $pdf = PDF::loadview('cetak-invoice.index', compact('datainvoice'));
+        return $pdf->download('invoice.pdf');
+
     }
 
 }

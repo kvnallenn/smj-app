@@ -61,6 +61,7 @@
                     <thead class="table-secondary th-header">
                       <tr>
                         <th scope="col" class="th-header">Invoice</th>
+                        <th scope="col" class="th-header">Export</th>
                         <th scope="col" class="th-header">Nama</th>
                         <th scope="col" class="th-header">Nama Rekening</th>
                         <th scope="col" class="th-header">Nama Bank</th>
@@ -72,6 +73,7 @@
                       @foreach ($datapay as $item)
                       <tr>
                         <td><a href="{{ url('/invoices/'.$item->invoice_produk) }}">SMJ-{{ $item->invoice_produk }}</a></td>
+                        <td><a href="{{ url('/cetak_invoice/'.$item->invoice_produk) }}" type="button" class="btn btn-success mb-2">PDF</a></button></td>
                         <td>{{ $item->nama_user }}</td>
                         <td>{{ $item->nama_rek }}</td>
                         <td>{{ $item->nama_bank }}</td>
