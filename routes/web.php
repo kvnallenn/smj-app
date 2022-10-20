@@ -73,11 +73,11 @@ Route::get('/status-pesanan', [StatusPesananController::class, 'index']);
 
 Route::post('/status-pesanan', [StatusPesananController::class, 'store']);
 
-Route::get('/admin/daftartransfer', [DaftarTransferController::class, 'index']);
+Route::get('/admin/daftartransfer', [DaftarTransferController::class, 'index'])->middleware('is_admin');
 
 Route::get('/invoices/{id}', [InvoiceController::class, 'index']);
 
-Route::post('/admin/daftartransfer/{id}', [DaftarTransferController::class, 'update']);
+Route::post('/admin/daftartransfer/{id}', [DaftarTransferController::class, 'update'])->middleware('is_admin');
 
 Route::resource('/admin/adminproduk/detailproduk', DetailProdukController::class)->middleware('is_admin');
 

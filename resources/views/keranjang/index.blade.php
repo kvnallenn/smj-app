@@ -47,6 +47,17 @@
               {{-- ALERT --}}
               
                 <table class="table">
+                  @if( $total == null)
+                  <div class="container">
+                    <div class="bg-light rounded-3 text-center">
+                      <div class="container-fluid py-4 text-center">
+                        <img src="/img/assets/emp-cart.png" class="img-fluid">
+                        <h2 class="fw-bold text-center">Wah, keranjang belanjamu kosong</h2>
+                        <a href="/shop" class="btn btn-primary btn-md" type="button">Mulai Belanja</a>
+                      </div>
+                    </div>
+                  </div>
+                  @else
                     <thead class="table-secondary th-header">
                       <tr>
                         <th scope="col" class="th-header">Hapus</th>
@@ -81,22 +92,9 @@
             <div class="col table-responsive">
                 <table class="table ms-auto text-center mb-5 mt-3 mx-3" id="table-checkout">
                     <thead class="table-secondary">
-                      @if( $total == null)
-                      <div class="container">
-                        <div class="bg-light rounded-3 text-center">
-                          <div class="container-fluid py-4 text-center">
-                            <img src="/img/assets/emp-cart.png" class="img-fluid">
-                            <h2 class="fw-bold text-center">Wah, keranjang belanjamu kosong</h2>
-                            <a href="/shop" class="btn btn-primary btn-md" type="button">Mulai Belanja</a>
-                          </div>
-                        </div>
-                    
-                      </div>
-                      @else
                       <tr>
                         <th scope="col" colspan="2" class="th-header">Total Keranjang Belanja</th>
                       </tr>
-                      @endif
                     </thead>
                     <tbody>
                       @if( $total == null)
@@ -117,6 +115,7 @@
                       </form>
                     </tbody>
                   </table>
+                  @endif
             </div>
         </div>
     </div>

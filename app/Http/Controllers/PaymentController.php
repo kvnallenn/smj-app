@@ -6,12 +6,12 @@ use Illuminate\Http\Request;
 use App\Models\Cart;
 use App\Models\Payment; 
 use Illuminate\Support\Facades\DB;
+use Spatie\FlareClient\View;
 
 class PaymentController extends Controller
 {
     public function index()
     {
-      
     }
 
     public function store(Request $request)

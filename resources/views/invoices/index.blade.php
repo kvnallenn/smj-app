@@ -67,6 +67,7 @@
                                         <div class="row mt-3">
                                             <div class="col-md-12">
                                                 <h3>ORDER SUMMARY</h3>
+                                                <div class="table-responsive">
                                                 <table class="table table-striped">
                                                     <thead>
                                                         <tr class="line">
@@ -98,6 +99,7 @@
                                                             <td class="text-center"><strong>{{ $datacart->nama_bank }} ( Transfer Manual )</strong></td>
                                                         </tr>
                                                     </tbody>
+                                                    </div>
                                                 </table>
                                             </div>									
                                         </div>
@@ -107,6 +109,7 @@
                             <!-- END INVOICE -->
                         </div>
         </div>
+    </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>

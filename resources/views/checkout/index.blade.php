@@ -25,6 +25,17 @@
     <div class="container">
         <div class="row row-produk">
             <div class="col">
+              @if ( $totalcart == null)
+              <div class="container">
+                <div class="bg-light rounded-3 text-center">
+                  <div class="container-fluid py-4 text-center">
+                    <img src="/img/assets/emp-cart.png" class="img-fluid">
+                    <h2 class="fw-bold text-center">Wah, keranjang belanjamu kosong</h2>
+                    <a href="/shop" class="btn btn-primary btn-md" type="button">Mulai Belanja</a>
+                  </div>
+                </div>
+              </div>
+              @else
               <h5><strong>Checkout</strong></h5>
               <h6 class="mt-3"><strong>Alamat Pengiriman</strong></h6>
               <hr/>
@@ -135,7 +146,7 @@
                   </div>
                 </div>
               </div>
-
+              
               {{-- MODAL PAYMENT --}}
             <div class="col-sm-6 warna-container pb-2">
               <div class="container bks pt-3 pb-3 mt-2">
@@ -171,6 +182,7 @@
               </div>
               
             </div>
+            @endif
         </div>
     </div>
 

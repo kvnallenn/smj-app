@@ -46,11 +46,16 @@
             <div class="profile_details">
                 <img src="profile.jpg" alt="">
                 <div class="name_job">
-                    <div class="name">Kevin Allen</div>
-                    <div class="job">PARNAB</div>
+                    <div class="name">{{ auth()->user()->name }}</div>
+                    <div class="job">
+                        Admin
+                    </div>
                 </div>
             </div>
-            <i class="bx bx-log-out" id="log_out"></i>
+            <form action="/logout" method="post">
+                @csrf
+            <button type="submit" class="btn btn-dark"><i class="bx bx-log-out" id="log_out"></i></button>
+            </form>
         </div>
     </div>
 </div>

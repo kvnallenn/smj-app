@@ -15,6 +15,7 @@ class CheckoutController extends Controller
         $namauser = auth()->user()->name;
         $totalcart = Cart::where('nama_user','=',$namauser)->sum('unit_produk');
         $aturcart = Cart::where('nama_user','=',$namauser)->get();
+        $seluruhcart = Cart::all();
         $total = Cart::where('nama_user','=',$namauser)->sum(DB::raw('harga_produk*unit_produk'));
         return view ('checkout.index', [
             "title" => "Checkout"
