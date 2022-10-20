@@ -17,6 +17,8 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\DaftarTransferController;
 use App\Http\Controllers\StatusPesananController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\UserSettingsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -72,6 +74,10 @@ Route::post('/checkout', [CheckoutController::class, 'index']);
 Route::get('/status-pesanan', [StatusPesananController::class, 'index']);
 
 Route::post('/status-pesanan', [StatusPesananController::class, 'store']);
+
+Route::get('/user-settings/{id}', [UserSettingsController::class, 'index']);
+
+Route::post('/user-settings/edit/{id}', [UserSettingsController::class, 'update']);
 
 Route::get('/admin/daftartransfer', [DaftarTransferController::class, 'index'])->middleware('is_admin');
 

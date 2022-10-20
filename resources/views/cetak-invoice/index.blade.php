@@ -6,8 +6,63 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/invoice.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <style>
+    
+    body{
+    margin-top:20px;
+    background:#eee;
+    }
+    
+    .invoice {
+        padding: 30px;
+    }
+    
+    .invoice h2 {
+        margin-top: 0px;
+        line-height: 0.8em;
+    }
+    
+    .invoice .small {
+        font-weight: 300;
+    }
+    
+    .invoice hr {
+        margin-top: 10px;
+        border-color: #ddd;
+    }
+    
+    .invoice .table tr.line {
+        border-bottom: 1px solid #ccc;
+    }
+    
+    .invoice .table td {
+        border: none;
+    }
+    
+    .invoice .identity {
+        margin-top: 10px;
+        font-size: 1.1em;
+        font-weight: 300;
+    }
+    
+    .invoice .identity strong {
+        font-weight: 600;
+    }
+    
+    
+    .grid {
+        position: relative;
+        width: 100%;
+        background: #fff;
+        color: #666666;
+        border-radius: 2px;
+        margin-bottom: 25px;
+        box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    
+    </style>
 </head>
 <body>
     <div class="container">
@@ -27,7 +82,7 @@
                                                 <div class="col-xs-12">
                                                     <h2 class="mb-2">INVOICE<h2>
                                                     <span class="small">
-                                                        SMJ-{{ $datainvoice->invoice_produk }}
+                                                        SMJ-{{ $datacart->invoice_produk }}
                                                     </span>
                                                 </div>
                                             </div>
@@ -46,7 +101,7 @@
                                                     <table>
                                                         <tr>
                                                             <td>Pembeli</td>
-                                                            <td>: <strong>{{ $datainvoice->nama_user }}</strong></td>
+                                                            <td>: <strong>{{ $datacart->nama_user }}</strong></td>
                                                         </tr>
                                                         <tr>
                                                             <td>Nomor Telepon</td>

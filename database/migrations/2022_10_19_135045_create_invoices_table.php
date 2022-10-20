@@ -24,6 +24,10 @@ return new class extends Migration
             $table->string('harga_produk');
             $table->string('gambar_produk');
             $table->string('nama_bank');
+            $table->string('jalan');
+            $table->string('kota');
+            $table->string('kecamatan');
+            $table->string('nomor_telepon');
             
         });
     }

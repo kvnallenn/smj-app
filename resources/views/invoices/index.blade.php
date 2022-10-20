@@ -46,19 +46,19 @@
                                                     <table>
                                                         <tr>
                                                             <td>Pembeli</td>
-                                                            <td>: <strong>{{ $datacart->nama_user }}</strong></td>
+                                                            <td>: <strong>{{ $invoicetunggal->nama_user }}</strong></td>
                                                         </tr>
                                                         <tr>
                                                             <td>Nomor Telepon</td>
-                                                            <td>: <strong>Kevin Allen</strong></td>
+                                                            <td>: <strong>{{ $invoicetunggal->nomor_telepon }}</strong></td>
                                                         </tr>
                                                         <tr>
                                                             <td>Tanggal Pembelian</td>
-                                                            <td>: <strong>17/06/14</strong></td>
+                                                            <td>: <strong>{{ $invoicetunggal->created_at->format('d M Y') }}</strong></td>
                                                         </tr>
                                                         <tr>
                                                             <td>Alamat Pengiriman</td>
-                                                            <td>: Jln. Brigjend Katamso Belakang No.42, Medan Maimun, Kota Medan</td>
+                                                            <td>: {{ $invoicetunggal->jalan }},{{ $invoicetunggal->kota }},{{ $invoicetunggal->kecamatan }}</td>
                                                         </tr>
                                                     </table>
                                                 </address>

@@ -18,5 +18,9 @@ class Invoice extends Model
         'unit_produk',
         'harga_produk',
         'gambar_produk',
+        'jalan',
+        'kota',
+        'kecamatan',
+        'nomor_telepon',
     ]; 
 }

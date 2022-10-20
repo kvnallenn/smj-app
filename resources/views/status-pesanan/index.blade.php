@@ -45,7 +45,31 @@
                   </div>
               @endif
               {{-- ALERT --}}
-        
+              
+              {{-- MODAL PDF --}}
+
+              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">Harap Menunggu</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <form>
+                        <div class="mb-3">
+                          <label for="recipient-name" class="col-form-label">Harap Menunggu Proses Verifikasi</label>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {{-- MODAL PDF --}}
+
                 <table class="table">
                   @if( $datapay == null)
                   <div class="container">
@@ -69,11 +93,27 @@
                         <th scope="col" class="th-header">Status</th>
                       </tr>
                     </thead>
-                    <tbody class="align-middle">
+                    <tbody class="align-middle fw-bold">
                       @foreach ($datapay as $item)
                       <tr>
-                        <td><a href="{{ url('/invoices/'.$item->invoice_produk) }}">SMJ-{{ $item->invoice_produk }}</a></td>
-                        <td><a href="{{ url('/cetak_invoice/'.$item->invoice_produk) }}" type="button" class="btn btn-success mb-2">PDF</a></button></td>
+                        <td>
+                          @if($item->status_transaksi == "Sukses")
+                          <a href="{{ url('/invoices/'.$item->invoice_produk) }}">SMJ-{{ $item->invoice_produk }}</a>
+                          @elseif(auth()->user()->is_admin == 1)
+                          <a href="{{ url('/invoices/'.$item->invoice_produk) }}">SMJ-{{ $item->invoice_produk }}</a>
+                          @else
+                          <a href="#" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"class="col-form-label">SMJ-{{ $item->invoice_produk }}</a>
+                          @endif
+                        </td>
+                        <td>
+                          @if($item->status_transaksi == "Sukses")
+                          <a href="{{ url('/cetak_invoice/'.$item->invoice_produk) }}" type="button" class="btn btn-success mb-2">PDF</a></button>
+                          @elseif (auth()->user()->is_admin == 1)
+                          <a href="{{ url('/cetak_invoice/'.$item->invoice_produk) }}" type="button" class="btn btn-success mb-2">PDF</a></button>
+                          @else
+                          <a href="#" type="button" class="btn btn-warning mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal"><strong>PDF</strong></a></button>
+                          @endif
+                        </td>
                         <td>{{ $item->nama_user }}</td>
                         <td>{{ $item->nama_rek }}</td>
                         <td>{{ $item->nama_bank }}</td>

@@ -35,6 +35,7 @@
                                     <th scope="col" class="th-header">Nama User</th>
                                     <th scope="col" class="th-header">Nama Rekening</th>
                                     <th scope="col" class="th-header">Nomor Rekening</th>
+                                    <th scope="col" class="th-header">Nominal Transfer</th>
                                     <th scope="col" class="th-header">Waktu Transfer</th>
                                     <th scope="col" class="th-header">Bukti Transaksi</th>
                                     <th scope="col" colspan="2" class="th-header">Action</th>
@@ -46,6 +47,7 @@
                                     <td>{{ $item->nama_user }}</td>
                                     <td>{{ $item->nama_rek }}</td>
                                     <td>{{ $item->nomor_rek }}</td>
+                                    <td>Rp {{ $item->nominal_transfer }},-</td>
                                     <td>{{ $item->created_at }}</td>
                                     <td><img src="{{ asset('storage/'.$item->bukti_transfer)}}" alt="" class="img-fluid" id="bukti-transfer"></td>
                                     @if ( $item->status_transaksi == null)

@@ -39,24 +39,15 @@
               <h5><strong>Checkout</strong></h5>
               <h6 class="mt-3"><strong>Alamat Pengiriman</strong></h6>
               <hr/>
-              <h6 class="pembeli"><strong>Kevin Allen</strong></h6>
-              <h6 class="pembeli">6281274550819</h6>
-              <h6 class="pembeli">Jalan B.Katamso, Kec. Medan Maimun, Kota Medan, Sumatera Utara, 20151</h6>
-              <hr/>
-              <div class="row">
-                <div class="col-sm pilih-pembayaran col-md-5">
-                  <button class="btn btn-dark">Pilih Alamat Lain</button>
-                </div>
-                <div class="col-sm pilih-pembayaran col-md-7">
-                  <button class="btn btn-dark">Kirim Ke Beberapa Alamat</button>
-                </div>
-              </div>
+              <h6 class="pembeli">Nama :<strong> {{ $untukadmin->name }}</strong></h6>
+              <h6 class="pembeli">Nomor Telepon : <strong>{{ $untukadmin->nomor_telepon }}</strong></h6>
+              <h6 class="pembeli">Alamat : <strong>{{ $untukadmin->jalan }}, {{ $untukadmin->kota }}, {{ $untukadmin->kecamatan }}</strong></h6>
               <hr/>
               @foreach ( $aturcart as $kuncick )
               <div class="row">
                 <div class="col-sm pilih-pembayaran col-md-7">
                   
-                 
+                  <h6 class="label-pesanan mb-3"><strong>Pesanan {{ $loop->iteration }}</strong></h6>
                   <h6 class="label-pesanan"><strong>PT Sentra Medan Jaya</strong></h6>
                   <div class="row">
                       <div class="col-lg-3">
@@ -73,12 +64,6 @@
                       </div>
                   </div>
                   </div>
-                <div class="col-sm pilih-pembayaran col-md-5">
-                  <div class="btn-checkout">
-                    <h6 class="label-pesanan"><strong>Pilih Durasi</strong></h6>
-                    <button class="btn btn-dark" style="width: 100%;">Pengiriman</button>
-                  </div>
-                </div>
               </div>
               <hr>
               @endforeach

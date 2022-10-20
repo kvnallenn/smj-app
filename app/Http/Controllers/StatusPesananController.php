@@ -6,9 +6,9 @@ use App\Models\Payment;
 use App\Models\Cart;
 use App\Models\Invoice;
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use App\Models\User;
 use PDF;
 
 class StatusPesananController extends Controller
@@ -49,6 +49,8 @@ class StatusPesananController extends Controller
         $model->bukti_transfer = $request->file('bukti_transfer')->store('bukti-transfer');
         $model->save();
 
+        $profileinvoice = User::where(['name' => $namauser])->first();
+        
         $data = $request->all();
         if (count(array($data['nama_produk']>0))){
             foreach($data['nama_produk'] as $item=>$value){
@@ -61,6 +63,11 @@ class StatusPesananController extends Controller
                     'unit_produk'=>$data['unit_produk'][$item],
                     'harga_produk'=>$data['harga_produk'][$item],
                     'gambar_produk'=>$data['gambar_produk'][$item],
+                    'jalan'=>$profileinvoice->jalan,
+                    'kota'=>$profileinvoice->kota,
+                    'kecamatan'=>$profileinvoice->kecamatan,
+                    'nomor_telepon'=>$profileinvoice->nomor_telepon,
+                    
                 );
                 Invoice::create($data2);
             }
@@ -73,9 +80,20 @@ class StatusPesananController extends Controller
 
     public function cetak_invoice($invoicep){
 
+
+        
         $datainvoice = Invoice::where('invoice_produk','=',$invoicep)->get();
-        $pdf = PDF::loadview('cetak-invoice.index', compact('datainvoice'));
+        $hitunginvoice = Invoice::where('invoice_produk','=',$invoicep)->sum(DB::raw('harga_produk*unit_produk'));
+        $datacart = Payment::where('invoice_produk','=',$invoicep)->first();
+        $kuncipayment = $datacart->status_transaksi;
+        $namauser = auth()->user()->name;
+        $untukadmin = User::where(['name' => $namauser])->first();
+        $kunciadmin = $untukadmin->is_admin;
+
+        
+        $pdf = PDF::loadview('cetak-invoice.index', compact('datainvoice', 'hitunginvoice','datacart'));
         return $pdf->download('invoice.pdf');
+      
 
     }
 

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark" id="navbarbawah">
     <div class="container">
-      <a class="navbar-brand" href="#"><img src="../img/Logo-Sentra.png" alt="" width="90" height="50" class="me-2"></a>
+      <a class="navbar-brand" href="/shop"><img src="../img/Logo-Sentra.png" alt="" width="90" height="50" class="me-2"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -29,7 +29,7 @@
                 <i class="bi bi-person-circle"></i>&nbsp;{{ auth()->user()->name }}</a>
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Profil</a></li>
+                <li><a class="dropdown-item" href="{{ url('/user-settings/'.auth()->user()->id) }}">Profil</a></li>
                 <li><a class="dropdown-item" href="/status-pesanan">Pesanan</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <form action="/logout" method="post">

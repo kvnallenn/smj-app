@@ -18,9 +18,10 @@ class ShopController extends Controller
         $namauser = auth()->user()->name;
         $totalcart = Cart::where('nama_user','=',$namauser)->sum('unit_produk');
         $dataproduk = Product::all();
+        $cekalamat = User::where('name','=',$namauser)->first();
         return view ('shop.index', [
             "title" => "Mulai Belanja"
-        ], compact('dataproduk', 'namauser', 'totalcart'));
+        ], compact('dataproduk', 'namauser', 'totalcart','cekalamat'));
     }
     else{
         return view ('/login.index', [
