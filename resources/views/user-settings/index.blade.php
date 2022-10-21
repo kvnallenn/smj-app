@@ -19,14 +19,14 @@
       <nav aria-label="breadcrumb" style="background-color: #fff;" class="mt-3">
         <ol class="breadcrumb p-3">
           <li class="breadcrumb-item"><a href="/shop">Home</a></li>
-          <li class="breadcrumb-item"><a href="/keranjang">Keranjang</a></li>
+          <li class="breadcrumb-item"><a href="/keranjang">User Settings</a></li>
         </ol>
       </nav>
     </div>
     @if(session()->has('notifikasi'))
 <div class="container">
-    <div class="row">
-        <div class="col-xl-6 col-lg-6">
+    <div class="row d-flex justify-content-center">
+        <div class="col-xl-7 col-lg-7">
             <div class="alert alert-success d-flex d-inline align-items-center alert-dismissible fade show" role="alert">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
                     <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
@@ -40,6 +40,23 @@
         </div>
 </div>  
     @endif
+    @if(session()->has('notifikasierror'))
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-xl-7 col-lg-7">
+                <div class="alert alert-warning d-flex d-inline align-items-center alert-dismissible fade show" role="alert">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle-fill" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+                      </svg>
+            <div class="mx-2">
+         {{ session('notifikasierror') }}
+            </div>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            </div>
+            </div>
+    </div>  
+        @endif
     <div class="container">
         <div class="row row-keranjang">
             <div class="wrapper bg-white p-3">
@@ -127,6 +144,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script language="JavaScript" type="text/javascript" src="../js/jquery.js"></script>
     <script language="JavaScript" type="text/javascript" src="../js/Scroll.js"></script>
+    <script src="https://kit.fontawesome.com/4f72237084.js" crossorigin="anonymous"></script>
     
    
   </body>

@@ -58,7 +58,7 @@
                                                         </tr>
                                                         <tr>
                                                             <td>Alamat Pengiriman</td>
-                                                            <td>: {{ $invoicetunggal->jalan }},{{ $invoicetunggal->kota }},{{ $invoicetunggal->kecamatan }}</td>
+                                                            <td>: {{ $invoicetunggal->jalan }}, {{ $invoicetunggal->kota }}, {{ $invoicetunggal->kecamatan }}</td>
                                                         </tr>
                                                     </table>
                                                 </address>

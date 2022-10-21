@@ -75,6 +75,8 @@ Route::get('/status-pesanan', [StatusPesananController::class, 'index']);
 
 Route::post('/status-pesanan', [StatusPesananController::class, 'store']);
 
+Route::get('/user-settings/', [UserSettingsController::class, 'faker']);
+
 Route::get('/user-settings/{id}', [UserSettingsController::class, 'index']);
 
 Route::post('/user-settings/edit/{id}', [UserSettingsController::class, 'update']);

@@ -16,6 +16,7 @@ class UserSettingsController extends Controller
     $datacart = Cart::where('nama_user','=',$namauser)->get();
     $totalcart = Cart::where('nama_user','=',$namauser)->sum('unit_produk');
     $userprofile = User::where('id','=',$id)->first();
+    
     if( $userprofile == null){
         return redirect(url('/user-settings/'.$sesiuser)); 
     }else{
@@ -53,5 +54,10 @@ class UserSettingsController extends Controller
         
 
         return redirect(url('/user-settings/'.$model->id))->with('notifikasi','Data berhasil diupdate');
+    }
+
+    public function faker(){
+        $sesiuser = auth()->user()->id;
+         return redirect(url('/user-settings/'.$sesiuser));
     }
 }

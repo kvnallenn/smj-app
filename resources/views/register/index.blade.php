@@ -75,7 +75,7 @@
                         <label>Password</label>
             
                         <button class="w-100 btn btn-lg btn-primary" type="submit">Daftar</button>
-                        <label class="akun">Sudah mempunyai akun? <strong>Login</strong></label>
+                        <label class="akun">Sudah mempunyai akun?</label> <a href="/login" class="akun">Masuk</a>
                     </form>
                 </div>
             </div>

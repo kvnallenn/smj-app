@@ -35,7 +35,6 @@
                               1130015226164
                              </small>
                              @else
-
                             @endif
                             </div>
                             <div>
@@ -127,8 +126,9 @@
           </form>
             {{-- MODAL --}}
 
-            {{-- CARA PENGGUNAAN --}}
-            <div class="row">
+          {{-- CARA PENGGUNAAN BCA --}}
+          @if ( $lockdata == "BCA")
+           <div class="row">
                 <div class="d-flex justify-content-center mt-1 mb-4">
                 <div class="col-xl-4 col-12">
             <div class="accordion" id="accordionPanelsStayOpenExample">
@@ -209,11 +209,91 @@
             </div>
          </div>
         </div>
-
-
-
-            
-            {{-- CARA PENGGUNAAN --}}
+        @elseif( $lockdata == "Mandiri")
+        <div class="row">
+          <div class="d-flex justify-content-center mt-1 mb-4">
+          <div class="col-xl-4 col-12">
+      <div class="accordion" id="accordionPanelsStayOpenExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                ATM MANDIRI
+              </button>
+            </h2>
+            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+              <div class="accordion-body">
+                  <ol>
+                      <li class="list-item mb-2">Masukkan Kartu ATM BCA & PIN</li>
+                      <li class="list-item mb-2">Pilih menu Transaksi Lainnya > Transfer > ke Rekening BCA Virtual Account</li>
+                      <li class="list-item mb-2">Masukkan 5 angka kode perusahaan untuk Tokopedia (80777) dan Nomor HP yang terdaftar di akun Tokopedia Anda (Contoh: 80777081274550819)</li>
+                      <li class="list-item mb-2">Di halaman konfirmasi, pastikan detil pembayaran sudah sesuai seperti No VA, Nama, Perus/Produk dan Total Tagihan Masukkan Jumlah Transfer sesuai dengan Total Tagihan</li>
+                      <li class="list-item mb-2">Ikuti instruksi untuk menyelesaikan transaksi Simpan struk transaksi sebagai bukti pembayaran</li>
+                    </ol>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                  m-BCA ( BCA Mobile)
+              </button>
+            </h2>
+            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+              <div class="accordion-body">
+                  <ol>
+                      <li class="list-item mb-2">Lakukan log in pada aplikasi BCA Mobile</li>
+                      <li class="list-item mb-2">Pilih menu m-BCA, kemudian masukkan kode akses m-BCA</li>
+                      <li class="list-item mb-2">Pilih m-Transfer > BCA Virtual Account</li>
+                      <li class="list-item mb-2">Pilih dari Daftar Transfer, atau masukkan 5 angka kode perusahaan untuk Tokopedia (80777) dan Nomor HP yang terdaftar di akun Tokopedia Anda (Contoh: 80777081274550819)</li>
+                      <li class="list-item mb-2">Masukkan pin m-BCA</li>
+                      <li class="list-item mb-2">Pembayaran selesai. Simpan notifikasi yang muncul sebagai bukti pembayaran</li>
+                    </ol>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                Internet Banking BCA
+              </button>
+            </h2>
+            <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+              <div class="accordion-body">
+                  <ol>
+                      <li class="list-item mb-2">Login pada alamat Internet Banking BCA (https://klikbca.com)</li>
+                      <li class="list-item mb-2">Pilih menu Pembayaran Tagihan > Pembayaran > BCA Virtual Account</li>
+                      <li class="list-item mb-2">Pada kolom kode bayar, masukkan 5 angka kode perusahaan untuk Tokopedia (80777) dan Nomor HP yang terdaftar di akun Tokopedia Anda (Contoh: 80777081274550819)</li>
+                      <li class="list-item mb-2">Di halaman konfirmasi, pastikan detil pembayaran sudah sesuai seperti Nomor BCA Virtual Account, Nama Pelanggan dan Jumlah Pembayaran</li>
+                      <li class="list-item mb-2">Masukkan password dan mToken</li>
+                      <li class="list-item mb-2">Cetak/simpan struk pembayaran BCA Virtual Account sebagai bukti pembayaran</li>
+                    </ol>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+              <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse4" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                  Kantor BCA
+                </button>
+              </h2>
+              <div id="panelsStayOpen-collapse4" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+                <div class="accordion-body">
+                    <ol>
+                        <li class="list-item mb-2">Ambil nomor antrian transaksi Teller dan isi slip setoran</li>
+                        <li class="list-item mb-2">Serahkan slip dan jumlah setoran kepada Teller BCA</li>
+                        <li class="list-item mb-2">Teller BCA akan melakukan validasi transaksi</li>
+                        <li class="list-item mb-2">Simpan slip setoran hasil validasi sebagai bukti pembayaran</li>
+                      </ol>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+   </div>
+  </div>
+  @else
+  @endif 
+  {{-- CARA PENGGUNAAN --}}
            
         </div>
         
@@ -231,6 +311,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script language="JavaScript" type="text/javascript" src="../js/jquery.js"></script>
     <script language="JavaScript" type="text/javascript" src="../js/Scroll.js"></script>
+    <script src="https://kit.fontawesome.com/4f72237084.js" crossorigin="anonymous"></script>
     
    
   </body>

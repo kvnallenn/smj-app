@@ -16,10 +16,10 @@
 
     <section class="loginpage">
         <div class='main-login'>
-        <div class="container col-xl-9 col-xxl-8 px-5 py-5">
-            <div class="align-items-center g-lg-5 py-5">
+        <div class="container col-xl-12 col-xxl-8 p-4">
+            <div class="align-items-center">
                 <div>
-                    <div class="col-md-10 mx-auto col-lg-5">
+                    <div class="col-md-10 mx-auto col-lg-5 p-4">
 
                         @if(session()->has('pesan'))
                             <div class="alert alert-warning alert-dismissible fade show" role='alert'>
@@ -35,10 +35,10 @@
                             </div>
                         @endif
 
-                        <div class='card-banner'><img src='../img/Logo-Sentra.png' alt="Sentra Medan Jaya" class='img-fluid' width='150px'></div>
-                        <form class="p-4 p-md-5 rounded-3" action="/login" method="post">
+                        <div class='container card-banner mt-3'><img src='../img/Logo-Sentra.png' alt="Sentra Medan Jaya" class='img-fluid' width='150px'></div>
+                        <form class="p-md-4 rounded-3" action="/login" method="post">
                             @csrf
-                            <div class="form-floating mb-3">
+                            <div class="form-floating mb-3 mt-3">
                                 <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="floatingInput" placeholder="name@example.com" required autofocus value="{{ old ('email') }}" />
                                 <label>Email address</label>
                                 @error('email')
@@ -51,14 +51,9 @@
                                 <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password" required />
                                 <label>Password</label>
                             </div>
-                            <div class="checkbox mb-3">
-                                <label class="checkbox-label">
-                                    <input type="checkbox" value="remember-me" /> Remember me
-                                </label>
-                            </div>
-                            <button class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
-                            <hr class="my-4" />
-                            <small class="text-muted">By clicking Sign up, you agree to the terms of use.</small>
+                            
+                            <button class="w-100 btn btn-lg btn-primary" type="submit">Masuk</button>
+                            <label class="akun">Belum mempunyai akun?</label> <a href="/register" class="akun">Daftar</a>
                         </form>
                     </div>
                     </div>

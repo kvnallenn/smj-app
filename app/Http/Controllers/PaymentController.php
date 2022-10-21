@@ -12,6 +12,7 @@ class PaymentController extends Controller
 {
     public function index()
     {
+        return redirect('/keranjang');
     }
 
     public function store(Request $request)
@@ -24,8 +25,8 @@ class PaymentController extends Controller
         $total = Cart::where('nama_user','=',$namauser)->sum(DB::raw('harga_produk*unit_produk'));
         $lockdata = $request->get('namaBank'); 
 
-        if ($lockdata == null){
-            return view ('checkout.index');
+        if ($lockdata == null || $total == null ){
+            return redirect('/checkout');
        }else{
             return view ('payment.index', [
                 "title" => "Keranjang"

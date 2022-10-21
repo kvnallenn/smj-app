@@ -11,11 +11,7 @@ class ProdukController extends Controller
 {
     public function index()
     {
-        $namauser = auth()->user()->name;
-        $totalcart = Cart::where('nama_user','=',$namauser)->sum('unit_produk');
-        return view ('produk.index', [
-            "title" => "Keranjang"
-        ], compact('totalcart'));
+        return redirect('/shop');
     }
 
     public function show($id)
