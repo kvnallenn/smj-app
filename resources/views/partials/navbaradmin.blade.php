@@ -11,7 +11,7 @@
             <input type="text" placeholder="Search...">
         </li>
         <li>
-            <a href="pesanan.html">
+            <a href="/admin/pesanan">
                 <i class='bx bx-clipboard'></i>
                 <span class="links_name">Penjualan</span>
             </a>
