@@ -90,7 +90,8 @@
                         <th scope="col" class="th-header">Nama Rekening</th>
                         <th scope="col" class="th-header">Nama Bank</th>
                         <th scope="col" class="th-header">Nominal Transfer</th> 
-                        <th scope="col" class="th-header">Status</th>
+                        <th scope="col" class="th-header">Status Pembayaran</th>
+                        <th scope="col" class="th-header">Status Produk</th>
                       </tr>
                     </thead>
                     <tbody class="align-middle fw-bold">
@@ -128,7 +129,15 @@
                           <span class="badge bg-danger">Ditolak</span>
                           @endif
 
-
+                        </td>
+                        <td>
+                          @if ($item->status_pesanan == null)
+                          <span class="badge bg-secondary">Pending</span>
+                          @elseif($item->status_pesanan == "Terkirim")
+                          <span class="badge bg-warning">Sedang Dikirim</span>
+                          @elseif($item->status_pesanan == "Tolak")
+                          <span class="badge bg-danger">Ditolak</span>
+                          @endif
                         </td>
                       </tr>
                       @endforeach

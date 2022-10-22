@@ -26,4 +26,6 @@ class DaftarTransferController extends Controller
     
         return redirect('admin/daftartransfer')->with('notifikasi','Kategori berhasil diupdate');
     }
+
+   
 }

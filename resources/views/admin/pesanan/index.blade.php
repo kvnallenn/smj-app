@@ -161,10 +161,10 @@
                   
                 <nav>
                   <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Home</button>
-                    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</button>
-                    <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</button>
-                    <button class="nav-link" id="nav-disabled-tab" data-bs-toggle="tab" data-bs-target="#nav-disabled" type="button" role="tab" aria-controls="nav-disabled" aria-selected="false" disabled>Disabled</button>
+                    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Semua Pesanan</button>
+                    <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Belum Diproses</button>
+                    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Sedang Dikirim</button>
+                    <button class="nav-link" id="nav-selesai-tab" data-bs-toggle="tab" data-bs-target="#nav-selesai" type="button" role="tab" aria-controls="nav-selesai" aria-selected="false">Sedang Dikirim</button>
                   </div>
                 </nav>
                 <div class="tab-content p-2 mt-2" id="nav-tabContent">
@@ -174,26 +174,125 @@
                           <table class="table text-center">
                               <thead class="table-secondary th-header">
                                 <tr>
-                                  <th scope="col" class="th-header">Kode Produk</th>
-                                  <th scope="col" class="th-header">Nama Produk</th>
-                                  <th scope="col" class="th-header">Kategori Produk</th>
-                                  <th scope="col" class="th-header">Kuantitas</th>
-                                  <th scope="col" class="th-header">Unit</th>
-                                  <th scope="col" class="th-header">Harga Jual</th>
+                                  <th scope="col" class="th-header">Invoice</th>
+                                  <th scope="col" class="th-header">Nama User</th>
+                                  <th scope="col" class="th-header">Tanggal Pembelian</th>
+                                  <th scope="col" class="th-header">Nominal Transfer</th>
+                                  <th scope="col" colspan="2" class="th-header">Status Pesanan</th>
                                 </tr>
                               </thead>
                               <tbody class="align-middle">
-                           
-                              
-                         
+                                @foreach ($model as $item)
+                                <tr>
+                                  <td>{{ $item->invoice_produk }}</td>
+                                  <td>{{ $item->nama_user }}</td>
+                                  <td>{{ $item->created_at->format('d M Y') }}</td>
+                                  <td>{{ $item->nominal_transfer }}</td>
+                                    @if ( $item->status_pesanan == null)
+                                    <td>
+                                     <form action="{{ url('/admin/pesanan/'.$item->id) }}" method="post">
+                                      @csrf
+                                      @method('POST')
+                                     <input type="hidden" value="Terkirim" name="status-pesanan">
+                                     <button type="submit" class="btn btn-success">Kirim Pesanan</button>
+                                     </form>
+                                    </td>
+                                    @else
+                                    <td><span class="badge text-bg-warning">Sedang Dikirim</span></td>
+                                    @endif
+                                  </td>
+                                  </tr>
+                                @endforeach
                               </tbody>
                             </table>
                       </div>
                   </div>
                   </div>
-                  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">...</div>
-                  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">...</div>
-                  <div class="tab-pane fade" id="nav-disabled" role="tabpanel" aria-labelledby="nav-disabled-tab" tabindex="0">...</div>
+                  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+                    <div class="row row-keranjang">
+                      <div class="col table-responsive">
+                          <table class="table text-center">
+                              <thead class="table-secondary th-header">
+                                <tr>
+                                  <th scope="col" class="th-header">Invoice</th>
+                                  <th scope="col" class="th-header">Nama User</th>
+                                  <th scope="col" class="th-header">Tanggal Pembelian</th>
+                                  <th scope="col" class="th-header">Nominal Transfer</th>
+                                  <th scope="col" colspan="2" class="th-header">Status Pesanan</th>
+                                </tr>
+                              </thead>
+                              <tbody class="align-middle">
+                                @foreach ($model1 as $item)
+                                <tr>
+                                  <td>{{ $item->invoice_produk }}</td>
+                                  <td>{{ $item->nama_user }}</td>
+                                  <td>{{ $item->created_at->format('d M Y') }}</td>
+                                  <td>{{ $item->nominal_transfer }}</td>
+                                    @if ( $item->status_pesanan == null)
+                                    <td>
+                                     <form action="{{ url('/admin/pesanan/'.$item->id) }}" method="post">
+                                      @csrf
+                                      @method('POST')
+                                     <input type="hidden" value="Terkirim" name="status-pesanan">
+                                     <button type="submit" class="btn btn-success">Kirim Pesanan</button>
+                                     </form>
+                                    </td>
+                                    @else
+                                    <td><span class="badge text-bg-warning">Sedang Dikirim</span></td>
+                                    @endif
+                                  </td>
+                                  </tr>
+                                @endforeach
+                              </tbody>
+                            </table>
+                      </div>
+                  </div>
+
+
+                  </div>
+                  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
+                    <div class="row row-keranjang">
+                      <div class="col table-responsive">
+                          <table class="table text-center">
+                              <thead class="table-secondary th-header">
+                                <tr>
+                                  <th scope="col" class="th-header">Invoice</th>
+                                  <th scope="col" class="th-header">Nama User</th>
+                                  <th scope="col" class="th-header">Tanggal Pembelian</th>
+                                  <th scope="col" class="th-header">Nominal Transfer</th>
+                                  <th scope="col" colspan="2" class="th-header">Status Pesanan</th>
+                                </tr>
+                              </thead>
+                              <tbody class="align-middle">
+                                @foreach ($model3 as $item)
+                                <tr>
+                                  <td>{{ $item->invoice_produk }}</td>
+                                  <td>{{ $item->nama_user }}</td>
+                                  <td>{{ $item->created_at->format('d M Y') }}</td>
+                                  <td>{{ $item->nominal_transfer }}</td>
+                                    @if ( $item->status_pesanan == null)
+                                    <td>
+                                     <form action="{{ url('/admin/pesanan/'.$item->id) }}" method="post">
+                                      @csrf
+                                      @method('POST')
+                                     <input type="hidden" value="Terkirim" name="status-pesanan">
+                                     <button type="submit" class="btn btn-success">Kirim Pesanan</button>
+                                     </form>
+                                    </td>
+                                    @else
+                                    <td><span class="badge text-bg-warning">Sedang Dikirim</span></td>
+                                    @endif
+                                  </td>
+                                  </tr>
+                                @endforeach
+                              </tbody>
+                            </table>
+                      </div>
+                  </div>
+                  </div>
+                  <div class="tab-pane fade" id="nav-selesai" role="tabpanel" aria-labelledby="nav-selesai-tab" tabindex="0">
+                    tes
+                  </div>
                 </div>
                     
                 </div>

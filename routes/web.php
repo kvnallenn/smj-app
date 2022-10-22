@@ -93,7 +93,9 @@ Route::resource('/admin/adminproduk/detailproduk', DetailProdukController::class
 
 Route::resource('/admin', AdminLoginController::class)->except('show')->middleware('is_admin');
 
-Route::resource('/admin/pesanan', PesananController::class)->except('show')->middleware('is_admin');
+Route::get('/admin/pesanan', [PesananController::class, 'index'])->middleware('is_admin');
+
+Route::post('/admin/pesanan/{id}', [PesananController::class, 'update'])->middleware('is_admin');
 
 Route::resource('/admin/adminproduk', AdminProdukController::class)->except('show')->middleware('is_admin');
 
