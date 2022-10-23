@@ -15,9 +15,10 @@ class PesananController extends Controller
         $model1 = Payment::where('status_pesanan','=','Terkirim')->get();
         $model2 = Payment::where('status_pesanan','=',null)->get();
         $model3 = Payment::where('status_pesanan','=','Selesai')->get();
+        $model4 = Payment::where('status_pesanan','=','Komplain')->get();
         return view ('admin.pesanan.index', [
             "title" => "Pesanan"
-        ], compact('model','model1','model2','model3'));
+        ], compact('model','model1','model2','model3','model4'));
     }
 
     public function update(Request $request, $id)
@@ -29,4 +30,16 @@ class PesananController extends Controller
     
         return redirect('admin/pesanan')->with('notifikasi','Kategori berhasil diupdate');
     }
+
+    public function pesanan(Request $request)
+    {   
+
+        $kodeinvoice = $request->get('kode-invoice');
+        $model = Payment::where('invoice_produk','=',$kodeinvoice)->first();
+        $model->status_pesanan = $request->get('status-pengiriman');
+        $model->save();
+        return redirect('/status-pesanan');
+    }
+
+ 
 }

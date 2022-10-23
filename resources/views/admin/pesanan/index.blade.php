@@ -164,7 +164,9 @@
                     <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Semua Pesanan</button>
                     <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Belum Diproses</button>
                     <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Sedang Dikirim</button>
-                    <button class="nav-link" id="nav-selesai-tab" data-bs-toggle="tab" data-bs-target="#nav-selesai" type="button" role="tab" aria-controls="nav-selesai" aria-selected="false">Sedang Dikirim</button>
+                    <button class="nav-link" id="nav-komplain-tab" data-bs-toggle="tab" data-bs-target="#nav-komplain" type="button" role="tab" aria-controls="nav-komplain" aria-selected="false">Pesanan Dikomplain</button>
+                    <button class="nav-link" id="nav-selesai-tab" data-bs-toggle="tab" data-bs-target="#nav-selesai" type="button" role="tab" aria-controls="nav-selesai" aria-selected="false">Pesanan Selesai</button>
+                    
                   </div>
                 </nav>
                 <div class="tab-content p-2 mt-2" id="nav-tabContent">
@@ -174,33 +176,49 @@
                           <table class="table text-center">
                               <thead class="table-secondary th-header">
                                 <tr>
+                                  <th scope="col" class="th-header">No</th>
                                   <th scope="col" class="th-header">Invoice</th>
                                   <th scope="col" class="th-header">Nama User</th>
                                   <th scope="col" class="th-header">Tanggal Pembelian</th>
                                   <th scope="col" class="th-header">Nominal Transfer</th>
-                                  <th scope="col" colspan="2" class="th-header">Status Pesanan</th>
+                                  <th scope="col" class="th-header">Status Pesanan</th>
+                                  <th scope="col" class="th-header">Alasan Komplain</th>
+                                  <th scope="col" class="th-header">Gambar Komplain</th>
                                 </tr>
                               </thead>
                               <tbody class="align-middle">
                                 @foreach ($model as $item)
                                 <tr>
-                                  <td>{{ $item->invoice_produk }}</td>
+                                  <td>{{ $loop->iteration }}</td>
+                                  <td><a href="{{ url('/invoices/'.$item->invoice_produk) }}">SMJ-{{ $item->invoice_produk }}</a></td>
                                   <td>{{ $item->nama_user }}</td>
                                   <td>{{ $item->created_at->format('d M Y') }}</td>
-                                  <td>{{ $item->nominal_transfer }}</td>
-                                    @if ( $item->status_pesanan == null)
+                                  <td>Rp {{ $item->nominal_transfer }},-</td>
+                                    @if($item->status_transaksi == "Tolak")
+                                    <td><span class="badge text-bg-danger">Ditolak</span></td>
+                                    @elseif ( $item->status_pesanan == null)
                                     <td>
                                      <form action="{{ url('/admin/pesanan/'.$item->id) }}" method="post">
                                       @csrf
                                       @method('POST')
                                      <input type="hidden" value="Terkirim" name="status-pesanan">
-                                     <button type="submit" class="btn btn-success">Kirim Pesanan</button>
+                                     <button type="submit" class="btn btn-success btn-sm">Kirim Pesanan</button>
                                      </form>
                                     </td>
+                                    @elseif( $item->status_pesanan == "Komplain" )
+                                    <td><span class="badge bg-danger">Proses Komplain</span></td>
+                                    @elseif( $item->status_pesanan == "Selesai" )
+                                    <td><span class="badge bg-success">Pesanan Selesai</span></td>
                                     @else
                                     <td><span class="badge text-bg-warning">Sedang Dikirim</span></td>
                                     @endif
-                                  </td>
+                                    @if ( $item->alasan_komplain == null || $item->gambar_komplain == null)
+                                   <td></td>
+                                   <td></td>
+                                    @else
+                                    <td scope="col" class="th-header">{{ $item->alasan_komplain }}</td>
+                                    <td scope="col" class="th-header"><img id="image_preview" src="{{ asset('storage/'.$item->gambar_komplain)}}" width="75px" class="img-fluid"/></td>
+                                    @endif
                                   </tr>
                                 @endforeach
                               </tbody>
@@ -214,6 +232,7 @@
                           <table class="table text-center">
                               <thead class="table-secondary th-header">
                                 <tr>
+                                  <th scope="col" class="th-header">No</th>
                                   <th scope="col" class="th-header">Invoice</th>
                                   <th scope="col" class="th-header">Nama User</th>
                                   <th scope="col" class="th-header">Tanggal Pembelian</th>
@@ -224,7 +243,8 @@
                               <tbody class="align-middle">
                                 @foreach ($model1 as $item)
                                 <tr>
-                                  <td>{{ $item->invoice_produk }}</td>
+                                  <td>{{ $loop->iteration }}</td>
+                                  <td><a href="{{ url('/invoices/'.$item->invoice_produk) }}">SMJ-{{ $item->invoice_produk }}</a></td>
                                   <td>{{ $item->nama_user }}</td>
                                   <td>{{ $item->created_at->format('d M Y') }}</td>
                                   <td>{{ $item->nominal_transfer }}</td>
@@ -234,7 +254,7 @@
                                       @csrf
                                       @method('POST')
                                      <input type="hidden" value="Terkirim" name="status-pesanan">
-                                     <button type="submit" class="btn btn-success">Kirim Pesanan</button>
+                                     <button type="submit" class="btn btn-success btn-sm">Kirim Pesanan</button>
                                      </form>
                                     </td>
                                     @else
@@ -256,6 +276,55 @@
                           <table class="table text-center">
                               <thead class="table-secondary th-header">
                                 <tr>
+                                  <th scope="col" class="th-header">No</th>
+                                  <th scope="col" class="th-header">Invoice</th>
+                                  <th scope="col" class="th-header">Nama User</th>
+                                  <th scope="col" class="th-header">Tanggal Pembelian</th>
+                                  <th scope="col" class="th-header">Nominal Transfer</th>
+                                  <th scope="col" colspan="2" class="th-header">Status Pesanan</th>
+                                </tr>
+                              </thead>
+                              <tbody class="align-middle">
+                                @foreach ($model2 as $item)
+                                @if ($item->status_pesanan == "Tolak")
+
+                                @else
+                                <tr>
+                                  <td>{{ $loop->iteration }}</td>
+                                  <td><a href="{{ url('/invoices/'.$item->invoice_produk) }}">SMJ-{{ $item->invoice_produk }}</a></td>
+                                  <td>{{ $item->nama_user }}</td>
+                                  <td>{{ $item->created_at->format('d M Y') }}</td>
+                                  <td>{{ $item->nominal_transfer }}</td>
+                                    @if($item->status_transaksi == "Tolak")
+                                    <td><span class="badge text-bg-danger">Ditolak</span></td>
+                                    @elseif ( $item->status_pesanan == null)
+                                    <td>
+                                     <form action="{{ url('/admin/pesanan/'.$item->id) }}" method="post">
+                                      @csrf
+                                      @method('POST')
+                                     <input type="hidden" value="Terkirim" name="status-pesanan">
+                                     <button type="submit" class="btn btn-success btn-sm">Kirim Pesanan</button>
+                                     </form>
+                                    </td>
+                                    @else
+                                    <td><span class="badge text-bg-warning">Sedang Dikirim</span></td>
+                                    @endif
+                                  </td>
+                                  </tr>
+                                  @endif
+                                @endforeach
+                              </tbody>
+                            </table>
+                      </div>
+                  </div>
+                  </div>
+                  <div class="tab-pane fade" id="nav-selesai" role="tabpanel" aria-labelledby="nav-selesai-tab" tabindex="0">
+                    <div class="row row-keranjang">
+                      <div class="col table-responsive">
+                          <table class="table text-center">
+                              <thead class="table-secondary th-header">
+                                <tr>
+                                  <th scope="col" class="th-header">No</th>
                                   <th scope="col" class="th-header">Invoice</th>
                                   <th scope="col" class="th-header">Nama User</th>
                                   <th scope="col" class="th-header">Tanggal Pembelian</th>
@@ -266,7 +335,8 @@
                               <tbody class="align-middle">
                                 @foreach ($model3 as $item)
                                 <tr>
-                                  <td>{{ $item->invoice_produk }}</td>
+                                  <td>{{ $loop->iteration }}</td>
+                                  <td><a href="{{ url('/invoices/'.$item->invoice_produk) }}">SMJ-{{ $item->invoice_produk }}</a></td>
                                   <td>{{ $item->nama_user }}</td>
                                   <td>{{ $item->created_at->format('d M Y') }}</td>
                                   <td>{{ $item->nominal_transfer }}</td>
@@ -276,11 +346,11 @@
                                       @csrf
                                       @method('POST')
                                      <input type="hidden" value="Terkirim" name="status-pesanan">
-                                     <button type="submit" class="btn btn-success">Kirim Pesanan</button>
+                                     <button type="submit" class="btn btn-success btn-sm">Kirim Pesanan</button>
                                      </form>
                                     </td>
-                                    @else
-                                    <td><span class="badge text-bg-warning">Sedang Dikirim</span></td>
+                                    @else( $item->status_pesanan == "Selesai" )
+                                    <td><span class="badge bg-success">Pesanan Selesai</span></td>
                                     @endif
                                   </td>
                                   </tr>
@@ -290,8 +360,57 @@
                       </div>
                   </div>
                   </div>
-                  <div class="tab-pane fade" id="nav-selesai" role="tabpanel" aria-labelledby="nav-selesai-tab" tabindex="0">
-                    tes
+                  <div class="tab-pane fade" id="nav-komplain" role="tabpanel" aria-labelledby="nav-komplain-tab" tabindex="0">
+                    <div class="row row-keranjang">
+                      <div class="col table-responsive">
+                          <table class="table text-center">
+                              <thead class="table-secondary th-header">
+                                <tr>
+                                  <th scope="col" class="th-header">No</th>
+                                  <th scope="col" class="th-header">Invoice</th>
+                                  <th scope="col" class="th-header">Nama User</th>
+                                  <th scope="col" class="th-header">Tanggal Pembelian</th>
+                                  <th scope="col" class="th-header">Nominal Transfer</th>
+                                  <th scope="col" class="th-header">Status Pesanan</th>
+                                  <th scope="col" class="th-header">Alasan Komplain</th>
+                                  <th scope="col" class="th-header">Gambar Komplain</th>
+                                </tr>
+                              </thead>
+                              <tbody class="align-middle">
+                                @foreach ($model4 as $item)
+                                <tr>
+                                  <td>{{ $loop->iteration }}</td>
+                                  <td><a href="{{ url('/invoices/'.$item->invoice_produk) }}">SMJ-{{ $item->invoice_produk }}</a></td>
+                                  <td>{{ $item->nama_user }}</td>
+                                  <td>{{ $item->created_at->format('d M Y') }}</td>
+                                  <td>{{ $item->nominal_transfer }}</td>
+                                    @if ( $item->status_pesanan == null)
+                                    <td>
+                                     <form action="{{ url('/admin/pesanan/'.$item->id) }}" method="post">
+                                      @csrf
+                                      @method('POST')
+                                     <input type="hidden" value="Terkirim" name="status-pesanan">
+                                     <button type="submit" class="btn btn-success btn-sm">Kirim Pesanan</button>
+                                     </form>
+                                    </td>
+                                    @elseif( $item->status_pesanan == "Komplain" )
+                                    <td><span class="badge bg-danger">Proses Komplain</span></td>
+                                    @else
+                                    @endif
+                                    @if ( $item->alasan_komplain == null || $item->gambar_komplain == null)
+                                    <td></td>
+                                    <td></td>
+                                     @else
+                                     <td scope="col" class="th-header">{{ $item->alasan_komplain }}</td>
+                                     <td scope="col" class="th-header"><img id="image_preview" src="{{ asset('storage/'.$item->gambar_komplain)}}" width="75px" class="img-fluid"/></td>
+                                     @endif
+                                  </td>
+                                  </tr>
+                                @endforeach
+                              </tbody>
+                            </table>
+                      </div>
+                  </div>
                   </div>
                 </div>
                     

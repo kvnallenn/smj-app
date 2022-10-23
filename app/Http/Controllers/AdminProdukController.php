@@ -29,7 +29,6 @@ class AdminProdukController extends Controller
     public function store(Request $request)
     {
         
-
         $Validasidata = $request->validate([
             'kode_produk' => 'required|unique:products', 
             'nama_produk' => 'required',

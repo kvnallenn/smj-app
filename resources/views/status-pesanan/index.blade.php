@@ -70,6 +70,111 @@
               </div>
               {{-- MODAL PDF --}}
 
+
+          {{-- STATUS KOMPLAIN UPDATE --}}
+
+          @foreach ( $datapay as $items )
+          <div class="modal fade" id="upkomplainmodal--{{ $items->invoice_produk }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="staticBackdropLabel">Komplain</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form action="{{ url('/status-pesanan/komplain/status/'.$items->invoice_produk) }}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    @method('post')
+                    <label for="exampleFormControlTextarea1" class="form-label">Apakah proses komplain anda sudah selesai ?</label>
+                    <input type="hidden" value="Selesai" name="komplain-status">
+                    <input type="hidden" value="{{ $items->invoice_produk }}" name="komplain-invoice">
+                  
+                </div>
+                
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Belum</button>
+                  <button type="submit" class="btn btn-primary">Selesai</button>
+                </div>
+              </form>
+              </div>
+            </div>
+          </div>
+          @endforeach
+
+
+          {{-- STATUS KOMPLAIN UPDATE --}}
+
+          {{-- MODAL Komplain --}}
+          @foreach ( $datapay as $items )
+          <div class="modal fade" id="komplainmodal--{{ $items->invoice_produk }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="staticBackdropLabel">Ajukan Komplain </h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <form action="{{ url('/status-pesanan/komplain/'.$items->invoice_produk) }}" method="post" enctype="multipart/form-data">
+                  @csrf
+                  @method('post')
+                  <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Alasan</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" name="alasan_komplain" rows="3"></textarea>
+                    <input type="hidden" value="{{ $items->invoice_produk }}" name="kunci-invoice">
+                    <input type="hidden" value="Komplain" name="status-komplain">
+                  </div>
+                  <div class="mb-3">
+                    <label for="formFileMultiple" class="form-label">Bukti Komplain ( Bila Perlu )</label>
+                    <img id="image_preview" class="col-sm-5 p-3 d-block img-fluid"/>
+                    <input class="form-control @error('gambar_produk') is-invalid @enderror" type="file" id="formFileMultiple" name="gambar_komplain" id="gambar_produk" onchange="previewImage(event)" multiple>
+                  @error('gambar_produk')
+                    <div class="invalid-feedback">
+                    {{ $message }}
+                    </div>
+                  @enderror
+                  </div>
+                </div>
+                
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batalkan</button>
+                  <button type="submit" class="btn btn-primary">Ajukan Komplain</button>
+                </div>
+              </form>
+              </div>
+            </div>
+          </div>
+          @endforeach
+          {{-- MODAL Komplain --}}
+
+          {{-- MODAL TERIMA Pesanan --}}
+           @foreach ( $datapay as $items )
+            <div class="modal fade" id="editmodal--{{ $items->invoice_produk }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Terima Pesanan</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    Apakah produk anda sudah diterima ?
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#komplainmodal--{{ $items->invoice_produk }}">Ajukan Komplain</button>
+                    <form action="{{ url ('/admin/pesanan/status/'.$items->invoice_produk) }}" method="POST">
+                      @csrf
+                      @method('POST')
+                      <input type="hidden" value="Selesai" name="status-pengiriman">
+                      <input type="hidden" value="{{ $items->invoice_produk }}" name="kode-invoice">
+                      <button type="submit" class="btn btn-primary">Sudah Diterima</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            @endforeach
+              {{-- MODAL TERIMA PESANAN --}}
+
                 <table class="table">
                   @if( $datapay == null)
                   <div class="container">
@@ -91,7 +196,13 @@
                         <th scope="col" class="th-header">Nama Bank</th>
                         <th scope="col" class="th-header">Nominal Transfer</th> 
                         <th scope="col" class="th-header">Status Pembayaran</th>
-                        <th scope="col" class="th-header">Status Produk</th>
+                        <th scope="col" class="th-header text-right">Status Produk</th>
+                        @foreach ($datapay as $item)
+                        @if($item->status_pesanan == "Terkirim")
+                        <th scope="col" class="th-header"></th>
+                        @else
+                        @endif
+                        @endforeach
                       </tr>
                     </thead>
                     <tbody class="align-middle fw-bold">
@@ -131,12 +242,18 @@
 
                         </td>
                         <td>
-                          @if ($item->status_pesanan == null)
-                          <span class="badge bg-secondary">Pending</span>
+                          @if($item->status_transaksi == "Tolak")
+                          <span class="badge bg-danger">Ditolak</span>
+                          @elseif ($item->status_pesanan == null)
+                          <span class="badge bg-warning">Pending</span>
                           @elseif($item->status_pesanan == "Terkirim")
-                          <span class="badge bg-warning">Sedang Dikirim</span>
+                          <button type="submit" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#editmodal--{{ $item->invoice_produk }}"><span class="badge bg-secondary">Sedang Dikirim</span></button>
                           @elseif($item->status_pesanan == "Tolak")
                           <span class="badge bg-danger">Ditolak</span>
+                          @elseif ($item->status_pesanan == "Selesai")
+                          <span class="badge bg-success">Pesanan Selesai</span>
+                          @else
+                          <button type="submit" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#upkomplainmodal--{{ $item->invoice_produk }}"><span class="badge bg-danger">Proses Komplain</span></button>
                           @endif
                         </td>
                       </tr>
@@ -153,7 +270,7 @@
       
     @include('partials.footer')
     @include('partials.navbarbot')
-
+    <script src="../js/Imagepreview.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script language="JavaScript" type="text/javascript" src="../js/jquery.js"></script>
     <script language="JavaScript" type="text/javascript" src="../js/Scroll.js"></script>

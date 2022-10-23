@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('nama_bank');
             $table->string('status_transaksi')->nullable();
             $table->string('status_pesanan')->nullable();
+            $table->string('status_pengiriman')->nullable();
         });
     }
 

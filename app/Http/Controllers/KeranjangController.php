@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cart;
+use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 
 class KeranjangController extends Controller
@@ -44,7 +45,6 @@ class KeranjangController extends Controller
             $model->unit_produk = $request->get('unit_produk');
             $model->image = $request->get('gambar_produk');
             $model->save();
-            return redirect('/keranjang/')->with('notifikasi','Berhasil menambah ke keranjang!');
 
         }elseif($lockproduk == $kuncitasproduk->nama_produk){
             
@@ -58,7 +58,8 @@ class KeranjangController extends Controller
             }
             $kunciquery->unit_produk = $produkkunci;
             $kunciquery->save();
-            return redirect('/keranjang/')->with('notifikasi','Berhasil menambah ke keranjang!');
+
+
 
         }else{
             $model = new Cart;
@@ -68,8 +69,25 @@ class KeranjangController extends Controller
             $model->unit_produk = $request->get('unit_produk');
             $model->image = $request->get('gambar_produk');
             $model->save();
-            return redirect('/keranjang/')->with('notifikasi','Berhasil menambah ke keranjang!');
         }
+
+
+        
+        // $update = Product::where(['nama_produk' => $lockproduk])->first();
+        // $kuantitas_produk = $update->kuantitas_produk;
+        // $kuantitas_produk = $kuantitas_produk-$produkkunci;
+        // $update->kuantitas_produk = $kuantitas_produk;
+
+        // $update->save();
+        $stock = Product::where(['nama_produk' => $lockproduk])->first();
+        $stockx = Cart::where(['nama_produk' => $lockproduk])->first();
+        $unit_dibeli = $stockx->unit_produk; 
+        $kuantitas_produk = $stock->kuantitas_produk; 
+        $a = $kuantitas_produk - $unit_dibeli; 
+        $stock->kuantitas_produk = $a;
+        $stock->save();
+
+        return redirect('/keranjang/')->with('notifikasi','Berhasil menambah ke keranjang!');
    }
 
     public function destroy($id)
@@ -82,10 +100,17 @@ class KeranjangController extends Controller
     public function tambahq($id)
     {
         $model = Cart::find($id);
+        $namap = $model->nama_produk;
         $uasli = $model->unit_produk;
         $uasli = $uasli+1;
         $model->unit_produk = $uasli;
+        $stock = Product::where(['nama_produk' => $namap])->first();
+        $stockdb = $stock->kuantitas_produk;
+        $stockdb = $stockdb-$uasli;
+        $stock->kuantitas_produk = $stockdb;
+
         $model->save();
+        $stock->save();
         return redirect('/keranjang/')->with('notifikasi','Berhasil menambah ke keranjang!');
     }
 

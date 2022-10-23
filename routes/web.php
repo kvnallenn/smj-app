@@ -75,6 +75,10 @@ Route::get('/status-pesanan', [StatusPesananController::class, 'index']);
 
 Route::post('/status-pesanan', [StatusPesananController::class, 'store']);
 
+Route::post('/status-pesanan/komplain/{id}', [StatusPesananController::class, 'komplain']);
+
+Route::post('/status-pesanan/komplain/status/{id}', [StatusPesananController::class, 'komplainstatus']);
+
 Route::get('/user-settings/', [UserSettingsController::class, 'faker']);
 
 Route::get('/user-settings/{id}', [UserSettingsController::class, 'index']);
@@ -94,6 +98,8 @@ Route::resource('/admin/adminproduk/detailproduk', DetailProdukController::class
 Route::resource('/admin', AdminLoginController::class)->except('show')->middleware('is_admin');
 
 Route::get('/admin/pesanan', [PesananController::class, 'index'])->middleware('is_admin');
+
+Route::post('/admin/pesanan/status/{id}', [PesananController::class, 'pesanan'])->middleware('is_admin');
 
 Route::post('/admin/pesanan/{id}', [PesananController::class, 'update'])->middleware('is_admin');
 

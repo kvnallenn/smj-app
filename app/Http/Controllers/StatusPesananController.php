@@ -94,7 +94,39 @@ class StatusPesananController extends Controller
         $pdf = PDF::loadview('cetak-invoice.index', compact('datainvoice', 'hitunginvoice','datacart'));
         return $pdf->download('invoice.pdf');
       
+    }
 
+    public function komplain(Request $request)
+    {   
+
+    
+        $Validasidata = $request->validate([
+            'alasan_komplain' => 'required',
+            'gambar_komplain' => 'required|image|file|max:400', 
+        ]);
+
+        $kunciinvoice = $request->get('kunci-invoice');
+        $model = Payment::where('invoice_produk','=',$kunciinvoice)->first();
+        $model->alasan_komplain = $request->get('alasan_komplain');
+        $model->gambar_komplain = $request->file('gambar_komplain')->store('komplain-images');
+        $model->status_pesanan = $request->get('status-komplain');
+        $model->save();
+ 
+        return redirect('/status-pesanan');
+       
+    }
+
+    public function komplainstatus(Request $request)
+    {   
+
+
+        $kunciinvoice = $request->get('komplain-invoice');
+        $model = Payment::where('invoice_produk','=',$kunciinvoice)->first();
+        $model->status_pesanan = $request->get('komplain-status');
+        $model->save();
+ 
+        return redirect('/status-pesanan');
+       
     }
 
 }
