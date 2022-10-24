@@ -5,16 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
-
+use App\Models\Invoice;
 
 class DetailProdukController extends Controller
 {
     public function show($id)
     {
         $datalistproduk = Product::find($id);
+        $nama_produk = $datalistproduk->nama_produk;
         $datalistkategori = Category::all();
+        $datainvoice = Invoice::where('nama_produk','=',$nama_produk)->get();
         return view ('admin.adminproduk.detailproduk.index', compact(
-            'datalistproduk', 'datalistkategori'
+            'datalistproduk', 'datalistkategori', 'datainvoice'
         ));
     }
 

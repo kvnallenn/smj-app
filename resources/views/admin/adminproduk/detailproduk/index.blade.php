@@ -31,14 +31,14 @@
                         <div class="input-group-prepend">
                             <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tindakan</button>
                             <div class="dropdown-menu">
-                              <a class="dropdown-item btn" data-bs-toggle="modal" data-bs-target="#exampleModal">Stock Opname</a>
+                              <a class="dropdown-item btn" data-bs-toggle="modal" data-bs-target="#updateStockModal--{{ $datalistproduk->id }}">Stock Opname</a>
                               <a class="dropdown-item btn" data-bs-toggle="modal" data-bs-target="#updateModal--{{ $datalistproduk->id }}">Ubah Produk</a>
                             </div>
                           </div>
                     </div>  
                     <!-- MODAL -->
 
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="updateStockModal--{{ $datalistproduk->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                           <div class="modal-content">
                             <div class="modal-header">
@@ -46,39 +46,44 @@
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form>
-                                    <div class="form-group row mb-3 mt-2">
-                                        <label for="inputEmail3" class="col-sm-5 col-form-label">Tanggal</label>
-                                        <div class="col">
-                                          <input type="email" class="form-control" id="inputEmail3" placeholder="Kode Produk">
-                                        </div>
-                                    </div>
+                                
                                     <fieldset disabled>
                                     <div class="form-group row mb-3 mt-2">
                                         <label for="inputEmail3" class="col-sm-5 col-form-label">Stock saat ini</label>
                                         <div class="col-3">
-                                          <input type="number" class="form-control" id="inputEmail3" placeholder="">
+                                          <input type="number" class="form-control" id="stock-skrg" id="inputEmail3" placeholder="" value="{{ $datalistproduk->kuantitas_produk }}" oninput="add_number()">
                                         </div>
                                     </div>
                                 </fieldset>
+                                <form action="{{ url ('/admin/daftartransfer/npm/'.$datalistproduk->id) }}" method="post">
+                                  @csrf
+                                  @method('POST')
                                     <div class="form-group row mb-4 mt-2">
                                         <label for="inputEmail3" class="col-sm-5 col-form-label">Jumlah Penyesuaian</label>
                                         <div class="col-3">
-                                          <input type="number" class="form-control" id="inputEmail3" placeholder="">
+                                          <input type="number" class="form-control" id="jlh-pny" name="stock-update" oninput="add_number()">
+                                          {{-- <input type="hidden" name="id-produk" value="{{ $datalistproduk->id }}"> --}}
                                         </div>
                                     </div>
+                                    <fieldset disabled>
                                     <div class="form-group row mb-3 mt-2">
                                         <label for="inputEmail3" class="col-sm-5 col-form-label">Kuantitas Sekarang</label>
                                         <div class="col-3">
-                                          <input type="number" class="form-control" id="inputEmail3" placeholder="">
+                                          <input type="number" class="form-control" id="jlh-skrg" placeholder="" >
                                         </div>
                                     </div>
-                                </form>
+                                  </fieldset>
+                                  <div class="mb-3">
+                                    <label for="exampleFormControlTextarea1" class="form-label">Alasan</label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="alasan"></textarea>
+                                  </div>
+                               
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                              <button type="button" class="btn btn-primary">Save changes</button>
+                              <button type="submit" class="btn btn-primary">Save changes</button>
                             </div>
+                             </form>
                           </div>
                         </div>
                       </div>
@@ -189,6 +194,44 @@
                 @endif
 
                {{-- NOTIFIKASI BERHASIL --}}  
+                   {{-- NOTIFIKASI BERHASIL --}}
+
+                   @if(session()->has('notifikasi'))
+                   <div class="row">
+                     <div class="col-xl-6 col-lg-6">
+                       <div class="alert alert-success d-flex d-inline align-items-center alert-dismissible fade show" role="alert">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                       <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                     </svg>
+                       <div class="mx-2">  
+                           {{ session('notifikasi') }}
+                       </div>
+                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                       </div>
+                     </div>
+                   </div>
+                 @endif
+ 
+                {{-- NOTIFIKASI BERHASIL --}}  
+                    {{-- NOTIFIKASI GAGAL --}}
+
+                    @if(session()->has('notifikasigagal'))
+                    <div class="row">
+                      <div class="col-xl-6 col-lg-6">
+                        <div class="alert alert-warning d-flex d-inline align-items-center alert-dismissible fade show" role="alert">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                      </svg>
+                        <div class="mx-2">  
+                            {{ session('notifikasigagal') }}
+                        </div>
+                          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                      </div>
+                    </div>
+                  @endif
+  
+                 {{-- NOTIFIKASI GAGAL --}} 
                     <h5>Detail Produk</h5>
                     <br>
                      
@@ -242,20 +285,50 @@
                                   </tr>
                                 </thead>
                                 <tbody class="align-middle">
+                                  @foreach ($datainvoice as $item)
+                                      
+                                  
                                   <tr>
-                                    <th scope="row">001/001/001</th>
-                                    <td>Gas Elpiji 5KG</td>
-                                    <td>Gas</td>
+                                    <td scope="row">{{ $item->created_at->format('d M Y') }}</td>
+                                    <td><a href="{{ url('/invoices/'.$item->invoice_produk) }}">SMJ-{{ $item->invoice_produk }}</a></td>
+                                    <td>-{{ $item->unit_produk}}</td>
                                   </tr>
-                                  <tr>
-                                    <th scope="row">001/001/001</th>
-                                    <td>Gas Elpiji 5KG</td>
-                                    <td>Gas</td>
-                                  </tr>
+
+
+
+                                  @endforeach
                                 </tbody>
                               </table>
                         </div>
                     </div>
+                    <div class="row row-keranjang mt-3">
+                      <h4>Stock Produk</h4>
+                      <div class="col table-responsive">
+                          <table class="table text-center">
+                              <thead class="table-secondary th-header">
+                                <tr>
+                                  <th scope="col" class="th-header">Tanggal</th>
+                                  <th scope="col" class="th-header">Invoice</th>
+                                  <th scope="col" class="th-header">Jumlah</th>
+                                </tr>
+                              </thead>
+                              <tbody class="align-middle">
+                                @foreach ($datainvoice as $item)
+                                    
+                                
+                                <tr>
+                                  <td scope="row">{{ $item->created_at->format('d M Y') }}</td>
+                                  <td><a href="{{ url('/invoices/'.$item->invoice_produk) }}">SMJ-{{ $item->invoice_produk }}</a></td>
+                                  <td>-{{ $item->unit_produk}}</td>
+                                </tr>
+
+
+
+                                @endforeach
+                              </tbody>
+                            </table>
+                      </div>
+                  </div>
                 </div>
                 </div>
                         
@@ -279,8 +352,7 @@
 
 
 
-
-
+    <script src="/js/Stockopname.js"></script>
     <script src="/js/Imagepreview.js"></script>
     <script src="/js/Sidebar.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
