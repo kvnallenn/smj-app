@@ -26,6 +26,9 @@ return new class extends Migration
             $table->string('status_transaksi')->nullable();
             $table->string('status_pesanan')->nullable();
             $table->string('status_pengiriman')->nullable();
+            $table->string('alasan_komplain')->nullable();
+            $table->string('gambar_komplain')->nullable();
+            
         });
     }
 

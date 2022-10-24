@@ -46,20 +46,36 @@ class KeranjangController extends Controller
             $model->image = $request->get('gambar_produk');
             $model->save();
 
+            $stock = Product::where(['nama_produk' => $lockproduk])->first();
+            $stockx = Cart::where(['nama_produk' => $lockproduk])->first();
+            $unit_dibeli = $stockx->unit_produk;    
+            $kuantitas_produk = $stock->kuantitas_produk; 
+            $a = $kuantitas_produk - $unit_dibeli; 
+            $stock->kuantitas_produk = $a;
+            $stock->save();
+
+
         }elseif($lockproduk == $kuncitasproduk->nama_produk){
             
             $kuncidaridp = $request->get('unit_produk');
             $kunciquery = Cart::where(['nama_user' => $namauser, 'nama_produk' => $lockproduk])->first();
             $produkkunci = $kunciquery->unit_produk;
             if($kuncidaridp == 0){
-              $produkkunci = $produkkunci+1;  
+             $stockupdate = $produkkunci+1;
+
             }else{
-              $produkkunci = $produkkunci+$kuncidaridp;  
+              $stockupdate = $produkkunci+$kuncidaridp;
+              $kuncistockbaru = $stockupdate - $produkkunci;
+              
+              $stock = Product::where(['nama_produk' => $lockproduk])->first();
+              $stockdata = $stock->kuantitas_produk;
+              $stockdata = $stockdata-$kuncistockbaru;
+              $stock->kuantitas_produk = $stockdata;
+              $stock->save();
             }
-            $kunciquery->unit_produk = $produkkunci;
+
+            $kunciquery->unit_produk = $stockupdate;
             $kunciquery->save();
-
-
 
         }else{
             $model = new Cart;
@@ -71,28 +87,23 @@ class KeranjangController extends Controller
             $model->save();
         }
 
-
-        
-        // $update = Product::where(['nama_produk' => $lockproduk])->first();
-        // $kuantitas_produk = $update->kuantitas_produk;
-        // $kuantitas_produk = $kuantitas_produk-$produkkunci;
-        // $update->kuantitas_produk = $kuantitas_produk;
-
-        // $update->save();
-        $stock = Product::where(['nama_produk' => $lockproduk])->first();
-        $stockx = Cart::where(['nama_produk' => $lockproduk])->first();
-        $unit_dibeli = $stockx->unit_produk; 
-        $kuantitas_produk = $stock->kuantitas_produk; 
-        $a = $kuantitas_produk - $unit_dibeli; 
-        $stock->kuantitas_produk = $a;
-        $stock->save();
-
         return redirect('/keranjang/')->with('notifikasi','Berhasil menambah ke keranjang!');
    }
 
     public function destroy($id)
     {
         $model = Cart::find($id);
+        $namap = $model->nama_produk;
+        $uasli = $model->unit_produk;
+        $untukproduk = 0;
+        $untukproduk = $untukproduk-$uasli;
+        
+        $stock = Product::where(['nama_produk' => $namap])->first();
+        $stockdb = $stock->kuantitas_produk;
+        $stockdb = $stockdb - $untukproduk;
+        $stock->kuantitas_produk = $stockdb;
+
+        $stock->save();
         $model->delete();
         return redirect('/keranjang')->with('notifikasi','Berhasil menghapus produk dari keranjang!');
     }
@@ -101,12 +112,15 @@ class KeranjangController extends Controller
     {
         $model = Cart::find($id);
         $namap = $model->nama_produk;
-        $uasli = $model->unit_produk;
-        $uasli = $uasli+1;
-        $model->unit_produk = $uasli;
+        $uasli = $model->unit_produk; 
+        $a = $uasli + 1;
+        $model->unit_produk = $a;
+        $untukproduk = $a - $uasli;
+
+        
         $stock = Product::where(['nama_produk' => $namap])->first();
         $stockdb = $stock->kuantitas_produk;
-        $stockdb = $stockdb-$uasli;
+        $stockdb = $stockdb - $untukproduk;
         $stock->kuantitas_produk = $stockdb;
 
         $model->save();
@@ -117,15 +131,31 @@ class KeranjangController extends Controller
     public function kurangq($id)
     {
         $model = Cart::find($id);
-        $uasli = $model->unit_produk;
-        $uasli = $uasli-1;
-        if($uasli == 0){
+        $namap = $model->nama_produk;
+        $uasli = $model->unit_produk; 
+        $decoy = $uasli-1;
+        $untukproduk = $decoy-$uasli;
+        if($decoy == 0){
+          $stock = Product::where(['nama_produk' => $namap])->first();
+          $stockdb = $stock->kuantitas_produk;
+          $stockdb = $stockdb - $untukproduk;
+          $stock->kuantitas_produk = $stockdb;
+
           $model->delete(); 
+          $stock->save();
           return redirect('/keranjang/')->with('notifikasi','Keranjang telah dihapus!');
         }else{
-          $model->unit_produk = $uasli;
+          
+          $stock = Product::where(['nama_produk' => $namap])->first();
+          $stockdb = $stock->kuantitas_produk;
+          $stockdb = $stockdb - $untukproduk;
+          $stock->kuantitas_produk = $stockdb;
+          
+          $model->unit_produk = $decoy;
+          $stock->save();
           $model->save();
           return redirect('/keranjang/')->with('notifikasi','Keranjang berhasil diubah!');
+
         }
         
     }
