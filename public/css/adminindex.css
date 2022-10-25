@@ -370,7 +370,7 @@ ul{
 
 #riwayat-log{
   width: 100%;
-  height: 52%;
+  height: 43vh;
   overflow: auto;
   overflow-x: hidden;
 }
@@ -430,4 +430,20 @@ ul{
 
 #bukti-transfer{
   width: 75px;
+}
+
+.toast.fade.show{
+  width: 100%;
+}
+
+@media (max-width: 500px) { 
+  .toast-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .pesan-notif{
+    margin-top: 3px;
+  }
 }

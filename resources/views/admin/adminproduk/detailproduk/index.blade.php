@@ -62,7 +62,7 @@
                                         <label for="inputEmail3" class="col-sm-5 col-form-label">Jumlah Penyesuaian</label>
                                         <div class="col-3">
                                           <input type="number" class="form-control" id="jlh-pny" name="stock-update" oninput="add_number()">
-                                          {{-- <input type="hidden" name="id-produk" value="{{ $datalistproduk->id }}"> --}}
+                                          <input type="hidden" name="id-produk" value="{{ $datalistproduk->id }}">
                                         </div>
                                     </div>
                                     <fieldset disabled>
@@ -232,6 +232,32 @@
                   @endif
   
                  {{-- NOTIFIKASI GAGAL --}} 
+                 {{-- MODAL HAPUS STOCK Opname --}}
+                 @foreach ($dataopname as $item)
+                 <div class="modal fade" id="sopnameModal--{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <form action="{{ url('/admin/adminproduk/detailproduk/hapus/'.$item->id) }}" method="POST">
+                        @method('POST')
+                        @csrf
+                      <div class="modal-body">
+                        <input type="hidden" value="{{ $item->id_produk }}" name="id-produk">
+                        Apakah anda ingin menghapus data ini?
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary">Hapus</button>
+                      </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                @endforeach
+                 {{-- MODAL HAPUS STOCK Opname --}}
                     <h5>Detail Produk</h5>
                     <br>
                      
@@ -308,18 +334,22 @@
                               <thead class="table-secondary th-header">
                                 <tr>
                                   <th scope="col" class="th-header">Tanggal</th>
+                                  <th scope="col" class="th-header">Waktu</th>
                                   <th scope="col" class="th-header">Invoice</th>
                                   <th scope="col" class="th-header">Jumlah</th>
+                                  <th scope="col" class="th-header">Action</th>
                                 </tr>
                               </thead>
                               <tbody class="align-middle">
-                                @foreach ($datainvoice as $item)
+                                @foreach ($dataopname as $item)
                                     
                                 
                                 <tr>
                                   <td scope="row">{{ $item->created_at->format('d M Y') }}</td>
-                                  <td><a href="{{ url('/invoices/'.$item->invoice_produk) }}">SMJ-{{ $item->invoice_produk }}</a></td>
-                                  <td>-{{ $item->unit_produk}}</td>
+                                  <td>{{ $item->created_at->format('H:i') }}</td>
+                                  <td>{{ $item->alasan }}</td>
+                                  <td>{{ $item->jumlah}}</td>
+                                  <td><button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#sopnameModal--{{ $item->id }}"><span class="badge text-bg-danger">Hapus</span></button></td>
                                 </tr>
 
 

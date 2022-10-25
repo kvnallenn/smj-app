@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Invoice;
+use App\Models\Stock;
 
 class DetailProdukController extends Controller
 {
@@ -14,9 +15,10 @@ class DetailProdukController extends Controller
         $datalistproduk = Product::find($id);
         $nama_produk = $datalistproduk->nama_produk;
         $datalistkategori = Category::all();
+        $dataopname = Stock::where('id_produk', '=', $id)->get();
         $datainvoice = Invoice::where('nama_produk','=',$nama_produk)->get();
         return view ('admin.adminproduk.detailproduk.index', compact(
-            'datalistproduk', 'datalistkategori', 'datainvoice'
+            'datalistproduk', 'datalistkategori', 'datainvoice', 'dataopname'
         ));
     }
 
@@ -40,4 +42,7 @@ class DetailProdukController extends Controller
 
         return redirect('admin/adminproduk/detailproduk/'.$model->id)->with('notifikasiupdate','Produk berhasil diupdate');
     }
+
+    
+  
 }

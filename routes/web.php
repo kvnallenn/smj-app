@@ -95,6 +95,8 @@ Route::post('/admin/daftartransfer/{id}', [DaftarTransferController::class, 'upd
 
 Route::post('/admin/daftartransfer/npm/{id}', [DaftarTransferController::class, 'updateproduk'])->middleware('is_admin');
 
+Route::post('/admin/adminproduk/detailproduk/hapus/{id}', [DaftarTransferController::class, 'deleteopname'])->middleware('is_admin');
+
 Route::resource('/admin/adminproduk/detailproduk', DetailProdukController::class)->middleware('is_admin');
 
 Route::resource('/admin', AdminLoginController::class)->except('show')->middleware('is_admin');

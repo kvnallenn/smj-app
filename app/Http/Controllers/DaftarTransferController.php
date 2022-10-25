@@ -35,6 +35,7 @@ class DaftarTransferController extends Controller
         $statuspay = Product::find($id);
         
         $stockdtg = $request->get('stock-update');
+        $idproduk = $request->get('id-produk');
         $alasan = $request->get('alasan');
         $stockskrg = $statuspay->kuantitas_produk; 
 
@@ -47,14 +48,36 @@ class DaftarTransferController extends Controller
           $opname = new Stock();
           $opname->alasan = $alasan;
           $opname->jumlah = $stockdtg;
+          $opname->id_produk = $idproduk;
 
           $opname->save();
           $statuspay->save();
           return redirect('admin/adminproduk/detailproduk/'.$statuspay->id)->with('notifikasi','Berhasil Melakukan Stock Opname');
         }
+    }
 
+    public function deleteopname(Request $request, $id)
+    {   
         
-    
+        $kunciid = $request->get('id-produk');
+        $models = Stock::find($id);
+        $kuncipalsu = $models->jumlah; 
+        $modelp = Product::find($kunciid);
+        $kuncipasli = $modelp->kuantitas_produk;
+
+            
+        if ( $kuncipalsu < 0 ){
+            $kuncipasli = $kuncipasli-$kuncipalsu;
+        }
+        else{
+            $kuncipasli = $kuncipasli-$kuncipalsu;
+        }
+
+        $modelp->kuantitas_produk = $kuncipasli;
+        $modelp->save();
+
+        $models->delete();
+        return redirect('/admin/adminproduk/detailproduk/'.$kunciid)->with('notifikasi','Stock Opname Diupdate!');
     }
    
 }
