@@ -63,6 +63,8 @@
                                     <div class="mb-3">
                                       <label for="message-text" class="col-form-label">Jenis Kategori</label>
                                       <input type="text" required class="form-control" id="jenis_kategori" name="jenis_kategori" value="{{old('kode_kategori')}}">
+                                      <input type="hidden" value="membuat kategori baru" name="pesan">
+                                      <input type="hidden" value="{{ auth()->user()->name }}" name="nama_user">
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -97,6 +99,8 @@
                                     <div class="mb-3">
                                       <label for="message-text" class="col-form-label">Jenis Kategori</label>
                                       <input type="text" class="form-control" id="edit_jeniskategori" name="edit_jeniskategori" value="{{ $editkategori->jenis_kategori }}">
+                                      <input type="hidden" value="memperbaharui kategori" name="pesan">
+                                      <input type="hidden" value="{{ auth()->user()->name }}" name="nama_user">
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -126,6 +130,8 @@
                                 <div class="modal-body">
                                   Apakah anda ingin menghapus produk "{{ $deletekategori->jenis_kategori }}"?
                                 </div>
+                                <input type="hidden" value="menghapus kategori" name="pesan">
+                                <input type="hidden" value="{{ auth()->user()->name }}" name="nama_user">
                                 <div class="modal-footer">
                                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
                                   <button type="submit" class="btn btn-primary">Ya</button>

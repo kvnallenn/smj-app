@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Payment;
 use App\Models\Product;
 use App\Models\Stock;
+use App\Models\Notification;
 
 class DaftarTransferController extends Controller
 {
@@ -52,6 +53,12 @@ class DaftarTransferController extends Controller
 
           $opname->save();
           $statuspay->save();
+
+          $notif = new Notification;
+          $notif->notifikasi = $request->get('pesan');
+          $notif->nama_user = $request->get('nama_user');
+          $notif->save();
+  
           return redirect('admin/adminproduk/detailproduk/'.$statuspay->id)->with('notifikasi','Berhasil Melakukan Stock Opname');
         }
     }

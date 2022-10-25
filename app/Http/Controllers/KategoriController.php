@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Notification;
 
 class KategoriController extends Controller
 {
@@ -50,6 +51,12 @@ class KategoriController extends Controller
         $model->kode_kategori = $request->get('kode_kategori');
         $model->jenis_kategori = $request->get('jenis_kategori');
         $model->save();
+
+        $notif = new Notification;
+        $notif->notifikasi = $request->get('pesan');
+        $notif->nama_user = $request->get('nama_user');
+        $notif->save();
+
         return redirect('admin/kategoriproduk')->with('notifikasi','Kategori berhasil ditambahkan');
        
     }
@@ -92,7 +99,10 @@ class KategoriController extends Controller
         $model->jenis_kategori = $request->get('edit_jeniskategori');
         $model->save();
 
-        
+        $notif = new Notification;
+        $notif->notifikasi = $request->get('pesan');
+        $notif->nama_user = $request->get('nama_user');
+        $notif->save();
 
         return redirect('admin/kategoriproduk')->with('notifikasi','Kategori berhasil diupdate');
     }
@@ -103,10 +113,16 @@ class KategoriController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         $model = Category::find($id);
         $model->delete();
+
+        $notif = new Notification;
+        $notif->notifikasi = $request->get('pesan');
+        $notif->nama_user = $request->get('nama_user');
+        $notif->save();
+
         return redirect('admin/kategoriproduk')->with('notifikasi','Kategori berhasil dihapus!');
     }
 }

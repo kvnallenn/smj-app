@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Invoice;
 use App\Models\Stock;
+use App\Models\Notification;
 
 class DetailProdukController extends Controller
 {
@@ -39,6 +40,13 @@ class DetailProdukController extends Controller
         $model->harga_produk = $request->get('harga_produk');
         $model->image = $request->file('gambar_produk')->store('post-images');
         $model->save();
+
+        $notif = new Notification;
+        $notif->notifikasi = $request->get('pesan');
+        $notif->nama_user = $request->get('nama_user');
+        $notif->save();
+
+        
 
         return redirect('admin/adminproduk/detailproduk/'.$model->id)->with('notifikasiupdate','Produk berhasil diupdate');
     }

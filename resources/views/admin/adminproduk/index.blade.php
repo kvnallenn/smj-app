@@ -97,6 +97,8 @@
                             </div>
                           @enderror
                           </div>
+                          <input type="hidden" value="menambah produk baru" name="pesan">
+                          <input type="hidden" value="{{ auth()->user()->name }}" name="nama_user">
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

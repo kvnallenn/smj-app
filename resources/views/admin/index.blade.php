@@ -118,16 +118,18 @@
                     <div class="col-sm-12 col-xl mt-5">
                         <h5 class="fw-bolder mb-3 mx-1">Riwayat Aktvitas</h5>
                     <div id="riwayat-log">
+                      @foreach ($notif as $item)
                       <div role="alert" aria-live="assertive" aria-atomic="true" class="toast fade show" data-bs-autohide="false">
                         <div class="toast-header">
                           <img src="/img/Logo-Sentra.png" class="img-fluid me-2" width="25" height="70" alt="">
-                          <strong class="me-auto">Riwayat</strong>
-                          <small>11 mins ago</small>
+                            <div class="col-9"><strong class="">Riwayat</strong></div>
+                            <div class="col"><small>{{ $item->created_at->format('d M Y') }} | {{ $item->created_at->format('h:i:s') }}</small></div>
                         </div>
                         <div class="toast-body">
-                          <img src="../img/assets/orangcuk.png" class="img-fluid icon-org" alt=""> <span class="pesan-notif">Kevin Allen telah masuk</span>
+                          <img src="../img/assets/orangcuk.png" class="img-fluid icon-org" alt=""> <span class="pesan-notif"><strong>{{ $item->nama_user }}</strong> {{ $item->notifikasi }}</span>
                         </div>
                       </div>
+                      @endforeach
                     </div>
                 </div>
             </div>

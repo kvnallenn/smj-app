@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Notification;
 use GuzzleHttp\Handler\Proxy;
 use Spatie\LaravelIgnition\Solutions\SolutionProviders\RunningLaravelDuskInProductionProvider;
 
@@ -48,6 +49,11 @@ class AdminProdukController extends Controller
         $model->harga_produk = $request->get('harga_produk');
         $model->image = $request->file('gambar_produk')->store('post-images');
         $model->save();
+
+        $notif = new Notification;
+        $notif->notifikasi = $request->get('pesan');
+        $notif->nama_user = $request->get('nama_user');
+        $notif->save();
  
         return redirect('admin/adminproduk')->with('notifikasiproduk','Produk berhasil ditambahkan');
        

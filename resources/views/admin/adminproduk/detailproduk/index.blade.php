@@ -77,6 +77,8 @@
                                     <label for="exampleFormControlTextarea1" class="form-label">Alasan</label>
                                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="alasan"></textarea>
                                   </div>
+                                  <input type="hidden" value="melakukan stock opname" name="pesan">
+                                  <input type="hidden" value="{{ auth()->user()->name }}" name="nama_user">
                                
                             </div>
                             <div class="modal-footer">
@@ -142,6 +144,8 @@
                               @enderror
                               </div>
                           </div>
+                          <input type="hidden" value="mengubah produk" name="pesan">
+                          <input type="hidden" value="{{ auth()->user()->name }}" name="nama_user">
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary">Tambah Kategori</button>

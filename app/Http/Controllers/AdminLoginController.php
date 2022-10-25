@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Notification;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -15,9 +16,10 @@ class AdminLoginController extends Controller
      */
     public function index()
     {   
+        $notif = Notification::all();
         return view ('admin.index', [
             "title" => "Admin Page"
-        ]);
+        ], compact('notif'));
     }
 
     /**
