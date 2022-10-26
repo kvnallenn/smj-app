@@ -22,16 +22,17 @@
     <div class="home_content">
       <section class="p-4" id="section-wrapper">
         <div class="container-fluid">
-            <h4 class="mb-3">Welcome, Kevin Allen </h4>
+            <h4 class="mb-3">Welcome, {{ auth()->user()->name }}</h4>
             <h5 class="fw-bolder mb-2 mx-1">Aktvitas Penting</h6>
                 <div class="row mt-3">
                     <div class="col-xl-3 col-sm-6 col-12 mb-4">
                       <div class="card">
+                        <a href="/admin/pesanan" class="card-pesanan">
                         <div class="card-body">
                           <div class="d-flex justify-content-between px-md-1">
                             <div>
-                              <h3 class="text-info">278</h3>
-                              <p class="mb-0">New Posts</p>
+                              <h3 class="text-info">{{ $hitung }}</h3>
+                              <p class="mb-0">Pesanan Baru</p>
                             </div>
                             <div class="align-self-center">
                               <i class="fas fa-book-open text-info fa-3x"></i>
@@ -44,6 +45,7 @@
                             </div>
                           </div>
                         </div>
+                      </a>
                       </div>
                     </div>
                     <div class="col-xl-3 col-sm-6 col-12 mb-4">
@@ -51,8 +53,8 @@
                         <div class="card-body">
                           <div class="d-flex justify-content-between px-md-1">
                             <div>
-                              <h3 class="text-warning">156</h3>
-                              <p class="mb-0">New Comments</p>
+                              <h3 class="text-warning">{{ $hitung2 }}</h3>
+                              <p class="mb-0">Total Kategori</p>
                             </div>
                             <div class="align-self-center">
                               <i class="far fa-comments text-warning fa-3x"></i>
@@ -90,11 +92,12 @@
                     </div>
                     <div class="col-xl-3 col-sm-6 col-12 mb-4">
                       <div class="card">
+                        <a href="/admin/adminproduk" class="card-pesanan">
                         <div class="card-body">
                           <div class="d-flex justify-content-between px-md-1">
                             <div>
-                              <h3 class="text-danger">423</h3>
-                              <p class="mb-0">Total Visits</p>
+                              <h3 class="text-danger">{{ $hitung1 }}</h3>
+                              <p class="mb-0">Total Produk</p>
                             </div>
                             <div class="align-self-center">
                               <i class="fas fa-map-signs text-danger fa-3x"></i>
@@ -107,6 +110,7 @@
                             </div>
                           </div>
                         </div>
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -122,11 +126,16 @@
                       <div role="alert" aria-live="assertive" aria-atomic="true" class="toast fade show" data-bs-autohide="false">
                         <div class="toast-header">
                           <img src="/img/Logo-Sentra.png" class="img-fluid me-2" width="25" height="70" alt="">
-                            <div class="col-9"><strong class="">Riwayat</strong></div>
-                            <div class="col"><small>{{ $item->created_at->format('d M Y') }} | {{ $item->created_at->format('h:i:s') }}</small></div>
-                        </div>
+                            <div class="col-xl-7 col-lg-9 col-md-8 col-sm-8 col-5"><strong class="">Riwayat</strong></div>
+                            <div class="col-xl-4 col-lg-3 col-md-3 col-sm-3 col-5"><small>{{ $item->created_at->format('d M Y') }} | {{ $item->created_at->format('h:i:s') }}</small></div>
+                          </div>
                         <div class="toast-body">
-                          <img src="../img/assets/orangcuk.png" class="img-fluid icon-org" alt=""> <span class="pesan-notif"><strong>{{ $item->nama_user }}</strong> {{ $item->notifikasi }}</span>
+
+                          <div class="row gx-3">
+                          <dt class="col-sm-1"><img src="../img/assets/orangcuk.png" class="img-fluid icon-org" alt=""></dt>
+                          <dd class="col-sm-11 d-inline"> <span class="pesan-notif"><strong>{{ $item->nama_user }}</strong> {{ $item->notifikasi }} <strong>"{{ $item->objek }}"</strong></span></dd>
+                        </div>
+
                         </div>
                       </div>
                       @endforeach

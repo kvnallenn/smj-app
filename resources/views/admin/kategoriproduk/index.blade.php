@@ -99,7 +99,8 @@
                                     <div class="mb-3">
                                       <label for="message-text" class="col-form-label">Jenis Kategori</label>
                                       <input type="text" class="form-control" id="edit_jeniskategori" name="edit_jeniskategori" value="{{ $editkategori->jenis_kategori }}">
-                                      <input type="hidden" value="memperbaharui kategori" name="pesan">
+                                      <input type="hidden" value="memperbaharui kategori dengan kode" name="pesan">
+                                      <input type="hidden" value="{{ $editkategori->kode_kategori }}" name="objek">
                                       <input type="hidden" value="{{ auth()->user()->name }}" name="nama_user">
                                     </div>
                                 </div>
@@ -131,6 +132,7 @@
                                   Apakah anda ingin menghapus produk "{{ $deletekategori->jenis_kategori }}"?
                                 </div>
                                 <input type="hidden" value="menghapus kategori" name="pesan">
+                                <input type="hidden" value="{{ $deletekategori->jenis_kategori }}" name="objek">
                                 <input type="hidden" value="{{ auth()->user()->name }}" name="nama_user">
                                 <div class="modal-footer">
                                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>

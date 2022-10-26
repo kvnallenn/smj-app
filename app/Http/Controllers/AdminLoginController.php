@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Notification;
+use App\Models\Payment;
+use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -16,10 +19,19 @@ class AdminLoginController extends Controller
      */
     public function index()
     {   
+
+        $model2 = Payment::where('status_pesanan','=',null)->get();
+        $hitung = $model2->count();
         $notif = Notification::all();
+        $model3 = Product::all();
+        $hitung1 = $model3->count();
+        $model4 = Category::all();
+        $hitung2 = $model4->count();
+
+
         return view ('admin.index', [
             "title" => "Admin Page"
-        ], compact('notif'));
+        ], compact('notif','hitung','hitung1','hitung2'));
     }
 
     /**

@@ -53,6 +53,7 @@ class AdminProdukController extends Controller
         $notif = new Notification;
         $notif->notifikasi = $request->get('pesan');
         $notif->nama_user = $request->get('nama_user');
+        $notif->objek = $request->get('nama_produk');
         $notif->save();
  
         return redirect('admin/adminproduk')->with('notifikasiproduk','Produk berhasil ditambahkan');

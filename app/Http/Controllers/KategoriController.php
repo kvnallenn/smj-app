@@ -55,6 +55,7 @@ class KategoriController extends Controller
         $notif = new Notification;
         $notif->notifikasi = $request->get('pesan');
         $notif->nama_user = $request->get('nama_user');
+        $notif->objek = $request->get('jenis_kategori');
         $notif->save();
 
         return redirect('admin/kategoriproduk')->with('notifikasi','Kategori berhasil ditambahkan');
@@ -102,6 +103,7 @@ class KategoriController extends Controller
         $notif = new Notification;
         $notif->notifikasi = $request->get('pesan');
         $notif->nama_user = $request->get('nama_user');
+        $notif->objek = $request->get('objek');
         $notif->save();
 
         return redirect('admin/kategoriproduk')->with('notifikasi','Kategori berhasil diupdate');
@@ -121,6 +123,7 @@ class KategoriController extends Controller
         $notif = new Notification;
         $notif->notifikasi = $request->get('pesan');
         $notif->nama_user = $request->get('nama_user');
+        $notif->objek = $request->get('objek');
         $notif->save();
 
         return redirect('admin/kategoriproduk')->with('notifikasi','Kategori berhasil dihapus!');

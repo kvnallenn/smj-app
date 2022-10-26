@@ -44,6 +44,7 @@ class DetailProdukController extends Controller
         $notif = new Notification;
         $notif->notifikasi = $request->get('pesan');
         $notif->nama_user = $request->get('nama_user');
+        $notif->objek = $model->kode_produk;
         $notif->save();
 
         

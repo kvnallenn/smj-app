@@ -55,7 +55,9 @@
                                     <form action="{{ url('/admin/daftartransfer/'.$item->id) }}" method="post">
                                      @csrf
                                      @method('POST')
-                                    <input type="hidden" value="Tolak" name="status-payment"> 
+                                    <input type="hidden" value="Tolak" name="status-payment">
+                                    <input type="hidden" value="menolak pembayaran dengan invoice" name="pesan">
+                                    <input type="hidden" value="{{ auth()->user()->name }}" name="nama_user"> 
                                     <button type="submit" class="btn btn-danger">Tolak</button>
                                     </form>
                                     </td>
@@ -64,6 +66,8 @@
                                       @csrf
                                       @method('POST')
                                      <input type="hidden" value="Sukses" name="status-payment">
+                                     <input type="hidden" value="menyetujui pembayaran dengan invoice" name="pesan">
+                                     <input type="hidden" value="{{ auth()->user()->name }}" name="nama_user">
                                      <button type="submit" class="btn btn-success">Setujui</button>
                                      </form>
                                     </td>

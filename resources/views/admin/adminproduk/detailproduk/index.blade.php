@@ -77,7 +77,7 @@
                                     <label for="exampleFormControlTextarea1" class="form-label">Alasan</label>
                                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="alasan"></textarea>
                                   </div>
-                                  <input type="hidden" value="melakukan stock opname" name="pesan">
+                                  <input type="hidden" value="melakukan stock opname pada produk dengan kode" name="pesan">
                                   <input type="hidden" value="{{ auth()->user()->name }}" name="nama_user">
                                
                             </div>
@@ -144,7 +144,7 @@
                               @enderror
                               </div>
                           </div>
-                          <input type="hidden" value="mengubah produk" name="pesan">
+                          <input type="hidden" value="mengubah produk dengan kode" name="pesan">
                           <input type="hidden" value="{{ auth()->user()->name }}" name="nama_user">
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -252,6 +252,8 @@
                         <input type="hidden" value="{{ $item->id_produk }}" name="id-produk">
                         Apakah anda ingin menghapus data ini?
                       </div>
+                      <input type="hidden" value="menghapus stock opname pada produk dengan kode" name="pesan">
+                      <input type="hidden" value="{{ auth()->user()->name }}" name="nama_user">
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                         <button type="submit" class="btn btn-primary">Hapus</button>

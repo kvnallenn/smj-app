@@ -36,8 +36,8 @@
                           <div class="card-body">
                             <div class="d-flex justify-content-between px-md-1">
                               <div>
-                                <h3 class="text-info">278</h3>
-                                <p class="mb-0">New Posts</p>
+                                <h3 class="text-info">{{ $hitungmodel }}</h3>
+                                <p class="mb-0">Total Pesanan</p>
                               </div>
                               <div class="align-self-center">
                                 <i class="fas fa-book-open text-info fa-3x"></i>
@@ -57,8 +57,8 @@
                           <div class="card-body">
                             <div class="d-flex justify-content-between px-md-1">
                               <div>
-                                <h3 class="text-warning">156</h3>
-                                <p class="mb-0">New Comments</p>
+                                <h3 class="text-warning">{{ $hitungmodel2 }}</h3>
+                                <p class="mb-0">Pesanan belum diproses</p>
                               </div>
                               <div class="align-self-center">
                                 <i class="far fa-comments text-warning fa-3x"></i>
@@ -78,8 +78,8 @@
                           <div class="card-body">
                             <div class="d-flex justify-content-between px-md-1">
                               <div>
-                                <h3 class="text-success">64.89 %</h3>
-                                <p class="mb-0">Bounce Rate</p>
+                                <h3 class="text-success">{{ $hitungmodel3 }}</h3>
+                                <p class="mb-0">Total Pesanan Selesai</p>
                               </div>
                               <div class="align-self-center">
                                 <i class="fas fa-mug-hot text-success fa-3x"></i>
@@ -99,8 +99,8 @@
                           <div class="card-body">
                             <div class="d-flex justify-content-between px-md-1">
                               <div>
-                                <h3 class="text-danger">423</h3>
-                                <p class="mb-0">Total Visits</p>
+                                <h3 class="text-danger">{{ $hitungmodel4 }}</h3>
+                                <p class="mb-0">Total Komplain</p>
                               </div>
                               <div class="align-self-center">
                                 <i class="fas fa-map-signs text-danger fa-3x"></i>
@@ -202,6 +202,8 @@
                                       @csrf
                                       @method('POST')
                                      <input type="hidden" value="Terkirim" name="status-pesanan">
+                                     <input type="hidden" value="menyetujui pengiriman pesanan dengan invoice" name="pesan">
+                                     <input type="hidden" value="{{ auth()->user()->name }}" name="nama_user"> 
                                      <button type="submit" class="btn btn-success btn-sm">Kirim Pesanan</button>
                                      </form>
                                     </td>

@@ -25,6 +25,13 @@ class DaftarTransferController extends Controller
 
         $statuspay = Payment::find($id);
         $statuspay->status_transaksi = $request->get('status-payment');
+
+        $notif = new Notification;
+        $notif->notifikasi = $request->get('pesan');
+        $notif->nama_user = $request->get('nama_user');
+        $notif->objek = $statuspay->invoice_produk;
+
+        $notif->save();
         $statuspay->save();
     
         return redirect('admin/daftartransfer')->with('notifikasi','Kategori berhasil diupdate');
@@ -57,6 +64,7 @@ class DaftarTransferController extends Controller
           $notif = new Notification;
           $notif->notifikasi = $request->get('pesan');
           $notif->nama_user = $request->get('nama_user');
+          $notif->objek = $statuspay->kode_produk;
           $notif->save();
   
           return redirect('admin/adminproduk/detailproduk/'.$statuspay->id)->with('notifikasi','Berhasil Melakukan Stock Opname');
@@ -82,6 +90,12 @@ class DaftarTransferController extends Controller
 
         $modelp->kuantitas_produk = $kuncipasli;
         $modelp->save();
+
+        $notif = new Notification;
+        $notif->notifikasi = $request->get('pesan');
+        $notif->nama_user = $request->get('nama_user');
+        $notif->objek = $modelp->kode_produk;
+        $notif->save();
 
         $models->delete();
         return redirect('/admin/adminproduk/detailproduk/'.$kunciid)->with('notifikasi','Stock Opname Diupdate!');

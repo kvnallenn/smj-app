@@ -44,9 +44,9 @@
     <div class="profile_content fixed">
         <div class="profile">
             <div class="profile_details">
-                <img src="profile.jpg" alt="">
+                <img src="/img/assets/logo-admin.png" alt="">
                 <div class="name_job">
-                    <div class="name">{{ auth()->user()->name }}</div>
+                    <div class="name"><strong>{{ auth()->user()->name }}</strong></div>
                     <div class="job">
                         Admin
                     </div>

@@ -447,3 +447,17 @@ ul{
     margin-top: 3px;
   }
 }
+
+@media (max-width: 1366px) { 
+  #riwayat-log{
+    width: 100%;
+    height: 44.2vh;
+    overflow: auto;
+    overflow-x: hidden;
+  }
+}
+
+.card-pesanan{
+  text-decoration: none;
+  color: black;
+}
