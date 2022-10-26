@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Invoice;
 use App\Models\Payment;
 use App\Models\Notification;
+use Illuminate\Http\Request;
+use App\Exports\ProdukExport;
+use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PesananController extends Controller
 {
@@ -51,6 +54,11 @@ class PesananController extends Controller
         $model->status_pesanan = $request->get('status-pengiriman');
         $model->save();
         return redirect('/status-pesanan');
+    }
+
+    public function exportproduk()
+    {
+        return Excel::download(new ProdukExport,'produk.xlsx');
     }
 
  

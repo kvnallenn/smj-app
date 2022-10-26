@@ -13,15 +13,15 @@
                   in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
                   cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                  <button type="button" id="button-font" class="button-hero btn-lg px-4 gap-3">Lebih
-                    Lanjut</button>
+                  <a href="#lanjut" id="button-font" class="button-hero btn-lg px-4 gap-3">Lebih
+                    Lanjut</a>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+      </div>
       </section>
-      <section>
+      <section id="lanjut">
         <div class="container col-xxl-8 px-4 py-5">
           <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
             <div class="col-10 col-sm-8 col-lg-6">
@@ -35,15 +35,15 @@
                 ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
                 dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident</p>
               <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Primary</button>
-                <button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button>
+                <a href="#lanjut2" class="btn btn-primary btn-lg px-4 me-md-2">Lebih Lanjut</button>
+                <a href="/shop" class="btn btn-outline-secondary btn-lg px-4">Shop</a>
               </div>
             </div>
           </div>
           <div class="skew-c"></div>
         </div>
       </section>
-      <section class="warnabawah">
+      <section class="warnabawah" id="lanjut2">
         <div class="container col-xxl-8 px-4 py-5 warna">
           <div class="row flex-lg-row align-items-center g-5 py-5">
             <div class="col-10 col-sm-8 col-lg-6">
@@ -57,13 +57,14 @@
                 ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
                 dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident</p>
               <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Primary</button>
-                <button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button>
+                <a href="/#kontak" class="btn btn-primary btn-lg px-4 me-md-2">Kontak</a>
+                <a href="/shop" class="btn btn-outline-secondary btn-lg px-4">Shop</a>
               </div>
             </div>
           </div>
         </div>
       </section>
+      
 @endsection
     
     

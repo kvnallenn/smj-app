@@ -1,7 +1,7 @@
 <div class="sidebar">
     <div class="logo_content">
         <div class="logo">
-            <div class="logo_name">Sentra Medan Jaya</div>
+            <div class="logo_name">Sentra Medan Jaya</a></div>
         </div>
         <i class="bx bx-menu" id="btn"></i>
     </div>
@@ -9,6 +9,12 @@
         <li>
             <i class="bx bx-search"></i>
             <input type="text" placeholder="Search...">
+        </li>
+        <li>
+            <a href="/admin">
+                <i class='bx bx-home'></i>
+                <span class="links_name">Dashboard</span>
+            </a>
         </li>
         <li>
             <a href="/admin/pesanan">

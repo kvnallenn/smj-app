@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Cart;
 use App\Models\Product;
+use Illuminate\Http\Request;
+use App\Exports\ProdukExport;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ProdukController extends Controller
 {
@@ -23,4 +26,6 @@ class ProdukController extends Controller
             "title" => "Keranjang"
         ], compact('dataproduk','totalcart'));
     }
+
+   
 }

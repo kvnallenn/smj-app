@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Cart;
 use App\Models\Payment; 
-use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 use Spatie\FlareClient\View;
+use App\Exports\PenjualanExport;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PaymentController extends Controller
 {
@@ -33,5 +36,10 @@ class PaymentController extends Controller
             ], compact('lockdata', 'totalcart', 'kirimcart', 'total'));
        }
       
+    }
+
+    public function exportexcel()
+    {
+        return Excel::download(new PenjualanExport,'penjualan.xlsx');
     }
 }

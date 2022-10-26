@@ -12,7 +12,7 @@
                     <a class="nav-link active" id="nav-warna" aria-current="page" href="/">BERANDA</a>
                    </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link" id="nav-warna" href="#">TENTANG</a>
+                    <a class="nav-link" id="nav-warna" href="#lanjut">TENTANG</a>
                 </li>
                 <li class="nav-item mx-2">
                     <a class="nav-link" id="nav-warna" href="#">KONTAK</a>

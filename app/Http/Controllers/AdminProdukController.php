@@ -15,8 +15,13 @@ class AdminProdukController extends Controller
     {
         $datakategori = Category::all();
         $dataproduk = Product::all();
+        $kuncikan = Product::where('kuantitas_produk', '<=', 5);
+        
+        $hitungproduk = $dataproduk->count();
+        $hitungproduk2 = $kuncikan->count();
+
         return view ('admin.adminproduk.index', compact(
-            'datakategori', 'dataproduk'
+            'datakategori', 'dataproduk','hitungproduk', 'hitungproduk2'
         ));
 
     }

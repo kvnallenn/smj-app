@@ -103,9 +103,13 @@ Route::resource('/admin', AdminLoginController::class)->except('show')->middlewa
 
 Route::get('/admin/pesanan', [PesananController::class, 'index'])->middleware('is_admin');
 
+Route::get('/admin/exportexcel', [PaymentController::class, 'exportexcel'])->middleware('is_admin');
+
 Route::post('/admin/pesanan/status/{id}', [PesananController::class, 'pesanan'])->middleware('is_admin');
 
 Route::post('/admin/pesanan/{id}', [PesananController::class, 'update'])->middleware('is_admin');
+
+Route::get('/admin/pesanan/exportproduk', [PesananController::class, 'exportproduk'])->middleware('is_admin');
 
 Route::resource('/admin/adminproduk', AdminProdukController::class)->except('show')->middleware('is_admin');
 

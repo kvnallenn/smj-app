@@ -118,8 +118,8 @@
                           <div class="card-body">
                             <div class="d-flex justify-content-between px-md-1">
                               <div>
-                                <h3 class="text-info">278</h3>
-                                <p class="mb-0">New Posts</p>
+                                <h3 class="text-info">{{ $hitungproduk }}</h3>
+                                <p class="mb-0">Total Produk</p>
                               </div>
                               <div class="align-self-center">
                                 <i class="fas fa-book-open text-info fa-3x"></i>
@@ -139,50 +139,8 @@
                           <div class="card-body">
                             <div class="d-flex justify-content-between px-md-1">
                               <div>
-                                <h3 class="text-warning">156</h3>
-                                <p class="mb-0">New Comments</p>
-                              </div>
-                              <div class="align-self-center">
-                                <i class="far fa-comments text-warning fa-3x"></i>
-                              </div>
-                            </div>
-                            <div class="px-md-1">
-                              <div class="progress mt-3 mb-1 rounded" style="height: 7px;">
-                                <div class="progress-bar bg-warning" role="progressbar" style="width: 35%;" aria-valuenow="35"
-                                  aria-valuemin="0" aria-valuemax="100"></div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-3 col-sm-6 col-12 mb-4">
-                        <div class="card">
-                          <div class="card-body">
-                            <div class="d-flex justify-content-between px-md-1">
-                              <div>
-                                <h3 class="text-success">64.89 %</h3>
-                                <p class="mb-0">Bounce Rate</p>
-                              </div>
-                              <div class="align-self-center">
-                                <i class="fas fa-mug-hot text-success fa-3x"></i>
-                              </div>
-                            </div>
-                            <div class="px-md-1">
-                              <div class="progress mt-3 mb-1 rounded" style="height: 7px;">
-                                <div class="progress-bar bg-success" role="progressbar" style="width: 60%;" aria-valuenow="60"
-                                  aria-valuemin="0" aria-valuemax="100"></div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-3 col-sm-6 col-12 mb-4">
-                        <div class="card">
-                          <div class="card-body">
-                            <div class="d-flex justify-content-between px-md-1">
-                              <div>
-                                <h3 class="text-danger">423</h3>
-                                <p class="mb-0">Total Visits</p>
+                                <h3 class="text-danger">{{ $hitungproduk2 }}</h3>
+                                <p class="mb-0">Produk Hampir Habis</p>
                               </div>
                               <div class="align-self-center">
                                 <i class="fas fa-map-signs text-danger fa-3x"></i>
@@ -240,7 +198,7 @@
                 @endforeach
                  {{-- NOTIFIKASI ERROR --}}
 
-                  
+                 <a target="_blank" href="/admin/pesanan/exportproduk" class="btn btn-success mb-2" data-bs-dismiss="alert" aria-label="Close">Export Excel</a>
 
                     <div class="row row-keranjang">
                         <div class="col table-responsive">

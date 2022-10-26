@@ -50,6 +50,7 @@
                     </div>
                     <div class="col-xl-3 col-sm-6 col-12 mb-4">
                       <div class="card">
+                        <a href="/admin/kategoriproduk" class="card-pesanan">
                         <div class="card-body">
                           <div class="d-flex justify-content-between px-md-1">
                             <div>
@@ -67,6 +68,7 @@
                             </div>
                           </div>
                         </div>
+                      </a>
                       </div>
                     </div>
                     <div class="col-xl-3 col-sm-6 col-12 mb-4">
