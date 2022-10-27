@@ -14,7 +14,7 @@ class DaftarTransferController extends Controller
     public function index()
     {   
         $namauser = auth()->user()->name;
-        $datapay = Payment::all();
+        $datapay = Payment::paginate(15);
         return view ('admin.daftartransfer.index', [
             "title" => "Keranjang"
         ], compact('datapay'));

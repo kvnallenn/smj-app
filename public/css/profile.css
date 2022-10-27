@@ -93,3 +93,7 @@ select:focus{
         line-height: 18px;
     }
 }
+
+label.keterangan{
+   color: white;
+}

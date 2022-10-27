@@ -80,6 +80,7 @@
                                   @endforeach
                                 </tbody>
                               </table>
+                              {{ $datapay->links() }}
                         </div>
                     </div>
                 </div>

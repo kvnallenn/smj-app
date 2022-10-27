@@ -21,9 +21,7 @@ body {
     .nav-item.pembatas{
         display: none;
     }
-    .nav-link.active.masuk.authen{
-        display: none;
-    }
+  
 }
 
 @media screen and (min-width: 375px){

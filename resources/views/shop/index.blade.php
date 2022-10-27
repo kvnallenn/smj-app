@@ -150,10 +150,13 @@
               </form>
             </div>
           </a>
+          
           </div>
          </div>
+         
          @endforeach
       </div>
+       <div class="mt-2">{{ $dataproduk->links() }}</div>
     </div>
     @include('partials.footer')
     @include('partials.navbarbot')

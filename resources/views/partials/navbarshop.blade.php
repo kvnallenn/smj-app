@@ -5,10 +5,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <form class="d-flex ms-auto my-4 my-lg-0">
-            <input class="form-control me-2" type="search" placeholder="Cari Produk anda.." aria-label="Search">
-            <button class="btn btn-light" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-        </form>
+     
         <ul class="navbar-nav ms-auto">
           <li class="nav-item me-1">
             <a class="nav-link active" aria-current="page" href="/keranjang"><i class="bi bi-bag-check" style="font-size: 20px;"><span class="badge badge-light rounded-circle">{{ $totalcart }}</span></i><label class="keterangan">&nbsp;&nbsp;Cart</label></a>

@@ -14,7 +14,7 @@ class AdminProdukController extends Controller
     public function index()
     {
         $datakategori = Category::all();
-        $dataproduk = Product::all();
+        $dataproduk = Product::paginate(10);
         $kuncikan = Product::where('kuantitas_produk', '<=', 5);
         
         $hitungproduk = $dataproduk->count();

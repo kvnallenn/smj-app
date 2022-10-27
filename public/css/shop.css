@@ -21,9 +21,6 @@ body {
     .nav-item.pembatas{
         display: none;
     }
-    .nav-link.active.masuk.authen{
-        display: none;
-    }
 }
 
 .bi.bi-bag-check, .bi.bi-bell, .bi.bi-envelope{

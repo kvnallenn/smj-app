@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-6 footer-contact">
-                    <h3>Lorem Ipsum</h3>
+                    <h3 class="judul">Lorem Ipsum</h3>
                     <p class='text-justify'>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, ased dotempor incididunt ut<br/> lamco laboris nisi ut aliquip exea commodoLorem ipsum dolor sit amet, consectetur<br/> adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <br/>Ut enim ad minim veniam, quis nostrud exercitation ullamco
                     </p>

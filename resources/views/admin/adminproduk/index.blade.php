@@ -226,10 +226,12 @@
                                   </tr>
 
                                   @endforeach
+                                  
                                 </tbody>
                               </table>
                         </div>
                     </div>
+                    {{ $dataproduk->links() }}
                 </div>
                 </div>
                         
