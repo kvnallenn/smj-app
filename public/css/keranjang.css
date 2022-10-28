@@ -9,6 +9,9 @@ body {
     .form-control{
         width: 400px;
     }
+    label.keterangan{
+      display: none;
+  }
   
 }
 
@@ -19,6 +22,7 @@ body {
     .nav-item.pembatas{
         display: none;
     }
+    
 
 }
 

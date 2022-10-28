@@ -25,7 +25,7 @@
             <h4 class="mb-3">Welcome, {{ auth()->user()->name }}</h4>
             <h5 class="fw-bolder mb-2 mx-1">Aktvitas Penting</h6>
                 <div class="row mt-3">
-                    <div class="col-xl-3 col-sm-6 col-12 mb-4">
+                    <div class="col-xl-4 col-sm-6 col-12 mb-4">
                       <div class="card">
                         <a href="/admin/pesanan" class="card-pesanan">
                         <div class="card-body">
@@ -48,7 +48,7 @@
                       </a>
                       </div>
                     </div>
-                    <div class="col-xl-3 col-sm-6 col-12 mb-4">
+                    <div class="col-xl-4 col-sm-6 col-12 mb-4">
                       <div class="card">
                         <a href="/admin/kategoriproduk" class="card-pesanan">
                         <div class="card-body">
@@ -71,28 +71,7 @@
                       </a>
                       </div>
                     </div>
-                    <div class="col-xl-3 col-sm-6 col-12 mb-4">
-                      <div class="card">
-                        <div class="card-body">
-                          <div class="d-flex justify-content-between px-md-1">
-                            <div>
-                              <h3 class="text-success">64.89 %</h3>
-                              <p class="mb-0">Bounce Rate</p>
-                            </div>
-                            <div class="align-self-center">
-                              <i class="fas fa-mug-hot text-success fa-3x"></i>
-                            </div>
-                          </div>
-                          <div class="px-md-1">
-                            <div class="progress mt-3 mb-1 rounded" style="height: 7px;">
-                              <div class="progress-bar bg-success" role="progressbar" style="width: 60%;" aria-valuenow="60"
-                                aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-xl-3 col-sm-6 col-12 mb-4">
+                    <div class="col-xl-4 col-sm-6 col-12 mb-4">
                       <div class="card">
                         <a href="/admin/adminproduk" class="card-pesanan">
                         <div class="card-body">

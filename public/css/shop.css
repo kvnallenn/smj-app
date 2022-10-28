@@ -12,6 +12,9 @@ body {
     label.keterangan{
         display: none;
     }
+    .chatbx{
+      margin-bottom: 50px;
+    }
 }
 
 @media screen and (max-width: 994px){

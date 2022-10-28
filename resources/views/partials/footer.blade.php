@@ -34,5 +34,7 @@
 
                                 </div>
                                 </div>
+                                <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="25620119-c918-4240-90a3-4ed3c3006765";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
                             </div>
+                            
                         </footer>
