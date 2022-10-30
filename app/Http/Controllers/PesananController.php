@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Exports\ProdukExport;
 use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Models\Rating;
 
 class PesananController extends Controller
 {
@@ -53,6 +54,16 @@ class PesananController extends Controller
         $model = Payment::where('invoice_produk','=',$kodeinvoice)->first();
         $model->status_pesanan = $request->get('status-pengiriman');
         $model->save();
+
+        $rating = new Rating;
+        $namauser = auth()->user()->name;
+        $rating->rating = $request->get('bintang');
+        $rating->komentar = $request->get('komentar');
+        $rating->gambar_produk = $request->file('gambar_produk')->store('rating-images');
+        $rating->nama_user = $namauser;
+        $rating->save();
+
+
         return redirect('/status-pesanan');
     }
 

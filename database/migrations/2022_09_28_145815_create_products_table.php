@@ -22,6 +22,10 @@ return new class extends Migration
             $table->integer('kuantitas_produk');
             $table->string('unit_produk');
             $table->integer('harga_produk');
+            $table->string('berat')->nullable();
+            $table->string('jenis')->nullable();
+            $table->string('ukuran')->nullable();
+            $table->string('warna')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();
         });

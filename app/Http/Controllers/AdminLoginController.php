@@ -7,6 +7,8 @@ use App\Models\Notification;
 use App\Models\Payment;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Invoice;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -28,10 +30,18 @@ class AdminLoginController extends Controller
         $model4 = Category::all();
         $hitung2 = $model4->count();
 
+        $total_harga = Invoice::select(DB::raw("CAST(SUM(harga_produk) as int) as harga_produk"))
+        ->groupBy(DB::raw("Month(created_at"))
+        ->pluck('harga_produk');
+
+        $bulan = Invoice::select(DB::raw("MONTHNAME(created_at) as bulan"))
+        ->groupBy(DB::raw("MONTHNAME(created_at"))
+        ->pluck('bulan');
+
 
         return view ('admin.index', [
             "title" => "Admin Page"
-        ], compact('notif','hitung','hitung1','hitung2'));
+        ], compact('notif','hitung','hitung1','hitung2', 'total_harga', 'bulan'));
     }
 
     /**

@@ -33,6 +33,7 @@
                             <div class="dropdown-menu">
                               <a class="dropdown-item btn" data-bs-toggle="modal" data-bs-target="#updateStockModal--{{ $datalistproduk->id }}">Stock Opname</a>
                               <a class="dropdown-item btn" data-bs-toggle="modal" data-bs-target="#updateModal--{{ $datalistproduk->id }}">Ubah Produk</a>
+                              <a class="dropdown-item btn" data-bs-toggle="modal" data-bs-target="#deskripsiModal--{{ $datalistproduk->id }}">Deskripsi Produk</a>
                             </div>
                           </div>
                     </div>  
@@ -91,7 +92,52 @@
                       </div>
 
                     <!-- MODAL -->
+                      {{-- UPDATE MODAL --}}
+                                            
+                                          
+                      <div class="modal fade" id="deskripsiModal--{{ $datalistproduk->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Deskripsi Produk</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
 
+
+                            
+                        <form action="{{ url('admin/deskripsi/'.$datalistproduk->id) }}" method="POST" enctype="multipart/form-data">
+                            @method('POST')
+                            @csrf
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                  <label for="message-text" class="col-form-label">Berat Produk</label>
+                                  <input type="text" required class="form-control" id="berat_produk" name="berat_produk" value="{{ $datalistproduk->berat }}">
+                                </div>
+                                <div class="mb-3">
+                                  <label for="message-text" class="col-form-label">Jenis Produk</label>
+                                  <input type="text" required class="form-control" id="jenis_produk" name="jenis_produk" value="{{ $datalistproduk->jenis }}">
+                                </div>
+                                <div class="mb-3">
+                                  <label for="message-text" class="col-form-label">Ukuran Produk</label>
+                                  <input type="text" required class="form-control" id="ukuran_produk" name="ukuran_produk" value="{{ $datalistproduk->ukuran }}">
+                                </div>
+                                <div class="mb-3">
+                                  <label for="message-text" class="col-form-label">Warna Produk</label>
+                                  <input type="text" required class="form-control" id="warna_produk" name="warna_produk" value="{{ $datalistproduk->warna }}">
+                                </div>
+                            <input type="hidden" value="mengubah deskripsi produk" name="pesan">
+                            <input type="hidden" value="{{ auth()->user()->name }}" name="nama_user">
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              <button type="submit" class="btn btn-primary">Tambah Deskripsi</button>
+                            </div>
+                        </form>   
+                          </div>
+                        </div>
+                      </div>
+
+
+                      {{-- UPDATE MODAL --}}
                     {{-- UPDATE MODAL --}}
                       
                     

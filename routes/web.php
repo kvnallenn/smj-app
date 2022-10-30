@@ -18,6 +18,8 @@ use App\Http\Controllers\DaftarTransferController;
 use App\Http\Controllers\StatusPesananController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\UserSettingsController;
+use App\Http\Controllers\QuestionsController;
+use App\Http\Controllers\DeskripsiController;
 
 
 /*
@@ -105,7 +107,13 @@ Route::get('/admin/pesanan', [PesananController::class, 'index'])->middleware('i
 
 Route::get('/admin/exportexcel', [PaymentController::class, 'exportexcel'])->middleware('is_admin');
 
+Route::post('/admin/pesanan/importproduk', [PaymentController::class, 'importexcel'])->middleware('is_admin');
+
+Route::post('/admin/deskripsi/{id}', [DeskripsiController::class, 'update'])->middleware('is_admin');
+
 Route::post('/admin/pesanan/status/{id}', [PesananController::class, 'pesanan'])->middleware('is_admin');
+
+Route::post('/produk/pertanyaan', [QuestionsController::class, 'store'])->middleware('is_admin');
 
 Route::post('/admin/pesanan/{id}', [PesananController::class, 'update'])->middleware('is_admin');
 

@@ -146,6 +146,79 @@
           @endforeach
           {{-- MODAL Komplain --}}
 
+          {{-- MODAL REVIEW --}}
+          @foreach ( $datapay as $items )
+          <form action="{{ url ('/admin/pesanan/status/'.$items->invoice_produk) }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            @method('POST')
+          <div class="modal fade" id="reviewProduk--{{ $items->invoice_produk }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Berikan Rating</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div class="row align-items-center">
+                    <div class="col-auto">
+                      <label for="inputPassword6" class="col-form-label">Rating :</label>
+                    </div>
+                    <div class="col-auto">
+                      <select class="form-select" aria-label="Default select example" name="bintang" >
+                        <option selected value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                      </select>
+                    </div>
+                    <div class="col-auto">
+                      <span id="passwordHelpInline" class="form-text">
+                        1 - 5 ( Buruk - Sangat Bagus )
+                      </span>
+                    </div>
+                    <div class="col-auto mt-3">
+                      <label for="inputPassword6" class="col-form-label">Komentar :</label>
+                    <div class="form-floating">
+                      <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" name="komentar"></textarea>
+                      <label for="floatingTextarea2">Comments</label>
+                    </div>
+                    <div class="col-auto mt-3">
+                      <div class="mb-3">
+                        <label for="formFileMultiple" class="form-label">Gambar Produk</label>
+                        <input class="form-control @error('gambar_produk') is-invalid @enderror" type="file" id="formFileMultiple" name="gambar_produk" id="gambar_produk" onchange="previewImage(event)" multiple>
+                         @error('gambar_produk')
+                        <div class="invalid-feedback">
+                        {{ $message }}
+                        </div>
+                      @enderror
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <input type="hidden" value="Selesai" name="status-pengiriman">
+                  <input type="hidden" value="{{ $items->invoice_produk }}" name="kode-invoice">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                  <button type="submit" class="btn btn-primary">Rating</button>
+                </form>
+                <form action="{{ url ('/admin/pesanan/status/'.$items->invoice_produk) }}" method="POST">
+                  @csrf
+                  @method('POST')
+                  <input type="hidden" value="Selesai" name="status-pengiriman">
+                  <input type="hidden" value="{{ $items->invoice_produk }}" name="kode-invoice">
+                  <button type="submit" class="btn btn-primary">Tidak Perlu</button>
+                  
+                </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          @endforeach
+
+          {{-- MODAL REVIEW --}}
+
           {{-- MODAL TERIMA Pesanan --}}
            @foreach ( $datapay as $items )
             <div class="modal fade" id="editmodal--{{ $items->invoice_produk }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -166,7 +239,7 @@
                       @method('POST')
                       <input type="hidden" value="Selesai" name="status-pengiriman">
                       <input type="hidden" value="{{ $items->invoice_produk }}" name="kode-invoice">
-                      <button type="submit" class="btn btn-primary">Sudah Diterima</button>
+                      <button type="button" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#reviewProduk--{{ $items->invoice_produk }}" class="btn btn-primary">Sudah Diterima</button>
                     </form>
                   </div>
                 </div>

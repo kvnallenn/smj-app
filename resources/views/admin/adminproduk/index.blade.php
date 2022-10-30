@@ -11,6 +11,7 @@
     <link href='https://unpkg.com/boxicons@2.1.3/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/fonts/simple-line-icons/style.min.css">
     <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/colors.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
@@ -159,6 +160,36 @@
 
                     {{-- TAMBAH MODAL --}}
 
+                    {{-- MODAL EXCEL TAMBAH --}}
+
+                      <div class="modal fade" id="excelModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h1 class="modal-title fs-5" id="exampleModalLabel">Import Product</h1>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              <div class="mb-3">
+                                <form action="/admin/pesanan/importproduk" method="post" enctype="multipart/form-data">
+                                  @csrf
+                                  @method('post')
+                                <label for="formFile" class="form-label">Masukkan File Excel </label>
+                                <input class="form-control" type="file" id="formFile" name="file">
+                             
+                              </div>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              <button type="submit" class="btn btn-primary">Import</button>
+                            </div>
+                          </form>
+                          </div>
+                        </div>
+                      </div>
+
+                    {{-- MODAL EXCEL TAMBAH --}}
+
                 {{-- NOTIFIKASI BERHASIL --}}
                 @if(session()->has('notifikasiproduk'))
 
@@ -198,26 +229,27 @@
                 @endforeach
                  {{-- NOTIFIKASI ERROR --}}
 
-                 <a target="_blank" href="/admin/pesanan/exportproduk" class="btn btn-success mb-2" data-bs-dismiss="alert" aria-label="Close">Export Excel</a>
-
+                 <a target="_blank" href="/admin/pesanan/exportproduk" class="btn btn-success mb-2" data-bs-dismiss="alert" aria-label="Close">Export Product</a>
+                 <a target="_blank" class="btn btn-warning mb-2" data-bs-toggle="modal" data-bs-target="#excelModal">Import Product</a>
+                  
                     <div class="row row-keranjang">
                         <div class="col table-responsive">
-                            <table class="table text-center">
-                                <thead class="table-secondary th-header">
+                          <table id="example" class="table table-striped" style="width:100%">
+                                <thead class="table-warning th-header">
                                   <tr>
-                                    <th scope="col" class="th-header">Kode Produk</th>
-                                    <th scope="col" class="th-header">Nama Produk</th>
-                                    <th scope="col" class="th-header">Kategori Produk</th>
-                                    <th scope="col" class="th-header">Kuantitas</th>
-                                    <th scope="col" class="th-header">Unit</th>
-                                    <th scope="col" class="th-header">Harga Jual</th>
+                                    <th>Kode Produk</th>
+                                    <th>Nama Produk</th>
+                                    <th>Kategori Produk</th>
+                                    <th>Kuantitas</th>
+                                    <th>Unit</th>
+                                    <th>Harga Jual</th>
                                   </tr>
                                 </thead>
                                 <tbody class="align-middle">
                                   @foreach ($dataproduk as $kunciproduk)
                                       
                                   <tr>
-                                    <th scope="row">{{ $kunciproduk->kode_produk}}</th>
+                                    <td>{{ $kunciproduk->kode_produk}}</td>
                                     <td><a href="{{ url('admin/adminproduk/detailproduk/'.$kunciproduk->id) }}">{{ $kunciproduk->nama_produk}}</td>
                                     <td>{{ $kunciproduk->kategori_produk}}</td>
                                     <td>{{ $kunciproduk->kuantitas_produk}}</td>
@@ -258,12 +290,22 @@
 
 
 
-
+<script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
     <script src="../js/Imagepreview.js"></script>
     <script src="../js/Sidebar.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.6/dist/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+          $('#example').DataTable();
+      });
+    
+    </script>
     
 </body>
 </html>

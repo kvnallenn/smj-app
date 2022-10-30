@@ -9,6 +9,8 @@ use Spatie\FlareClient\View;
 use App\Exports\PenjualanExport;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Imports\ProductImport;
+use App\Models\Product;
 use Maatwebsite\Excel\Facades\Excel;
 
 class PaymentController extends Controller
@@ -41,5 +43,16 @@ class PaymentController extends Controller
     public function exportexcel()
     {
         return Excel::download(new PenjualanExport,'penjualan.xlsx');
+    }
+
+    public function importexcel( Request $request )
+    {
+        $data = $request->file('file');
+
+        $namafile = $data->getClientOriginalName();
+        $data->move('DataProduct', $namafile);
+
+        Excel::import(new ProductImport, \public_path('/DataProduct/'.$namafile));
+        return redirect()->back();
     }
 }

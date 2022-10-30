@@ -17,9 +17,8 @@
     <div class="container">
       <nav aria-label="breadcrumb" style="background-color: #fff;" class="mt-3">
         <ol class="breadcrumb p-3">
-          <li class="breadcrumb-item"><a href="#">Home</a></li>
-          <li class="breadcrumb-item"><a href="#">Library</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Data</li>
+          <li class="breadcrumb-item"><a href="/shop">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Produk</li>
         </ol>
       </nav>
     </div>
@@ -30,28 +29,6 @@
                 <figure class="figure">
                     <img src="{{ asset('storage/'.$dataproduk->image)}}" class="figure-img img-fluid rounded" style="border-radius: 5px;
                     width: 450px;">
-                    <figcaption class="figure-caption d-flex justify-content-evenly">
-                        <a href="">
-                            <img src="{{ asset('storage/'.$dataproduk->image)}}" class="figure-img img-fluid rounded" style="border-radius: 5px;
-                            width: 70px;">  
-                        </a>
-                        <a href="">
-                            <img src="{{ asset('storage/'.$dataproduk->image)}}" class="figure-img img-fluid rounded" style="border-radius: 5px;
-                            width: 70px;">  
-                        </a>
-                        <a href="">
-                            <img src="{{ asset('storage/'.$dataproduk->image)}}" class="figure-img img-fluid rounded" style="border-radius: 5px;
-                            width: 70px;">  
-                        </a>
-                        <a href="">
-                            <img src="{{ asset('storage/'.$dataproduk->image)}}" class="figure-img img-fluid rounded" style="border-radius: 5px;
-                            width: 70px;">  
-                        </a>
-                        <a href="">
-                            <img src="{{ asset('storage/'.$dataproduk->image)}}" class="figure-img img-fluid rounded" style="border-radius: 5px;
-                            width: 70px;">  
-                        </a>
-                    </figcaption>
                   </figure>
             </div>
             <div class="col-lg-7">
@@ -91,90 +68,56 @@
             </ul>
             <div class="tab-content p-3" id="myTabContent">
               <div class="tab-pane fade deskripsi show active" id="deskripsi" role="tabpanel" aria-labelledby="deskripsi-tab">
-               <p>Deskripsi Produk <br/> 
-                Spesifikasi : <br/>
-                Berat : <br/>
-                Jenis : <br/>
-                Ukuran : <br/>
-                Warna : <br/>
-                Deskripsi Produk <br/> 
-                Spesifikasi : <br/>
-                Berat : <br/>
-                Jenis : <br/>
-                Ukuran : <br/>
-                Warna : <br/>
-                Deskripsi Produk <br/> 
-                Spesifikasi : <br/>
-                Berat : <br/>
-                Jenis : <br/>
-                Ukuran : <br/>
-                Warna : <br/>
+                    
+               <p><strong> Deskripsi Produk</strong> <br/> 
+                Berat : {{ $dataproduk->berat }}<br/>
+                Jenis : {{ $dataproduk->jenis }}<br/>
+                Ukuran : {{ $dataproduk->ukuran }}<br/>
+                Warna : {{ $dataproduk->warna }}<br/>
               </p> 
+              
               </div>
               <div class="tab-pane fade review" id="review" role="tabpanel" aria-labelledby="review-tab">
+                @foreach ( $totalrating as $item)
                 <div class="row">
                   <div class="col-3 col-md-1">
                     <img src="../img/assets/iron.png" class="review-img rounded-circle">
                   </div>
                   <div class="col">
-                    <h5 class="review-name">Kevin Allen</h5>
+                    {{-- jangan --}}
+                    <h5 class="review-name">{{  $item->nama_user }}</h5>
                     <div class="icon-bintang" style="color: orange;">
+                      @if ($item->rating == 5 )
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
+                      @elseif ($item->rating == 4 )
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      @elseif ($item->rating == 3 )
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      @elseif ($item->rating == 2 )
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      @elseif ($item->rating == 1 )
+                      <i class="fas fa-star"></i>
+                      @else
+                      @endif
                     </div>
                     <div class="d-flex flex-wrap justify-content-start">
-                      <img src="../img/assets/iron.png" class="comment-img rounded">
-                      <img src="../img/assets/iron.png" class="comment-img rounded">
+                      <img src="{{ asset('storage/'.$item->gambar_produk)}}" class="comment-img rounded">
                     </div>
-                    <p class="review-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum praesentium autem exercitationem iste nulla! Quia eaque debitis cumque inventore error magnam temporibus, eius et perspiciatis alias, tempore odio porro aliquid.</p>
+                    <p class="review-desc">{{ $item->komentar }}</p>
                   </div>
                 </div>
                 <hr>
-                <div class="row">
-                  <div class="col-3 col-md-1">
-                    <img src="../img/assets/iron.png" class="review-img rounded-circle">
-                  </div>
-                  <div class="col">
-                    <h5 class="review-name">Kevin Allen</h5>
-                    <div class="icon-bintang" style="color: orange;">
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                    </div>
-                    <div class="d-flex flex-wrap justify-content-start">
-                      <img src="../img/assets/iron.png" class="comment-img rounded">
-                      <img src="../img/assets/iron.png" class="comment-img rounded">
-                    </div>
-                    <p class="review-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum praesentium autem exercitationem iste nulla! Quia eaque debitis cumque inventore error magnam temporibus, eius et perspiciatis alias, tempore odio porro aliquid.</p>
-                  </div>
-                </div>
-                <hr>
-                <div class="row">
-                  <div class="col-3 col-md-1">
-                    <img src="../img/assets/iron.png" class="review-img rounded-circle">
-                  </div>
-                  <div class="col">
-                    <h5 class="review-name">Kevin Allen</h5>
-                    <div class="icon-bintang" style="color: orange;">
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                    </div>
-                    <div class="d-flex flex-wrap justify-content-start">
-                      <img src="../img/assets/iron.png" class="comment-img rounded">
-                      <img src="../img/assets/iron.png" class="comment-img rounded">
-                    </div>
-                    <p class="review-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum praesentium autem exercitationem iste nulla! Quia eaque debitis cumque inventore error magnam temporibus, eius et perspiciatis alias, tempore odio porro aliquid.</p>
-                  </div>
-                </div>
-                <hr>
+                @endforeach
               </div>
             </div>
           </div>
@@ -187,43 +130,35 @@
               <div class="d-flex flex-wrap justify-content-between">
               <div><p class="questp">Memiliki pertanyaan yang ingin ditanyakan ?</p></div>
               <div class="btn-produk">
-                <a href="#" class="btn btn-warning text-white btn-custom-quest">Tulis Pertanyaan</a>
+                <a href="#pertanyaan" class="btn btn-warning text-white btn-custom-quest">Tulis Pertanyaan</a>
               </div>
             </div>
             </div>
 
             <div class="row wrap-quest mt-4">
-              <div class="col-3 col-md-1 mt-4">
+              @foreach ( $totalpertanyaan as $item)
+              <div class="col-xl-1 col-3 col-md-2 col-sm-2 col-xs-2 mt-3">
                 <img src="../img/assets/iron.png" class="review-img rounded-circle">
               </div>
               <div class="col mt-4 mb-4">
-                <h5 class="review-name">Kevin Allen</h5>
-                <div class="d-flex flex-wrap justify-content-start">
-                  <img src="../img/assets/iron.png" class="comment-img rounded">
-                  <img src="../img/assets/iron.png" class="comment-img rounded">
-                </div>
-                <p class="review-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum praesentium autem exercitationem iste nulla! Quia eaque debitis cumque inventore error magnam temporibus, eius et perspiciatis alias, tempore odio porro aliquid.</p>
+                <h5 class="review-name">{{  $item->nama_user }}</h5>
+                <p class="review-desc">{{  $item->pertanyaan }}</p>
               </div>
               <hr>
-              <div class="col-3 col-md-1 mt-4">
-                <img src="../img/assets/iron.png" class="review-img rounded-circle">
-              </div>
-              <div class="col mt-4 mb-4">
-                <h5 class="review-name">Kevin Allen</h5>
-                <div class="d-flex flex-wrap justify-content-start">
-                  <img src="../img/assets/iron.png" class="comment-img rounded">
-                  <img src="../img/assets/iron.png" class="comment-img rounded">
-                </div>
-                <p class="review-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum praesentium autem exercitationem iste nulla! Quia eaque debitis cumque inventore error magnam temporibus, eius et perspiciatis alias, tempore odio porro aliquid.</p>
-              </div>
+              @endforeach
             </div>
         </div>
         <div class="container mt-4">
           <div class="row wrap-quest p-4">
             <div class="col">
-              <textarea class="form-control ml-4" id="form-pertanyaan" rows="5" style="min-width: 100%"></textarea>
+              <form action="/produk/pertanyaan" method="POST">
+                @csrf
+                @method('POST')
+              <textarea class="form-control ml-4" id="form-pertanyaan" rows="5" name="pertanyaanText" style="min-width: 100%"></textarea>
               <div class="btn-produk text-end mt-2">
-                <a href="#" class="btn btn-warning text-white btn-custom-quest">Tulis Pertanyaan</a>
+                <input type="hidden" value="{{ $dataproduk->id }}" name="id_produk" required/>
+                <button type="submit" class="btn btn-warning text-white btn-custom-quest" id="pertanyaan">Tulis Pertanyaan</button>
+              </form>
               </div>
             </div>
           </div>

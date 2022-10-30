@@ -18,13 +18,13 @@
       <div id="carouselExampleIndicators" class="carousel slide mt-4" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="../img/assets/img1.jpg" class="d-block img-fluid" alt="...">
+            <img src="../img/toko.jpg" class="d-block img-fluid" alt="...">
           </div>
           <div class="carousel-item">
-            <img src="../img/assets/img2.jpg" class="d-block img-fluid" alt="...">
+            <img src="../img/sopi.jpg" class="d-block img-fluid" alt="...">
           </div>
           <div class="carousel-item">
-            <img src="../img/assets/img3.jpg" class="d-block img-fluid" alt="...">
+            <img src="../img/bli.jpg" class="d-block img-fluid" alt="...">
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -38,6 +38,25 @@
       </div>
     </div>
 
+<!-- Modal -->
+<div class="modal fade" id="fiturModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Fitur Belum Tersedia</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       Fitur Belum Tersedia
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+{{-- modal --}}
+
     <div class="container mt-5">
       <div class="judul-kategori" style="background-color: #fff; padding: 5px 10px;">
         <h5 class="text-center" style="margin-top: 5px;">KATEGORI</h5>
@@ -45,74 +64,74 @@
       <div class="row text-center row-container mt-2">
         <div class="col-lg-2 col-md-3 col-sm-4 col-6">
           <div class="menu-kategori">
-            <a href="#"><img src="../img/banner1.jpeg" alt="" class="img-kategori mt-3"></a>
-            <p class="mt-2">Baju</p>
+            <a href="#" type="button" data-bs-toggle="modal" data-bs-target="#fiturModal"><img src="../img/noimage.jpg" alt="" class="img-kategori mt-3"></a>
+            <p class="mt-2">Gas</p>
           </div>
         </div>
         <div class="col-lg-2 col-md-3 col-sm-4 col-6">
           <div class="menu-kategori">
-            <a href="#"><img src="../img/banner1.jpeg" alt="" class="img-kategori mt-3"></a>
-            <p class="mt-2">Baju</p>
+            <a href="#" type="button" data-bs-toggle="modal" data-bs-target="#fiturModal"><img src="../img/noimage.jpg" alt="" class="img-kategori mt-3"></a>
+            <p class="mt-2">Gas</p>
           </div>
         </div>
         <div class="col-lg-2 col-md-3 col-sm-4 col-6">
           <div class="menu-kategori">
-            <a href="#"><img src="../img/banner1.jpeg" alt="" class="img-kategori mt-3"></a>
-            <p class="mt-2">Baju</p>
+            <a href="#" type="button" data-bs-toggle="modal" data-bs-target="#fiturModal"><img src="../img/noimage.jpg" alt="" class="img-kategori mt-3"></a>
+            <p class="mt-2">Gas</p>
           </div>
         </div>
         <div class="col-lg-2 col-md-3 col-sm-4 col-6">
           <div class="menu-kategori">
-            <a href="#"><img src="../img/banner1.jpeg" alt="" class="img-kategori mt-3"></a>
-            <p class="mt-2">Baju</p>
+            <a href="#" type="button" data-bs-toggle="modal" data-bs-target="#fiturModal"><img src="../img/noimage.jpg" alt="" class="img-kategori mt-3"></a>
+            <p class="mt-2">Gas</p>
           </div>
         </div>
         <div class="col-lg-2 col-md-3 col-sm-4 col-6">
           <div class="menu-kategori">
-            <a href="#"><img src="../img/banner1.jpeg" alt="" class="img-kategori mt-3"></a>
-            <p class="mt-2">Baju</p>
+            <a href="#" type="button" data-bs-toggle="modal" data-bs-target="#fiturModal"><img src="../img/noimage.jpg" alt="" class="img-kategori mt-3"></a>
+            <p class="mt-2">Gas</p>
           </div>
         </div>
         <div class="col-lg-2 col-md-3 col-sm-4 col-6">
           <div class="menu-kategori">
-            <a href="#"><img src="../img/banner1.jpeg" alt="" class="img-kategori mt-3"></a>
-            <p class="mt-2">Baju</p>
+            <a href="#" type="button" data-bs-toggle="modal" data-bs-target="#fiturModal"><img src="../img/noimage.jpg" alt="" class="img-kategori mt-3"></a>
+            <p class="mt-2">Gas</p>
           </div>
         </div>
         <div class="col-lg-2 col-md-3 col-sm-4 col-6">
           <div class="menu-kategori">
-            <a href="#"><img src="../img/banner1.jpeg" alt="" class="img-kategori mt-3"></a>
-            <p class="mt-2">Baju</p>
+            <a href="#" type="button" data-bs-toggle="modal" data-bs-target="#fiturModal"><img src="../img/noimage.jpg" alt="" class="img-kategori mt-3"></a>
+            <p class="mt-2">Gas</p>
           </div>
         </div>
         <div class="col-lg-2 col-md-3 col-sm-4 col-6">
           <div class="menu-kategori">
-            <a href="#"><img src="../img/banner1.jpeg" alt="" class="img-kategori mt-3"></a>
-            <p class="mt-2">Baju</p>
+            <a href="#" type="button" data-bs-toggle="modal" data-bs-target="#fiturModal"><img src="../img/noimage.jpg" alt="" class="img-kategori mt-3"></a>
+            <p class="mt-2">Gas</p>
           </div>
         </div>
         <div class="col-lg-2 col-md-3 col-sm-4 col-6">
           <div class="menu-kategori">
-            <a href="#"><img src="../img/banner1.jpeg" alt="" class="img-kategori mt-3"></a>
-            <p class="mt-2">Baju</p>
+            <a href="#" type="button" data-bs-toggle="modal" data-bs-target="#fiturModal"><img src="../img/noimage.jpg" alt="" class="img-kategori mt-3"></a>
+            <p class="mt-2">Gas</p>
           </div>
         </div>
         <div class="col-lg-2 col-md-3 col-sm-4 col-6">
           <div class="menu-kategori">
-            <a href="#"><img src="../img/banner1.jpeg" alt="" class="img-kategori mt-3"></a>
-            <p class="mt-2">Baju</p>
+            <a href="#" type="button" data-bs-toggle="modal" data-bs-target="#fiturModal"><img src="../img/noimage.jpg" alt="" class="img-kategori mt-3"></a>
+            <p class="mt-2">Gas</p>
           </div>
         </div>
         <div class="col-lg-2 col-md-3 col-sm-4 col-6">
           <div class="menu-kategori">
-            <a href="#"><img src="../img/banner1.jpeg" alt="" class="img-kategori mt-3"></a>
-            <p class="mt-2">Baju</p>
+            <a href="#" type="button" data-bs-toggle="modal" data-bs-target="#fiturModal"><img src="../img/noimage.jpg" alt="" class="img-kategori mt-3"></a>
+            <p class="mt-2">Gas</p>
           </div>
         </div>
         <div class="col-lg-2 col-md-3 col-sm-4 col-6">
           <div class="menu-kategori">
-            <a href="#"><img src="../img/banner1.jpeg" alt="" class="img-kategori mt-3"></a>
-            <p class="mt-2">Baju</p>
+            <a href="#" type="button" data-bs-toggle="modal" data-bs-target="#fiturModal"><img src="../img/noimage.jpg" alt="" class="img-kategori mt-3"></a>
+            <p class="mt-2">Gas</p>
           </div>
         </div>
       </div>

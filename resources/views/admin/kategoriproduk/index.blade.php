@@ -12,7 +12,8 @@
     <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/fonts/simple-line-icons/style.min.css">
     <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/colors.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+    
     
 
 </head>
@@ -194,28 +195,26 @@
               
                     <div class="row row-keranjang">
                         <div class="col table-responsive">
-                            <table class="table table-bordered text-center" id="myTable">
-                                <thead class="table-secondary th-header">
-                                  <tr>
-                                    <th scope="col" class="th-header">Kode Kategori</th>
-                                    <th scope="col" class="th-header">Jenis Kategori</th>
-                                    <th scope="col" colspan="2" class="th-header">Action</th>
-                                </thead>
-                                <tbody class="align-middle">
-                                  
-                                    @foreach ($datas as $kunci)
-                                        <tr>
-                                            <th scope="row">{{ $kunci->kode_kategori }}</th>
-                                            <td>{{ $kunci->jenis_kategori }}</td>
-                                            <td><button type="button" class="btn btn-success" id="btn-edit-kodekategori" data-bs-toggle="modal" data-bs-target="#editmodal--{{ $kunci->id }}">Edit</button></td>
-                                            <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletemodal--{{ $kunci->id }}">Delete</button></td>
-                                        </tr>
-                                    @endforeach
-                                        
-                                  
-                                </tbody>
-                              </table>
-                              {{ $datas->links() }}
+                          <table id="example" class="table table-striped" style="width:100%">
+                            <thead class="table-success th-header">
+                                <tr>
+                                    <th>Kode Kategori</th>
+                                    <th>Nama Kategori</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                              @foreach ($datas as $kunci)
+                                <tr>
+                                    <td>{{ $kunci->kode_kategori }}</td>
+                                    <td>{{ $kunci->jenis_kategori }}</td>
+                                    <td><button type="button" class="btn btn-success" id="btn-edit-kodekategori" data-bs-toggle="modal" data-bs-target="#editmodal--{{ $kunci->id }}">Edit</button></td>
+                                    <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletemodal--{{ $kunci->id }}">Delete</button></td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
                         </div>
                     </div>
                 </div>
@@ -242,23 +241,27 @@
 
  
 
-
-
-
-
  
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="/js/Sidebar.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.6/dist/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
+    <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+
+   
+    <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
     <script type="text/javascript">
-      $(document).ready( function () {
-        $('#myTable').DataTable();
-    } );
-  </script>
+
+        $(document).ready(function () {
+          $('#example').DataTable();
+      });
+    
+    </script>
+   
+    
 
 </body>
 </html>

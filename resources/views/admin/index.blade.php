@@ -98,7 +98,7 @@
                 <div class="row">
                     <div class="col-sm-12 col-xl" id="canvas-js">
                         <h5 class="fw-bolder mb-3 mx-1 mt-5">Statistik Penjualan</h5>
-                        <canvas id="myChart" width="600" height="250"></canvas>
+                        <div id="grafik" width="600" height="250"></div>
                     </div>
                     <div class="col-sm-12 col-xl mt-5">
                         <h5 class="fw-bolder mb-3 mx-1">Riwayat Aktvitas</h5>
@@ -147,6 +147,36 @@
 
     
     <!-- Javascript -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script type="text/javascript">
+       var pendapatan = <?php echo json_encode($total_harga)?>;
+       var bulan = <?php echo json_encode($bulan)?>;
+       Highcharts.chart('grafik',{
+          title : {
+            text: 'Grafik Pendapatan'
+          },
+          xAxis : {
+            categories : bulan
+          },
+          yAxis : {
+            title : {
+              text : Nominal Pendapatan
+            }
+          },
+          plotOptions: {
+            series:{
+              allowPointSelect: true
+            }
+          },
+          series:[
+            {
+              name: 'Nominal Pendapatan',
+              data: pendapatan
+            }
+          ]
+       })
+       
+    </script>
     <script src="../js/Chart.js"></script>
     <script src="../js/Sidebar.js"></script>
 
