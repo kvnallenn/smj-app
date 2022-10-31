@@ -72,11 +72,6 @@
                                 <div class="grid invoice">
                                     <div class="grid-body">
                                         <div class="invoice-title">
-                                            <div class="row">
-                                                <div class="col-xs-12">
-                                                    <img src="../img/Logo-Sentra.png" width="130">
-                                                </div>
-                                            </div>
                                             <br>
                                             <div class="row">
                                                 <div class="col-xs-12">
@@ -105,11 +100,11 @@
                                                         </tr>
                                                         <tr>
                                                             <td>Nomor Telepon</td>
-                                                            <td>: <strong>Kevin Allen</strong></td>
+                                                            <td>: <strong></strong></td>
                                                         </tr>
                                                         <tr>
                                                             <td>Tanggal Pembelian</td>
-                                                            <td>: <strong>17/06/14</strong></td>
+                                                            <td>: <strong>{{ $datacart->created_at->format('d M Y') }}</strong></td>
                                                         </tr>
                                                         <tr>
                                                             <td>Alamat Pengiriman</td>

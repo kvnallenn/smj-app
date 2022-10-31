@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="../css/keranjang.css">
     <link rel="stylesheet" href="../css/profile.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <title>PT Sentra Medan Jaya |</title>
+    <link rel="icon" href="/img/Logo-Sentra.png" type="image/x-icon" />
+    <title>PT Sentra Medan Jaya |  User Settings</title>
   </head>
   <body>
     @include('partials.navbarshop')

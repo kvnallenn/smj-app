@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard | PT Sentra Medan Jaya</title>
+    <title>Admin Dashboard | PT Sentra Medan Jaya</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/adminindex.css">
     <link href='https://unpkg.com/boxicons@2.1.3/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/fonts/simple-line-icons/style.min.css">
     <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/colors.min.css">
+    <link rel="icon" href="/img/Logo-Sentra.png" type="image/x-icon" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
@@ -98,9 +99,16 @@
                 <div class="row">
                     <div class="col-sm-12 col-xl" id="canvas-js">
                         <h5 class="fw-bolder mb-3 mx-1 mt-5">Statistik Penjualan</h5>
-                        <div id="grafik" width="600" height="250"></div>
+                        <div id="grafik"></div>
                     </div>
                     <div class="col-sm-12 col-xl mt-5">
+                      <div class="untuk-br">
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                      </div>
                         <h5 class="fw-bolder mb-3 mx-1">Riwayat Aktvitas</h5>
                     <div id="riwayat-log">
                       @foreach ($notif as $item)
@@ -150,17 +158,17 @@
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script type="text/javascript">
        var pendapatan = <?php echo json_encode($total_harga)?>;
-       var bulan = <?php echo json_encode($bulan)?>;
+       var bulan = <?php echo json_encode($bulan) ?>;
        Highcharts.chart('grafik',{
           title : {
-            text: 'Grafik Pendapatan'
+            text: 'Grafik pendapatan Bulanan'
           },
           xAxis : {
             categories : bulan
           },
           yAxis : {
             title : {
-              text : Nominal Pendapatan
+              text : 'Nominal Pendapatan Bulanan'
             }
           },
           plotOptions: {
@@ -174,10 +182,9 @@
               data: pendapatan
             }
           ]
-       })
+       });
        
     </script>
-    <script src="../js/Chart.js"></script>
     <script src="../js/Sidebar.js"></script>
 
 </body>

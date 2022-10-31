@@ -9,7 +9,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/keranjang.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <title>PT Sentra Medan Jaya |</title>
+    <link rel="icon" href="/img/Logo-Sentra.png" type="image/x-icon" />
+    <title>PT Sentra Medan Jaya | Status Pesanan</title>
+    
   </head>
   <body>
     @include('partials.navbarshop')
@@ -203,7 +205,7 @@
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                   <button type="submit" class="btn btn-primary">Rating</button>
                 </form>
-                <form action="{{ url ('/admin/pesanan/status/'.$items->invoice_produk) }}" method="POST">
+                <form action="{{ url ('/admin/pesanan/gagal/'.$items->invoice_produk) }}" method="POST">
                   @csrf
                   @method('POST')
                   <input type="hidden" value="Selesai" name="status-pengiriman">

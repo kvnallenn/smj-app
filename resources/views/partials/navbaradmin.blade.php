@@ -23,12 +23,6 @@
             </a>
         </li>
         <li>
-            <a href="#">
-                <i class='bx bx-message-rounded-dots' ></i>
-                <span class="links_name">Pesan</span>
-            </a>
-        </li>
-        <li>
             <a href="/admin/adminproduk">
                 <i class='bx bx-package'></i>
                 <span class="links_name">Produk</span>

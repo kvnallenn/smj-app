@@ -72,5 +72,15 @@ class PesananController extends Controller
         return Excel::download(new ProdukExport,'produk.xlsx');
     }
 
+    public function norating(Request $request)
+    {
+        $kodeinvoice = $request->get('kode-invoice');
+        $model = Payment::where('invoice_produk','=',$kodeinvoice)->first();
+        $model->status_pesanan = $request->get('status-pengiriman');
+        $model->save();
+
+        return redirect('/status-pesanan');
+    }
+
  
 }

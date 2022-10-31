@@ -477,3 +477,29 @@ ul{
 .pagination{
   margin-bottom: 10px;
 }
+
+@media (max-width: 1190px) { 
+  #riwayat-log{
+    margin-bottom: 25px;
+  }
+}
+
+@media (max-width: 575px) { 
+  .col-sm-1, .col-sm-11.d-inline{
+    text-align: center;
+  }
+}
+
+@media (max-width: 1190px) { 
+  .fw-bolder.mb-3.mx-1.mt-10{
+    margin-top: 100px;
+  }
+}
+
+
+
+@media (min-width: 1199px) { 
+  .untuk-br{
+    display: none;
+  }
+}

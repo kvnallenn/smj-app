@@ -113,6 +113,8 @@ Route::post('/admin/deskripsi/{id}', [DeskripsiController::class, 'update'])->mi
 
 Route::post('/admin/pesanan/status/{id}', [PesananController::class, 'pesanan'])->middleware('is_admin');
 
+Route::post('/admin/pesanan/gagal/{id}', [PesananController::class, 'norating'])->middleware('is_admin');
+
 Route::post('/produk/pertanyaan', [QuestionsController::class, 'store'])->middleware('is_admin');
 
 Route::post('/admin/pesanan/{id}', [PesananController::class, 'update'])->middleware('is_admin');

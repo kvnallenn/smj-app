@@ -30,14 +30,14 @@ class AdminLoginController extends Controller
         $model4 = Category::all();
         $hitung2 = $model4->count();
 
-        $total_harga = Invoice::select(DB::raw("CAST(SUM(harga_produk) as int) as harga_produk"))
-        ->groupBy(DB::raw("Month(created_at"))
+        $total_harga = Invoice::select(DB::raw("CAST(SUM(harga_produk*unit_produk) as int) as harga_produk"))
+        ->groupBy(DB::raw("Month(created_at)"))
         ->pluck('harga_produk');
 
+        
         $bulan = Invoice::select(DB::raw("MONTHNAME(created_at) as bulan"))
-        ->groupBy(DB::raw("MONTHNAME(created_at"))
+        ->groupBy(DB::raw("MONTHNAME(created_at)"))
         ->pluck('bulan');
-
 
         return view ('admin.index', [
             "title" => "Admin Page"
