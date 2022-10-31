@@ -74,7 +74,14 @@ body {
   color: black;
 }
 
+.judul-kategori{
+  background-color: #2D3748;
+  color: white;
+}
 
+#kategori-warna{
+  background-color: #ffff;
+}
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/

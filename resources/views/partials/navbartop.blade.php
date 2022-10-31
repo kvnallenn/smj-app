@@ -15,7 +15,7 @@
                     <a class="nav-link" id="nav-warna" href="#lanjut">TENTANG</a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link" id="nav-warna" href="#">KONTAK</a>
+                    <a class="nav-link" id="nav-warna" href="#kontak">KONTAK</a>
                 </li>
                 <li class="nav-item mx-2">
                     <a class="nav-link" id="nav-warna" href="/shop">PRODUK</a>

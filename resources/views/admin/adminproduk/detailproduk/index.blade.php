@@ -35,9 +35,34 @@
                               <a class="dropdown-item btn" data-bs-toggle="modal" data-bs-target="#updateStockModal--{{ $datalistproduk->id }}">Stock Opname</a>
                               <a class="dropdown-item btn" data-bs-toggle="modal" data-bs-target="#updateModal--{{ $datalistproduk->id }}">Ubah Produk</a>
                               <a class="dropdown-item btn" data-bs-toggle="modal" data-bs-target="#deskripsiModal--{{ $datalistproduk->id }}">Deskripsi Produk</a>
+                              <a class="dropdown-item btn" data-bs-toggle="modal" data-bs-target="#hapusModal--{{ $datalistproduk->id }}">Hapus Produk</a>
                             </div>
                           </div>
                     </div>  
+
+                    {{-- HAPUS MODAL --}}
+                    <div class="modal fade" id="hapusModal--{{ $datalistproduk->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            Apakah anda ingin menghapus produk ini ?
+                          </div>
+                          <div class="modal-footer">
+                            <form action="{{ url('admin/'.$datalistproduk->id) }}" method="POST">
+                              @csrf
+                              @method('DELETE')
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              <button type="submit" class="btn btn-primary">Hapus</button>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    {{-- HAPUS MODAL --}}
                     <!-- MODAL -->
 
                     <div class="modal fade" id="updateStockModal--{{ $datalistproduk->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -204,6 +229,12 @@
                   
 
                     {{-- UPDATE MODAL --}}
+
+                    {{-- HAPUS MODAL --}}
+
+               
+
+                    {{-- HAPUS MODAL --}}
                 </div>
                 <div class="row row-keranjang">
                 {{-- NOTIFIKASI ERROR --}}

@@ -16,9 +16,7 @@
 
     <div class="container">
         <div class="row row-keranjang align-middle">
-            <div><h4 class="fw-bold text-center p-4">Selesaikan pembayaran dalam</h4></div>              
-            <div><h5 class="text-center">Batas Akhir Pembayaran</div></H4>
-            <div><h4 class="fw-bold text-center">Selasa, 18 Oktober 2022 15:23</h4></div>   
+            <div><h4 class="fw-bold text-center p-4">Selesaikan Pembayaran</h4></div>      
                <div class="row">
                 <div class="d-flex justify-content-center mt-4">
                     <div class="col-xl-4 col-12">
@@ -58,7 +56,7 @@
                         </li>
                         <li class="list-group-item d-flex justify-content-center lh-sm">
                           <div>
-                            <small class="text my-0 fw-bold">Harap menyimpan bukti transaksi pembayaran</small>
+                            <small class="text my-0 fw-bold">NB : Harap menyimpan bukti transaksi pembayaran</small>
                         </div>
                       </li>
                     </div>  

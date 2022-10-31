@@ -58,10 +58,10 @@
 {{-- modal --}}
 
     <div class="container mt-5">
-      <div class="judul-kategori" style="background-color: #fff; padding: 5px 10px;">
+      <div class="judul-kategori" style="padding: 5px 10px;">
         <h5 class="text-center" style="margin-top: 5px;">KATEGORI</h5>
       </div>
-      <div class="row text-center row-container mt-2">
+      <div class="row text-center row-container mt-2" id="kategori-warna">
         <div class="col-lg-2 col-md-3 col-sm-4 col-6">
           <div class="menu-kategori">
             <a href="#" type="button" data-bs-toggle="modal" data-bs-target="#fiturModal"><img src="../img/noimage.jpg" alt="" class="img-kategori mt-3"></a>
@@ -138,7 +138,7 @@
     </div>
 
     <div class="container mt-5">
-      <div class="judul-kategori" style="background-color: #fff; padding: 5px 10px;">
+      <div class="judul-kategori" style="padding: 5px 10px;">
         <h5 class="text-center" style="margin-top: 5px;">PRODUK TERBARU</h5>
       </div>
       <div class="row mt-3">
@@ -150,11 +150,38 @@
             <div class="card-body">
               <h5 class="card-title">{{ $kunciproduk->nama_produk }}</h5>
               <div class="icon-bintang" style="color: orange;">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
+                @if ($hitungrata == 5 )
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      @elseif ($hitungrata == 4 )
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fa-regular fa-star"></i>
+                      @elseif ($hitungrata == 3 )
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fa-regular fa-star"></i>
+                      <i class="fa-regular fa-star"></i>
+                      @elseif ($hitungrata == 2 )
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fa-regular fa-star"></i>
+                      <i class="fa-regular fa-star"></i>
+                      <i class="fa-regular fa-star"></i>
+                      @elseif ($hitungrata == 1 )
+                      <i class="fas fa-star"></i>
+                      <i class="fa-regular fa-star"></i>
+                      <i class="fa-regular fa-star"></i>
+                      <i class="fa-regular fa-star"></i>
+                      <i class="fa-regular fa-star"></i>
+                      @else
+                      @endif
               </div>
               <p class="card-text mt-2">Rp {{ $kunciproduk->harga_produk }},-</p>
               <form action="{{ url('/keranjang/') }}" method="post">

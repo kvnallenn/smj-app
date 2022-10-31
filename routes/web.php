@@ -20,6 +20,7 @@ use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\UserSettingsController;
 use App\Http\Controllers\QuestionsController;
 use App\Http\Controllers\DeskripsiController;
+use App\Http\Controllers\RatingController;
 
 
 /*
@@ -120,6 +121,8 @@ Route::post('/produk/pertanyaan', [QuestionsController::class, 'store'])->middle
 Route::post('/admin/pesanan/{id}', [PesananController::class, 'update'])->middleware('is_admin');
 
 Route::get('/admin/pesanan/exportproduk', [PesananController::class, 'exportproduk'])->middleware('is_admin');
+
+Route::get('/admin/rating', [RatingController::class, 'index'])->middleware('is_admin');
 
 Route::resource('/admin/adminproduk', AdminProdukController::class)->except('show')->middleware('is_admin');
 

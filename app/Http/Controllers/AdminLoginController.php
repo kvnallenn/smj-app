@@ -102,6 +102,9 @@ class AdminLoginController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $model = Product::find($id);
+        $model->delete();
+
+        return redirect('admin/adminproduk')->with('notifikasi','Produk berhasil dihapus!');
     }
 }

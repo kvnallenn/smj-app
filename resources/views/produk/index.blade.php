@@ -98,15 +98,25 @@
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
+                      <i class="fa-regular fa-star"></i>
                       @elseif ($item->rating == 3 )
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
+                      <i class="fa-regular fa-star"></i>
+                      <i class="fa-regular fa-star"></i>
                       @elseif ($item->rating == 2 )
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
+                      <i class="fa-regular fa-star"></i>
+                      <i class="fa-regular fa-star"></i>
+                      <i class="fa-regular fa-star"></i>
                       @elseif ($item->rating == 1 )
                       <i class="fas fa-star"></i>
+                      <i class="fa-regular fa-star"></i>
+                      <i class="fa-regular fa-star"></i>
+                      <i class="fa-regular fa-star"></i>
+                      <i class="fa-regular fa-star"></i>
                       @else
                       @endif
                     </div>
